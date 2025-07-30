@@ -117,44 +117,9 @@ const IntegrationsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Integration CTA */}
-        <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl p-8 text-center">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            Don't See Your Tool?
-          </h3>
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            We're constantly adding new integrations. Request a custom integration 
-            or use our flexible API to connect any tool to OpsiMate.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="btn-primary">
-              Request Integration
-            </button>
-            <button className="btn-secondary">
-              View API Docs
-            </button>
-          </div>
-        </div>
 
-        {/* Integration Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 text-center">
-          <div>
-            <div className="text-3xl font-bold text-blue-600 mb-2">50+</div>
-            <div className="text-gray-600">Integrations</div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-blue-600 mb-2">99.9%</div>
-            <div className="text-gray-600">Uptime</div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-blue-600 mb-2">&lt; 5min</div>
-            <div className="text-gray-600">Setup Time</div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-blue-600 mb-2">24/7</div>
-            <div className="text-gray-600">Support</div>
-          </div>
-        </div>
+
+
       </div>
     </section>
   );

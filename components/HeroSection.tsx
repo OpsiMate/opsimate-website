@@ -23,43 +23,41 @@ const HeroSection: React.FC = () => {
             
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-              <button className="btn-primary text-lg px-8 py-4">
-                Get Started Free
+              <a 
+                href="https://github.com/Fifaboyz/OpsiMate" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="btn-primary text-lg px-8 py-4 inline-flex items-center gap-2"
+              >
+                Get Started
                 <ArrowRight className="h-5 w-5" />
-              </button>
-              <button className="btn-secondary text-lg px-8 py-4">
-                <Play className="h-5 w-5" />
-                Watch Demo
-              </button>
-            </div>
+              </a>
 
-            {/* Trust Indicators */}
-            <div className="text-center lg:text-left">
-              <p className="text-sm text-gray-500 mb-4">Trusted by teams worldwide</p>
-              <div className="flex flex-wrap justify-center lg:justify-start gap-6 opacity-60">
-                {/* Placeholder for company logos */}
-                <div className="bg-gray-200 h-8 w-24 rounded animate-pulse"></div>
-                <div className="bg-gray-200 h-8 w-24 rounded animate-pulse"></div>
-                <div className="bg-gray-200 h-8 w-24 rounded animate-pulse"></div>
-                <div className="bg-gray-200 h-8 w-24 rounded animate-pulse"></div>
-              </div>
+              <a 
+                href="https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="btn-secondary text-lg px-8 py-4 inline-flex items-center gap-2"
+              >
+                Join Slack Community
+              </a>
             </div>
           </div>
 
           {/* Right Column - Hero Image/Video Placeholder */}
           <div className="relative">
             <div className="relative bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 shadow-2xl">
-              {/* Placeholder for hero image/video */}
+              {/* Hero image placeholder - ready for your cool image */}
               <div className="aspect-video bg-white rounded-lg shadow-lg flex items-center justify-center border-2 border-dashed border-gray-300">
                 <div className="text-center">
                   <div className="bg-blue-100 p-4 rounded-full inline-block mb-4">
                     <Play className="h-8 w-8 text-blue-600" />
                   </div>
                   <p className="text-gray-500 font-medium">
-                    Hero Image/Video Placeholder
+                    OpsiMate Dashboard Preview
                   </p>
                   <p className="text-sm text-gray-400 mt-2">
-                    Upload your product demo video or screenshot here
+                    Ready for your cool opening image
                   </p>
                 </div>
               </div>

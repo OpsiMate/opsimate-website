@@ -14,10 +14,10 @@ const Navbar: React.FC = () => {
 
   const navigation: NavigationItem[] = [
     { name: 'Features', href: '#features' },
-    { name: 'Docs', href: '#docs' }, // Placeholder for documentation link
+    { name: 'Docs', href: 'https://opsimate.vercel.app/#integrations', external: true },
     { name: 'Integrations', href: '#integrations' },
     { name: 'GitHub', href: 'https://github.com/Fifaboyz/OpsiMate', external: true },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Slack', href: 'https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA', external: true },
   ];
 
   return (
@@ -41,9 +41,6 @@ const Navbar: React.FC = () => {
                 {item.name}
               </Link>
             ))}
-            <button className="btn-primary">
-              Get Started
-            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -72,9 +69,6 @@ const Navbar: React.FC = () => {
                   {item.name}
                 </Link>
               ))}
-              <button className="btn-primary w-full mt-4">
-                Get Started
-              </button>
             </div>
           </div>
         )}

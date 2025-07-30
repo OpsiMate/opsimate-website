@@ -35,13 +35,23 @@ const CTASection: React.FC = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-white text-blue-600 hover:bg-gray-50 font-semibold py-4 px-8 rounded-lg transition-colors duration-200 inline-flex items-center justify-center gap-2 text-lg">
-                Get Started Now
-                <ArrowRight className="h-5 w-5" />
-              </button>
-              <button className="border-2 border-white text-white hover:bg-white hover:text-blue-600 font-semibold py-4 px-8 rounded-lg transition-colors duration-200 inline-flex items-center justify-center gap-2 text-lg">
+              <a 
+                href="https://github.com/Fifaboyz/OpsiMate" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-white text-blue-600 hover:bg-gray-50 font-semibold py-4 px-8 rounded-lg transition-colors duration-200 inline-flex items-center justify-center gap-2 text-lg"
+              >
                 View on GitHub
-              </button>
+                <ArrowRight className="h-5 w-5" />
+              </a>
+              <a 
+                href="https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="border-2 border-white text-white hover:bg-white hover:text-blue-600 font-semibold py-4 px-8 rounded-lg transition-colors duration-200 inline-flex items-center justify-center gap-2 text-lg"
+              >
+                Join Community
+              </a>
             </div>
           </div>
 
@@ -66,23 +76,23 @@ const CTASection: React.FC = () => {
               {/* Stats */}
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-2xl font-bold text-white mb-1">10K+</div>
-                  <div className="text-sm text-white/80">Services Monitored</div>
+                  <div className="text-2xl font-bold text-white mb-1">100%</div>
+                  <div className="text-sm text-white/80">Open Source</div>
                 </div>
                 <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-2xl font-bold text-white mb-1">500+</div>
-                  <div className="text-sm text-white/80">Happy Teams</div>
+                  <div className="text-2xl font-bold text-white mb-1">Free</div>
+                  <div className="text-sm text-white/80">Forever</div>
                 </div>
                 <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-2xl font-bold text-white mb-1">99.9%</div>
-                  <div className="text-sm text-white/80">Uptime</div>
+                  <div className="text-2xl font-bold text-white mb-1">MIT</div>
+                  <div className="text-sm text-white/80">License</div>
                 </div>
               </div>
             </div>
 
             {/* Floating Elements */}
             <div className="absolute -top-4 -right-4 bg-green-400 text-green-900 rounded-lg shadow-lg p-3 font-medium text-sm">
-              ✓ Trusted by Enterprise
+              ✓ Open Source
             </div>
             <div className="absolute -bottom-4 -left-4 bg-yellow-400 text-yellow-900 rounded-lg shadow-lg p-3 font-medium text-sm">
               🚀 Quick Setup
@@ -90,16 +100,7 @@ const CTASection: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Section - Social Proof */}
-        <div className="mt-16 pt-12 border-t border-white/20 text-center">
-          <p className="text-blue-200 mb-8">Trusted by teams at</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-            {/* Placeholder for company logos */}
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="bg-white/20 h-12 w-32 rounded animate-pulse"></div>
-            ))}
-          </div>
-        </div>
+
       </div>
     </section>
   );
