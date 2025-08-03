@@ -47,26 +47,41 @@ const HeroSection: React.FC = () => {
           {/* Right Column - Hero Image/Video Placeholder */}
           <div className="relative">
             <div className="relative bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 shadow-2xl">
-              {/* Hero image placeholder - ready for your cool image */}
-              <div className="aspect-video bg-white rounded-lg shadow-lg flex items-center justify-center border-2 border-dashed border-gray-300">
-                <div className="text-center">
-                  <div className="bg-blue-100 p-4 rounded-full inline-block mb-4">
-                    <Play className="h-8 w-8 text-blue-600" />
-                  </div>
-                  <p className="text-gray-500 font-medium">
-                    OpsiMate Dashboard Preview
-                  </p>
-                  <p className="text-sm text-gray-400 mt-2">
-                    Ready for your cool opening image
-                  </p>
-                </div>
+              {/* OpsiMate Dashboard Image */}
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden" style={{aspectRatio: '16/10'}}>
+                <img 
+                  src="/images/opsimate-dashboard.png" 
+                  alt="OpsiMate Dashboard - Infrastructure Management Interface" 
+                  className="w-full h-full object-contain rounded-lg"
+                  onError={(e) => {
+                    // Fallback if image fails to load
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const parent = target.parentElement;
+                    if (parent) {
+                      parent.innerHTML = `
+                        <div class="flex items-center justify-center h-full bg-gray-100">
+                          <div class="text-center">
+                            <div class="bg-blue-100 p-4 rounded-full inline-block mb-4">
+                              <svg class="h-8 w-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                              </svg>
+                            </div>
+                            <p class="text-gray-500 font-medium">OpsiMate Dashboard</p>
+                            <p class="text-sm text-gray-400 mt-2">Infrastructure Management Interface</p>
+                          </div>
+                        </div>
+                      `;
+                    }
+                  }}
+                />
               </div>
               
               {/* Floating Elements */}
               <div className="absolute -top-4 -right-4 bg-white rounded-lg shadow-lg p-3 border border-gray-100">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                  <span className="text-sm font-medium text-gray-700">99.9% Uptime</span>
+                  <span className="text-sm font-medium text-gray-700">All in One Place</span>
                 </div>
               </div>
               

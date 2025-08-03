@@ -58,19 +58,32 @@ const CTASection: React.FC = () => {
           {/* Right Column - Visual Element */}
           <div className="relative">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-              {/* Dashboard Preview Placeholder */}
-              <div className="aspect-video bg-white/5 rounded-lg border border-white/20 flex items-center justify-center mb-6">
-                <div className="text-center">
-                  <div className="bg-white/20 p-4 rounded-full inline-block mb-4">
-                    <div className="w-8 h-8 bg-white/30 rounded animate-pulse"></div>
-                  </div>
-                  <p className="text-white/80 font-medium">
-                    Dashboard Preview
-                  </p>
-                  <p className="text-sm text-white/60 mt-2">
-                    Upload screenshot of your dashboard here
-                  </p>
-                </div>
+              {/* OpsiMate Dashboard Preview */}
+              <div className="bg-white/10 rounded-lg border border-white/20 overflow-hidden mb-6" style={{aspectRatio: '16/10'}}>
+                <img 
+                  src="/images/opsimate-dashboard.png" 
+                  alt="OpsiMate Dashboard Preview" 
+                  className="w-full h-full object-contain rounded-lg"
+                  onError={(e) => {
+                    // Fallback if image fails to load
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const parent = target.parentElement;
+                    if (parent) {
+                      parent.innerHTML = `
+                        <div class="flex items-center justify-center h-full bg-white/5">
+                          <div class="text-center">
+                            <div class="bg-white/20 p-4 rounded-full inline-block mb-4">
+                              <div class="w-8 h-8 bg-white/30 rounded animate-pulse"></div>
+                            </div>
+                            <p class="text-white/80 font-medium">Dashboard Preview</p>
+                            <p class="text-sm text-white/60 mt-2">OpsiMate Interface</p>
+                          </div>
+                        </div>
+                      `;
+                    }
+                  }}
+                />
               </div>
 
               {/* Stats */}

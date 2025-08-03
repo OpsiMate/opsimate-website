@@ -1,55 +1,63 @@
 import React from 'react';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, BarChart3, Activity, FileText, Cloud, Box, Server, Database } from 'lucide-react';
 
 const IntegrationsSection: React.FC = () => {
   const integrations = [
     {
       name: 'Grafana',
       description: 'Connect your Grafana dashboards and visualizations',
-      logo: '/images/integrations/grafana-logo.png', // Placeholder - add actual logo
-      category: 'Monitoring'
+      icon: BarChart3,
+      category: 'Monitoring',
+      color: 'text-orange-600'
     },
     {
       name: 'Prometheus',
       description: 'Integrate with Prometheus metrics and alerting',
-      logo: '/images/integrations/prometheus-logo.png', // Placeholder - add actual logo
-      category: 'Metrics'
+      icon: Activity,
+      category: 'Metrics',
+      color: 'text-red-600'
     },
     {
       name: 'Kibana',
       description: 'Connect to Kibana for log analysis and visualization',
-      logo: '/images/integrations/kibana-logo.png', // Placeholder - add actual logo
-      category: 'Logging'
+      icon: FileText,
+      category: 'Logging',
+      color: 'text-purple-600'
     },
     {
       name: 'Coralogix',
       description: 'Integrate with Coralogix for advanced log analytics',
-      logo: '/images/integrations/coralogix-logo.png', // Placeholder - add actual logo
-      category: 'Logging'
+      icon: Database,
+      category: 'Logging',
+      color: 'text-green-600'
     },
     {
       name: 'Kubernetes',
       description: 'Monitor and manage Kubernetes clusters',
-      logo: '/images/integrations/kubernetes-logo.png', // Placeholder - add actual logo
-      category: 'Orchestration'
+      icon: Server,
+      category: 'Orchestration',
+      color: 'text-blue-600'
     },
     {
       name: 'Docker',
       description: 'Container monitoring and management',
-      logo: '/images/integrations/docker-logo.png', // Placeholder - add actual logo
-      category: 'Containers'
+      icon: Box,
+      category: 'Containers',
+      color: 'text-blue-500'
     },
     {
       name: 'AWS',
       description: 'Connect to Amazon Web Services infrastructure',
-      logo: '/images/integrations/aws-logo.png', // Placeholder - add actual logo
-      category: 'Cloud'
+      icon: Cloud,
+      category: 'Cloud',
+      color: 'text-yellow-600'
     },
     {
       name: 'Azure',
       description: 'Integrate with Microsoft Azure services',
-      logo: '/images/integrations/azure-logo.png', // Placeholder - add actual logo
-      category: 'Cloud'
+      icon: Cloud,
+      category: 'Cloud',
+      color: 'text-blue-700'
     }
   ];
 
@@ -93,9 +101,9 @@ const IntegrationsSection: React.FC = () => {
               key={index}
               className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:border-blue-200 transition-all duration-300 group"
             >
-              {/* Logo Placeholder */}
+              {/* Integration Icon */}
               <div className="w-12 h-12 bg-gray-100 rounded-lg mb-4 flex items-center justify-center group-hover:bg-blue-50 transition-colors duration-300">
-                <div className="w-8 h-8 bg-gray-300 rounded animate-pulse"></div>
+                <integration.icon className={`w-6 h-6 ${integration.color}`} />
               </div>
               
               <div className="flex items-start justify-between mb-2">
