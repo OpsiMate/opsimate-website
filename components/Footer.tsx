@@ -10,20 +10,9 @@ const Footer: React.FC = () => {
     product: [
       { name: 'Features', href: '#features' },
       { name: 'Integrations', href: '#integrations' },
-      { name: 'Pricing', href: '#pricing' }, // Placeholder
-      { name: 'Roadmap', href: '#roadmap' }, // Placeholder
     ],
     resources: [
-      { name: 'Documentation', href: '#docs' }, // Placeholder - will link to actual docs
-      { name: 'API Reference', href: '#api' }, // Placeholder
-      { name: 'Guides', href: '#guides' }, // Placeholder
-      { name: 'Blog', href: '#blog' }, // Placeholder
-    ],
-    company: [
-      { name: 'About', href: '#about' }, // Placeholder
-      { name: 'Contact', href: '#contact' },
-      { name: 'Privacy Policy', href: '#privacy' }, // Placeholder
-      { name: 'Terms of Service', href: '#terms' }, // Placeholder
+      { name: 'Documentation', href: 'https://opsimate.vercel.app/#integrations' }, // Placeholder - will link to actual docs
     ],
     opensource: [
       { name: 'GitHub Repository', href: 'https://github.com/Fifaboyz/OpsiMate' },
@@ -45,18 +34,8 @@ const Footer: React.FC = () => {
       icon: Slack 
     },
     { 
-      name: 'Twitter', 
-      href: '#twitter', // Placeholder
-      icon: Twitter 
-    },
-    { 
-      name: 'LinkedIn', 
-      href: '#linkedin', // Placeholder
-      icon: Linkedin 
-    },
-    { 
       name: 'Email', 
-      href: 'mailto:contact@opsimate.com', // Placeholder
+      href: 'mailto:idan.lut@gmail.com', // Placeholder
       icon: Mail 
     },
   ];
@@ -123,11 +102,11 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Company Links */}
+          {/* Open Source Links */}
           <div>
-            <h3 className="font-semibold text-white mb-4">Company</h3>
+            <h3 className="font-semibold text-white mb-4">Open Source</h3>
             <ul className="space-y-2">
-              {footerLinks.company.map((link) => (
+              {footerLinks.opensource.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
