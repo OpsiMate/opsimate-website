@@ -97,7 +97,7 @@ const CTASection: React.FC = () => {
                   <div className="text-sm text-white/80">Forever</div>
                 </div>
                 <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-2xl font-bold text-white mb-1">MIT</div>
+                  <div className="text-2xl font-bold text-white mb-1">AGPL</div>
                   <div className="text-sm text-white/80">License</div>
                 </div>
               </div>
