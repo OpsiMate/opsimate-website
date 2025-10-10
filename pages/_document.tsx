@@ -18,6 +18,24 @@ export default function Document() {
         
         {/* Theme color for mobile browsers */}
         <meta name="theme-color" content="#2563eb" />
+
+        {/* Initial theme script to prevent FOUC */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const savedTheme = localStorage.getItem('theme');
+                  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  
+                  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
       </Head>
       <body className="font-inter antialiased">
         <Main />

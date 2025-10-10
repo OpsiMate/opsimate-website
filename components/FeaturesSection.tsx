@@ -55,15 +55,15 @@ const FeaturesSection: React.FC = () => {
   ];
 
   return (
-    <section id="features" className="py-16 bg-gray-50">
+    <section id="features" className="py-16 features-section">
       <div className="container-max">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-surface-100 mb-3">
             Everything You Need to{' '}
             <span className="gradient-text">Manage Infrastructure</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-surface-600 dark:text-surface-400 max-w-2xl mx-auto">
             OpsiMate provides comprehensive tools to monitor, manage, and optimize 
             your infrastructure from a single platform.
           </p>
