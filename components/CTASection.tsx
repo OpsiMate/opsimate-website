@@ -10,7 +10,7 @@ const CTASection: React.FC = () => {
   ];
 
   return (
-    <section className="section-padding bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white">
+    <section className="section-padding bg-primary-600 dark:bg-surface-900 text-white dark:text-surface-100">
       <div className="container-max">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
@@ -18,7 +18,7 @@ const CTASection: React.FC = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
               Ready to Try Open Source Infrastructure Management?
             </h2>
-            <p className="text-xl text-blue-100 mb-8 leading-relaxed">
+            <p className="text-xl text-primary-100 dark:text-surface-100/90 mb-8 leading-relaxed">
               Join the growing community of teams using OpsiMate's open source platform. 
               Deploy, customize, and contribute to the future of infrastructure management.
             </p>
@@ -28,7 +28,7 @@ const CTASection: React.FC = () => {
               {benefits.map((benefit, index) => (
                 <div key={index} className="flex items-center gap-3">
                   <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
-                  <span className="text-blue-100">{benefit}</span>
+                  <span className="text-primary-100 dark:text-surface-300">{benefit}</span>
                 </div>
               ))}
             </div>
@@ -39,7 +39,7 @@ const CTASection: React.FC = () => {
                 href="https://github.com/Fifaboyz/OpsiMate" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-white text-blue-600 hover:bg-gray-50 font-semibold py-4 px-8 rounded-lg transition-colors duration-200 inline-flex items-center justify-center gap-2 text-lg"
+                className="bg-surface-50 text-primary-600 hover:bg-surface-100 dark:bg-surface-100 dark:text-primary-700 dark:hover:bg-surface-200 font-semibold py-4 px-8 rounded-lg transition-colors duration-200 inline-flex items-center justify-center gap-2 text-lg"
               >
                 View on GitHub
                 <ArrowRight className="h-5 w-5" />
@@ -48,7 +48,7 @@ const CTASection: React.FC = () => {
                 href="https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="border-2 border-white text-white hover:bg-white hover:text-blue-600 font-semibold py-4 px-8 rounded-lg transition-colors duration-200 inline-flex items-center justify-center gap-2 text-lg"
+                className="border-2 border-surface-50 text-surface-50 hover:bg-surface-50 hover:text-primary-600 dark:border-surface-200 dark:text-surface-200 dark:hover:bg-surface-200 dark:hover:text-primary-700 font-semibold py-4 px-8 rounded-lg transition-colors duration-200 inline-flex items-center justify-center gap-2 text-lg"
               >
                 Join Community
               </a>

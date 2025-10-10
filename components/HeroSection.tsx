@@ -3,20 +3,20 @@ import { ArrowRight, Play } from 'lucide-react';
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="hero-section section-padding min-h-screen flex items-center">
+    <section className="hero-section bg-gradient-to-br from-surface-50 via-surface-50 to-surface-50 dark:from-surface-950 dark:via-surface-950 dark:to-surface-950 section-padding min-h-screen flex items-center">
       <div className="container-max">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
+            <div className="inline-flex items-center bg-surface-200 dark:bg-surface-800 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-full text-sm font-medium mb-4">
               <span className="mr-2">🚀</span>
               Open Source Infrastructure Management
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-surface-900 dark:text-surface-100 mb-6 leading-tight">
               Streamline Your{' '}
               <span className="gradient-text">Infrastructure Operations</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl">
+            <p className="text-xl text-surface-600 dark:text-surface-400 mb-8 leading-relaxed max-w-2xl">
               OpsiMate is an <strong>open source</strong> platform that provides comprehensive infrastructure monitoring, 
               automation, and management tools. Transform complexity into clarity with our unified, intelligent platform.
             </p>
@@ -46,9 +46,9 @@ const HeroSection: React.FC = () => {
 
           {/* Right Column - Hero Image/Video Placeholder */}
           <div className="relative">
-            <div className="relative bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 shadow-2xl">
+            <div className="relative bg-gradient-to-br from-surface-100 to-surface-200 dark:from-surface-800 dark:to-surface-700 rounded-2xl p-8 shadow-2xl">
               {/* OpsiMate Dashboard Image */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden" style={{aspectRatio: '16/10'}}>
+              <div className="bg-surface-50 dark:bg-surface-800 rounded-lg shadow-lg overflow-hidden" style={{aspectRatio: '16/10'}}>
                 <img 
                   src="/images/opsimate-dashboard.png" 
                   alt="OpsiMate Dashboard - Infrastructure Management Interface" 
@@ -78,17 +78,17 @@ const HeroSection: React.FC = () => {
               </div>
               
               {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 bg-white rounded-lg shadow-lg p-3 border border-gray-100">
+              <div className="absolute -top-4 -right-4 bg-surface-50 dark:bg-surface-800 rounded-lg shadow-lg p-3 border border-surface-200 dark:border-surface-700">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                  <span className="text-sm font-medium text-gray-700">All in One Place</span>
+                  <span className="text-sm font-medium text-surface-700 dark:text-surface-300">All in One Place</span>
                 </div>
               </div>
               
-              <div className="absolute -bottom-4 -left-4 bg-white rounded-lg shadow-lg p-3 border border-gray-100">
+              <div className="absolute -bottom-4 -left-4 bg-surface-50 dark:bg-surface-800 rounded-lg shadow-lg p-3 border border-surface-200 dark:border-surface-700">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
-                  <span className="text-sm font-medium text-gray-700">Real-time Monitoring</span>
+                  <span className="text-sm font-medium text-surface-700 dark:text-surface-300">Real-time Monitoring</span>
                 </div>
               </div>
             </div>

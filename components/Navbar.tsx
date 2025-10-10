@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import Logo from './Logo';
+import ThemeToggle from './ThemeToggle';
 
 interface NavigationItem {
   name: string;
@@ -21,7 +22,7 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+    <nav className="bg-surface-50 dark:bg-surface-950 shadow-sm border-b border-surface-200 dark:border-surface-800 sticky top-0 z-50 transition-colors duration-200">
       <div className="container-max">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
@@ -35,12 +36,13 @@ const Navbar: React.FC = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
+                className="text-surface-700 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium transition-colors duration-200"
                 {...(item.external && { target: '_blank', rel: 'noopener noreferrer' })}
               >
                 {item.name}
               </Link>
             ))}
+            <ThemeToggle />
           </div>
 
           {/* Mobile menu button */}
