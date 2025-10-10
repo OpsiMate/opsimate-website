@@ -8,7 +8,7 @@
   }
   
   body {
-    @apply bg-white text-gray-900;
+    @apply bg-surface-50 dark:bg-surface-950 text-surface-900 dark:text-surface-100 transition-colors duration-200;
   }
 }
 
@@ -17,8 +17,8 @@
     @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 inline-flex items-center gap-2;
   }
   
-  .btn-secondary {
-    @apply bg-white hover:bg-gray-50 text-blue-600 font-semibold py-3 px-6 rounded-lg border border-blue-200 transition-colors duration-200 inline-flex items-center gap-2;
+  .btn-secondary { 
+    @apply bg-white hover:bg-gray-50 text-blue-600 font-semibold py-3 px-6 rounded-lg border border-blue-200 transition-colors duration-200 inline-flex items-center gap-2 dark:bg-surface-800 dark:hover:bg-surface-700 dark:text-surface-400 dark:border-surface-600;
   }
   
   .section-padding {
@@ -32,9 +32,13 @@
   .gradient-text {
     @apply bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent;
   }
+
+  .features-section {
+    @apply bg-surface-100 dark:bg-surface-900;
+  }
   
   .feature-card {
-    @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 border border-gray-100;
+    @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 border border-gray-100 dark:bg-surface-800 dark:border-surface-700;
   }
   
   .hero-section {
