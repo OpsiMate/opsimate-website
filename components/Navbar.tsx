@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import Logo from './Logo';
 import ThemeToggle from './ThemeToggle';
+import GitHubStarButton from './GitHubStarsButton';
 
 interface NavigationItem {
   name: string;
@@ -17,9 +18,12 @@ const Navbar: React.FC = () => {
     { name: 'Features', href: '#features' },
     { name: 'Docs', href: 'https://opsimate.vercel.app/#integrations', external: true },
     { name: 'Integrations', href: '#integrations' },
-    { name: 'GitHub', href: 'https://github.com/Fifaboyz/OpsiMate', external: true },
-    { name: 'Slack', href: 'https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA', external: true },
   ];
+  const slackLink: NavigationItem = { 
+    name: 'Slack', 
+    href: 'https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA', 
+    external: true 
+  };
 
   return (
     <nav className="bg-surface-50 dark:bg-surface-950 shadow-sm border-b border-surface-200 dark:border-surface-800 sticky top-0 z-50 transition-colors duration-200">
@@ -42,6 +46,14 @@ const Navbar: React.FC = () => {
                 {item.name}
               </Link>
             ))}
+            <GitHubStarButton />
+            <Link
+              href={slackLink.href}
+              className="text-surface-700 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium transition-colors duration-200"
+              {...(slackLink.external && { target: '_blank', rel: 'noopener noreferrer' })}
+            >
+              {slackLink.name}
+            </Link>
             <ThemeToggle />
           </div>
 
