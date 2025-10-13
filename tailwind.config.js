@@ -5,6 +5,7 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -37,7 +38,20 @@ module.exports = {
           800: '#1e40af',
           900: '#1e3a8a',
           950: '#172554',
-        }
+        },
+        surface: {
+          50: "#ffffff",
+          100: "#f8fafc",
+          200: "#f1f5f9",
+          300: "#e2e8f0",
+          400: "#cbd5e1",
+          500: "#94a3b8",
+          600: "#64748b",
+          700: "#475569",
+          800: "#334155",
+          900: "#1e293b",
+          950: "#0f172a",
+        },
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

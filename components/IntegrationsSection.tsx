@@ -42,21 +42,21 @@ const IntegrationsSection: React.FC = () => {
       name: 'Systemd',
       description: 'Monitor and manage systemd services',
       icon: Server,
-      color: 'text-gray-600',
+      color: 'text-blue-600',
       link: 'https://opsimate.vercel.app/providers-services/services/systemd-services'
     }
   ];
 
   return (
-    <section id="integrations" className="section-padding bg-white">
+    <section id="integrations" className="section-padding bg-surface-50 dark:bg-surface-950">
       <div className="container-max">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-surface-900 dark:text-surface-100 mb-4">
             Integrate with Your{' '}
             <span className="gradient-text">Existing Tools</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-surface-600 dark:text-surface-400 max-w-3xl mx-auto leading-relaxed">
             OpsiMate seamlessly connects with your current monitoring and infrastructure tools. 
             No need to replace what's working - enhance it.
           </p>
@@ -67,18 +67,18 @@ const IntegrationsSection: React.FC = () => {
           {integrations.map((integration, index) => (
             <div
               key={index}
-              className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:border-blue-200 transition-all duration-300 group"
+              className="bg-surface-50 dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl p-6 hover:shadow-lg dark:hover:shadow-white/10 hover:border-blue-200 dark:hover:border-gray-300 transition-all duration-300 group"
             >
               {/* Integration Icon */}
-              <div className="w-12 h-12 bg-gray-100 rounded-lg mb-4 flex items-center justify-center group-hover:bg-blue-50 transition-colors duration-300">
+              <div className="w-12 h-12 bg-surface-200 dark:bg-surface-700 rounded-lg mb-4 flex items-center justify-center group-hover:bg-blue-50 dark:group-hover:bg-gray-600 transition-colors duration-300">
                 <integration.icon className={`w-6 h-6 ${integration.color}`} />
               </div>
               
               <div className="mb-2">
-                <h3 className="font-semibold text-gray-900">{integration.name}</h3>
+                <h3 className="font-semibold text-surface-900 dark:text-surface-100">{integration.name}</h3>
               </div>
               
-              <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+              <p className="text-surface-600 dark:text-surface-400 text-sm mb-4 leading-relaxed">
                 {integration.description}
               </p>
               
