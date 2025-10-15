@@ -16,16 +16,16 @@ const HeroSection: React.FC = () => {
               Streamline Your{' '}
               <span className="gradient-text">Infrastructure Operations</span>
             </h1>
-            <p className="text-xl text-surface-600 dark:text-surface-400 mb-8 leading-relaxed max-w-2xl">
-              OpsiMate is an <strong>open source</strong> platform that provides comprehensive infrastructure monitoring, 
+            <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl">
+              OpsiMate is an <strong>open source</strong> platform that provides comprehensive infrastructure monitoring,
               automation, and management tools. Transform complexity into clarity with our unified, intelligent platform.
             </p>
-            
+
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-              <a 
-                href="https://github.com/Fifaboyz/OpsiMate" 
-                target="_blank" 
+              <a
+                href="https://github.com/Fifaboyz/OpsiMate"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary text-lg px-8 py-4 inline-flex items-center gap-2"
               >
@@ -33,9 +33,9 @@ const HeroSection: React.FC = () => {
                 <ArrowRight className="h-5 w-5" />
               </a>
 
-              <a 
-                href="https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA" 
-                target="_blank" 
+              <a
+                href="https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary text-lg px-8 py-4 inline-flex items-center gap-2"
               >
@@ -54,29 +54,28 @@ const HeroSection: React.FC = () => {
                   alt="OpsiMate Dashboard - Infrastructure Management Interface" 
                   className="w-full h-full object-contain rounded-lg"
                   onError={(e) => {
-                    // Fallback if image fails to load
                     const target = e.target as HTMLImageElement;
                     target.style.display = 'none';
                     const parent = target.parentElement;
                     if (parent) {
                       parent.innerHTML = `
-                        <div class="flex items-center justify-center h-full bg-gray-100">
-                          <div class="text-center">
-                            <div class="bg-blue-100 p-4 rounded-full inline-block mb-4">
-                              <svg class="h-8 w-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                              </svg>
-                            </div>
-                            <p class="text-gray-500 font-medium">OpsiMate Dashboard</p>
-                            <p class="text-sm text-gray-400 mt-2">Infrastructure Management Interface</p>
-                          </div>
-                        </div>
-                      `;
+              <div class="flex items-center justify-center h-full bg-gray-100">
+                <div class="text-center">
+                  <div class="bg-blue-100 p-4 rounded-full inline-block mb-4">
+                    <svg class="h-8 w-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                  </div>
+                  <p class="text-gray-500 font-medium">OpsiMate Dashboard</p>
+                  <p class="text-sm text-gray-400 mt-2">Infrastructure Management Interface</p>
+                </div>
+              </div>
+            `;
                     }
                   }}
                 />
               </div>
-              
+
               {/* Floating Elements */}
               <div className="absolute -top-4 -right-4 bg-surface-50 dark:bg-surface-800 rounded-lg shadow-lg p-3 border border-surface-200 dark:border-surface-700">
                 <div className="flex items-center gap-2">
@@ -93,6 +92,7 @@ const HeroSection: React.FC = () => {
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
