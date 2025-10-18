@@ -1,0 +1,22 @@
+# Ignore all log files
+*.log
+
+# Ignore the node_modules directory
+node_modules/
+.next/
+dist/
+coverage/
+
+# Ignore the .git directory
+.git/
+.vscode/
+
+# Exclude all markdown files
+*.md
+
+# But include a specific README.md file
+!README.md
+
+# Docker files
+Dockerfile
+docker-compose*.yml
