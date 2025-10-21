@@ -8,8 +8,8 @@ const Footer: React.FC = () => {
 
   const footerLinks = {
     product: [
-      { name: 'Features', href: '#features' },
-      { name: 'Integrations', href: '#integrations' },
+      { name: 'Features', href: '/#features' },
+      { name: 'Integrations', href: '/#integrations' },
     ],
     resources: [
       { name: 'Documentation', href: 'https://opsimate.vercel.app/#integrations' }, // Placeholder - will link to actual docs
