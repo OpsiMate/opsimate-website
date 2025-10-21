@@ -44,3 +44,37 @@ npm run build
 npm run dev
 
 ```
+
+
+## Docker Setup
+
+---
+
+### 1. Prerequisites
+
+- [Docker](https://www.docker.com/get-started) installed
+- [Docker Compose](https://docs.docker.com/compose/install/) installed
+
+---
+
+### 2. Development Setup (Hot Reload)
+
+Use Docker Compose for development with hot reload enabled.
+
+1. **Build the Docker image And Run the Image:**
+
+```bash
+docker-compose up --build
+```
+The app will be available at http://localhost:3000
+
+Hot reload is enabled — any changes you make to the code locally will reflect inside the container.
+
+2. **Stop the Services**
+
+```bash
+docker-compose down
+```
+Shuts down the services and cleans up associated containers and networks
+
+---
