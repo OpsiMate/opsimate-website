@@ -60,6 +60,15 @@ module.exports = {
         'hero-gradient': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
         'blue-gradient': 'linear-gradient(135deg, #4FC3F7 0%, #2196F3 50%, #1976D2 100%)',
       },
+      keyframes: {
+        slideUp: {
+          'from': { transform: 'translateY(100%)' },
+          'to': { transform: 'translateY(0)' },
+        }
+      },
+      animation: {
+        slideUp: 'slideUp 0.3s ease-out',
+      }
     },
   },
   plugins: [],
