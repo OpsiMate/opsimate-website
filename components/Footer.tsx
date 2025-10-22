@@ -145,10 +145,10 @@ const Footer: React.FC = () => {
             © {currentYear} OpsiMate. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="#privacy" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
+            <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
               Privacy Policy
             </Link>
-            <Link href="#terms" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
+            <Link href="/terms" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
               Terms of Service
             </Link>
           </div>
