@@ -37,7 +37,7 @@ const Logo: React.FC<LogoProps> = ({ className = '', width = 40, height = 40 }) 
           strokeLinejoin="round"
         />
       </svg>
-      <span className="text-2xl font-bold gradient-text">OpsiMate</span>
+      <span className="text-2xl font-bold text-blue-700 dark:text-blue-400">OpsiMate</span>
     </div>
   );
 };
