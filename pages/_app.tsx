@@ -11,10 +11,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
-    setHasConsent(consent === 'true');
+    setHasConsent(consent === 'accepted');
   }, []);
 
-  const shouldRenderAnalytics = typeof window !== 'undefined' && hasConsent === true;
+  const shouldRenderAnalytics = hasConsent === true;
 
   return (
     <ThemeProvider>
