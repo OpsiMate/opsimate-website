@@ -54,7 +54,8 @@ export default async function handler(
         id,
         title: title ?? existing.title,
         excerpt: excerpt ?? existing.excerpt,
-        date: formatBlogDate(new Date()),
+        date:
+          typeof req.body?.date === "string" ? req.body.date : existing.date,
         draft: typeof draft === "boolean" ? draft : existing.draft ?? false,
         publishAt:
           typeof publishAt === "string" && publishAt.trim()

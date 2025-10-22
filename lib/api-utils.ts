@@ -12,7 +12,16 @@ export function requireAuth(
     return false;
   }
   const provided = req.headers["x-admin-token"];
-  if (typeof provided === "string" && provided === token) return true;
+  const headerToken = Array.isArray(provided)
+    ? provided[0]
+    : typeof provided === "string"
+    ? provided
+    : undefined;
+  const cookieToken = (req as any).cookies?.["admin_token"] as
+    | string
+    | undefined;
+  if (headerToken === token) return true;
+  if (cookieToken === token) return true;
   res.status(401).json({ error: "Unauthorized" });
   return false;
 }
@@ -49,5 +58,11 @@ export function toFrontMatter(data: any): string {
 }
 
 export function normalizeFrontMatter(raw: string): string {
-  return raw.replace(/(^---[\s\S]*?^---)(?!\r?\n)/m, "$1\n");
+  const re = /^---\s*$[\s\S]*?^---\s*(\r?\n|$)/m;
+  const match = raw.match(re);
+  if (!match) return raw;
+  // If a newline already follows the closing marker, nothing to do.
+  if (match[1] && match[1].length > 0) return raw;
+  const eol = raw.includes("\r\n") ? "\r\n" : "\n";
+  return raw.replace(re, (full) => full + eol);
 }

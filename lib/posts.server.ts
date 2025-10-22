@@ -2,7 +2,10 @@ import fs from "fs";
 import path from "path";
 import fm from "front-matter";
 import { remark } from "remark";
-import html from "remark-html";
+import remarkRehype from "remark-rehype";
+import rehypeRaw from "rehype-raw";
+import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
+import rehypeStringify from "rehype-stringify";
 import { normalizeFrontMatter } from "@/lib/api-utils";
 import type { Post } from "@/lib/posts";
 
@@ -24,8 +27,12 @@ export async function getPostById(id: string): Promise<Post | null> {
   const raw0 = fs.readFileSync(fullPath, "utf8");
   const raw = normalizeFrontMatter(raw0);
   const parsed = fm<any>(raw);
-
-  const processed = await remark().use(html).process(parsed.body);
+  const processed = await remark()
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
+    .use(rehypeSanitize, defaultSchema)
+    .use(rehypeStringify)
+    .process(parsed.body);
   const contentHtml = processed.toString();
 
   const data = parsed.attributes || {};
@@ -78,7 +85,7 @@ export async function getAllPosts(): Promise<Post[]> {
     if (isNaN(ad) && isNaN(bd)) return b.id.localeCompare(a.id);
     if (isNaN(ad)) return 1;
     if (isNaN(bd)) return -1;
-    return bd - ad; // newest first
+    return bd - ad;
   });
 }
 

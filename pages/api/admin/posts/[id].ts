@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { requireAuth } from "@/lib/api-utils";
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,6 +11,8 @@ export default async function handler(
     res.setHeader("Allow", ["PUT", "DELETE"]);
     return res.status(405).end("Method Not Allowed");
   }
+
+  if (!requireAuth(req, res)) return;
 
   const adminToken = process.env.ADMIN_TOKEN;
   if (!adminToken) {

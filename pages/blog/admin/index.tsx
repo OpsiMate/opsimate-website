@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import type { GetServerSideProps } from "next";
 import Link from "next/link";
 import Layout from "@/components/Layout";
 import {
@@ -27,6 +28,14 @@ export default function AdminPostsPage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const logout = async () => {
+    try {
+      await fetch("/api/admin/logout", { method: "POST" });
+    } finally {
+      window.location.href = "/blog/admin/login";
+    }
+  };
 
   const load = async () => {
     setLoading(true);
@@ -59,7 +68,6 @@ export default function AdminPostsPage() {
     }
   };
 
-
   return (
     <Layout title="Blog Admin" description="Create and manage posts">
       <section className="py-10">
@@ -87,6 +95,12 @@ export default function AdminPostsPage() {
               >
                 <FilePlus2 className="w-4 h-4" /> New Post
               </Link>
+              <button
+                onClick={logout}
+                className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border bg-white text-surface-700 border-surface-200 hover:bg-surface-100 dark:bg-surface-800 dark:text-surface-300 dark:border-surface-700 dark:hover:bg-surface-700"
+              >
+                Logout
+              </button>
             </div>
           </div>
 
@@ -237,3 +251,19 @@ export default function AdminPostsPage() {
     </Layout>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const token = process.env.ADMIN_TOKEN;
+  const cookieHeader = ctx.req.headers.cookie || "";
+  const cookieToken = (ctx.req as any).cookies?.["admin_token"] ??
+    cookieHeader
+      .split(/;\s*/)
+      .map((p) => p.split("="))
+      .find(([k]) => k === "admin_token")?.[1];
+  if (!token || cookieToken !== token) {
+    return {
+      redirect: { destination: "/blog/admin/login", permanent: false },
+    } as any;
+  }
+  return { props: {} };
+};

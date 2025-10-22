@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import type { GetServerSideProps } from "next";
 import Layout from "@/components/Layout";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -22,7 +23,13 @@ export default function EditPostPage() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  
+  const logout = async () => {
+    try {
+      await fetch("/api/admin/logout", { method: "POST" });
+    } finally {
+      window.location.href = "/blog/admin/login";
+    }
+  };
 
   useEffect(() => {
     const run = async () => {
@@ -42,7 +49,7 @@ export default function EditPostPage() {
         setContent(typeof data.body === "string" ? data.body : "");
         setDraft(Boolean(data.draft));
         if (typeof data.publishAt === "string" && data.publishAt) {
-          toDateTimeLocal(data.publishAt);
+          setPublishAtLocal(toDateTimeLocal(data.publishAt));
         }
       } catch (e: any) {
         setError(e?.message || "Failed to load");
@@ -101,12 +108,20 @@ export default function EditPostPage() {
                 Update metadata and content.
               </p>
             </div>
-            <Link
-              href="/blog/admin"
-              className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border bg-white text-surface-700 border-surface-200 hover:bg-surface-100 dark:bg-surface-800 dark:text-surface-300 dark:border-surface-700 dark:hover:bg-surface-700"
-            >
-              <ArrowLeft className="w-4 h-4" /> Back
-            </Link>
+            <div className="flex items-center gap-2">
+              <Link
+                href="/blog/admin"
+                className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border bg-white text-surface-700 border-surface-200 hover:bg-surface-100 dark:bg-surface-800 dark:text-surface-300 dark:border-surface-700 dark:hover:bg-surface-700"
+              >
+                <ArrowLeft className="w-4 h-4" /> Back
+              </Link>
+              <button
+                onClick={logout}
+                className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border bg-white text-surface-700 border-surface-200 hover:bg-surface-100 dark:bg-surface-800 dark:text-surface-300 dark:border-surface-700 dark:hover:bg-surface-700"
+              >
+                Logout
+              </button>
+            </div>
           </div>
 
           {loading && (
@@ -274,3 +289,20 @@ export default function EditPostPage() {
     </Layout>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const token = process.env.ADMIN_TOKEN;
+  const cookieHeader = ctx.req.headers.cookie || "";
+  const cookieToken =
+    (ctx.req as any).cookies?.["admin_token"] ??
+    cookieHeader
+      .split(/;\s*/)
+      .map((p) => p.split("="))
+      .find(([k]) => k === "admin_token")?.[1];
+  if (!token || cookieToken !== token) {
+    return {
+      redirect: { destination: "/blog/admin/login", permanent: false },
+    } as any;
+  }
+  return { props: {} };
+};
