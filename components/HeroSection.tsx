@@ -24,7 +24,7 @@ const HeroSection: React.FC = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
               <a
-                href="https://github.com/Fifaboyz/OpsiMate"
+                href="https://github.com/OpsiMate/OpsiMate"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary text-lg px-8 py-4 inline-flex items-center gap-2"
