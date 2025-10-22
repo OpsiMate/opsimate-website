@@ -119,7 +119,7 @@ const BlogSection: React.FC<Props> = ({ posts, showViewAllLink = true }) => {
             })();
             return (
               <BlogCard
-                key={index}
+                key={post.id}
                 title={post.title}
                 excerpt={post.summary}
                 href={`/blog/${post.id}`}

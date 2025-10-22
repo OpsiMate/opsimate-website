@@ -6,13 +6,14 @@ import type {
 } from "next";
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import {
-  getPostById,
-  getAllPublishedPosts,
-  isPostPublished,
-  type Post as PostItem,
-} from "@/lib/posts";
+import { getPostById, getAllPublishedPosts, isPostPublished } from "@/lib/posts.server";
+import { type Post as PostItem } from "@/lib/posts";
 import Link from "next/link";
+
+type PostWithDisplayDate = Omit<PostItem, "date" | "publishAt"> & {
+  date: string;
+  publishAt: string | null;
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const published = await getAllPublishedPosts();
@@ -22,19 +23,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<{ post: PostItem }> = async (
-  ctx
-) => {
+export const getStaticProps: GetStaticProps<{
+  post: PostWithDisplayDate;
+}> = async (ctx) => {
   const id = ctx.params?.id as string | undefined;
   if (!id) return { notFound: true };
   const post = await getPostById(id);
   if (!post) return { notFound: true };
   if (!isPostPublished(post)) return { notFound: true };
-  const withDisplayDate = {
+  const withDisplayDate: PostWithDisplayDate = {
     ...post,
     date: post.publishAt || post.date,
     publishAt: post.publishAt ?? null,
-  } as any;
+  };
   return { props: { post: withDisplayDate }, revalidate: 60 };
 };
 

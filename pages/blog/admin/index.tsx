@@ -9,6 +9,7 @@ import {
   RefreshCw,
   ImageOff,
 } from "lucide-react";
+import { formatPostDate } from "@/lib/posts";
 
 type Post = {
   id: string;
@@ -48,9 +49,8 @@ export default function AdminPostsPage() {
 
   const onDelete = async (id: string) => {
     if (!confirm("Delete this post?")) return;
-    const res = await fetch(`/api/posts/${id}`, {
+    const res = await fetch(`/api/admin/posts/${id}`, {
       method: "DELETE",
-      headers: tokenHeader(),
     });
     if (res.ok) {
       setPosts((prev) => prev.filter((p) => p.id !== id));
@@ -59,10 +59,6 @@ export default function AdminPostsPage() {
     }
   };
 
-  const tokenHeader = (): Record<string, string> => {
-    const token = process.env.NEXT_PUBLIC_ADMIN_TOKEN;
-    return token ? { "x-admin-token": token } : {};
-  };
 
   return (
     <Layout title="Blog Admin" description="Create and manage posts">
@@ -166,14 +162,7 @@ export default function AdminPostsPage() {
                     <div className="text-xs text-surface-500">
                       {(() => {
                         const s = p.publishAt || p.date;
-                        const d = new Date(s);
-                        return isNaN(d.getTime())
-                          ? s
-                          : d.toLocaleString("en-US", {
-                              month: "short",
-                              day: "numeric",
-                              year: "numeric",
-                            });
+                        return formatPostDate(s);
                       })()}
                     </div>
                   </div>
@@ -207,7 +196,9 @@ export default function AdminPostsPage() {
                   })()}
                   {(() => {
                     const now = Date.now();
-                    const pub = p.publishAt ? new Date(p.publishAt).getTime() : NaN;
+                    const pub = p.publishAt
+                      ? new Date(p.publishAt).getTime()
+                      : NaN;
                     const isScheduled = !p.draft && !isNaN(pub) && pub > now;
                     const showView = !p.draft && !isScheduled;
                     return showView ? (

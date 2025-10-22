@@ -1,5 +1,5 @@
 import type { GetServerSideProps } from "next";
-import { getAllPublishedPosts } from "@/lib/posts";
+import { getAllPublishedPosts } from "@/lib/posts.server";
 import { buildRssXml, getSiteUrl } from "@/lib/rss";
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
@@ -21,5 +21,5 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 };
 
 export default function RSSFeed() {
-  return null as unknown as JSX.Element;
+  return null;
 }

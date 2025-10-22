@@ -51,13 +51,15 @@ const BlogCard: React.FC<BlogCardProps> = ({
           <img
             src={imageSrc}
             alt={title}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
           />
         ) : (
           <div className="relative w-full h-full">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-100 dark:from-surface-700 dark:via-surface-700/80 dark:to-surface-600" />
             <div
-              aria-hidden
+              aria-hidden="true"
               className="absolute inset-0 opacity-[0.12] dark:opacity-[0.08]"
               style={{
                 backgroundImage:
@@ -92,11 +94,11 @@ const BlogCard: React.FC<BlogCardProps> = ({
       <div className="px-4 md:px-5 pb-5 flex flex-col h-full">
         {tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-3">
-            {tags.map((tag) =>
+            {tags.map((tag, idx) =>
               onTagClick ? (
                 <button
                   type="button"
-                  key={tag}
+                  key={`${tag}-${idx}`}
                   onClick={() => onTagClick(tag)}
                   className="text-xs font-medium px-2 py-1 rounded-md bg-surface-200 text-surface-700 hover:bg-surface-300 dark:bg-surface-700 dark:text-surface-300 dark:hover:bg-surface-600 transition-colors"
                 >
@@ -134,6 +136,8 @@ const BlogCard: React.FC<BlogCardProps> = ({
               <img
                 src={author.avatarSrc}
                 alt={author.name}
+                loading="lazy"
+                decoding="async"
                 className="w-8 h-8 rounded-full object-cover"
               />
             ) : (
@@ -147,9 +151,12 @@ const BlogCard: React.FC<BlogCardProps> = ({
                   {author.name}
                 </div>
               )}
-              <div className="text-surface-500 dark:text-surface-400">
+              <time
+                className="text-surface-500 dark:text-surface-400"
+                dateTime={date}
+              >
                 {date}
-              </div>
+              </time>
             </div>
           </div>
 

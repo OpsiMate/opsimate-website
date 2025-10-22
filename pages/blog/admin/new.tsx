@@ -16,10 +16,7 @@ export default function NewPostPage() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const tokenHeader = (): Record<string, string> => {
-    const token = process.env.NEXT_PUBLIC_ADMIN_TOKEN;
-    return token ? { "x-admin-token": token } : {};
-  };
+  
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,9 +39,9 @@ export default function NewPostPage() {
           : undefined,
         content,
       };
-      const res = await fetch("/api/posts", {
+      const res = await fetch("/api/admin/posts", {
         method: "POST",
-        headers: { "Content-Type": "application/json", ...tokenHeader() },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
       if (!res.ok) throw new Error(await res.text());

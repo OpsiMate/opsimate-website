@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ArrowLeft, Save, Sparkles } from "lucide-react";
+import { toDateTimeLocal } from "@/lib/dateUtils";
 
 export default function EditPostPage() {
   const router = useRouter();
@@ -21,10 +22,7 @@ export default function EditPostPage() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const tokenHeader = (): Record<string, string> => {
-    const token = process.env.NEXT_PUBLIC_ADMIN_TOKEN;
-    return token ? { "x-admin-token": token } : {};
-  };
+  
 
   useEffect(() => {
     const run = async () => {
@@ -44,14 +42,7 @@ export default function EditPostPage() {
         setContent(typeof data.body === "string" ? data.body : "");
         setDraft(Boolean(data.draft));
         if (typeof data.publishAt === "string" && data.publishAt) {
-          const d = new Date(data.publishAt);
-          if (!isNaN(d.getTime())) {
-            const pad = (n: number) => String(n).padStart(2, "0");
-            const local = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(
-              d.getDate()
-            )}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
-            setPublishAtLocal(local);
-          }
+          toDateTimeLocal(data.publishAt);
         }
       } catch (e: any) {
         setError(e?.message || "Failed to load");
@@ -83,9 +74,9 @@ export default function EditPostPage() {
       if (publishAtLocal.trim())
         body.publishAt = new Date(publishAtLocal).toISOString();
       if (content.trim()) body.content = content;
-      const res = await fetch(`/api/posts/${id}`, {
+      const res = await fetch(`/api/admin/posts/${id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json", ...tokenHeader() },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
       if (!res.ok) throw new Error(await res.text());
