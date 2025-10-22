@@ -14,6 +14,20 @@ export default function App({ Component, pageProps }: AppProps) {
     setHasConsent(consent === 'accepted');
   }, []);
 
+  useEffect(() => {
+    const handleConsentChange = (event: Event) => {
+      const customEvent = event as CustomEvent;
+      if (customEvent.detail) {
+          setHasConsent(customEvent.detail.consent === 'accepted');
+      }
+    };
+
+    window.addEventListener('cookieConsentChange', handleConsentChange);
+    return () => {
+      window.removeEventListener('cookieConsentChange', handleConsentChange);
+    };
+  }, []);
+
   const shouldRenderAnalytics = hasConsent === true;
 
   return (

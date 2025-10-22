@@ -19,13 +19,12 @@ const CookieConsentBanner: React.FC = () => {
   const handleAccept = () => {
     localStorage.setItem(COOKIE_CONSENT_KEY, 'accepted');
     setShowBanner(false);
-    console.log("Cookies accepted - analytics should be enabled now");
+    window.dispatchEvent(new CustomEvent('cookieConsentChange', { detail: { consent: 'accepted' } }));
   };
 
   const handleReject = () => {
     localStorage.setItem(COOKIE_CONSENT_KEY, 'rejected');
     setShowBanner(false);
-    console.log("Cookies rejected - analytics disabled");
   };
 
   if (!isMounted || !showBanner) {
