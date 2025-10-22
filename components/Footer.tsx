@@ -15,17 +15,17 @@ const Footer: React.FC = () => {
       { name: 'Documentation', href: 'https://opsimate.vercel.app/#integrations' }, // Placeholder - will link to actual docs
     ],
     opensource: [
-      { name: 'GitHub Repository', href: 'https://github.com/Fifaboyz/OpsiMate' },
-      { name: 'Contribute', href: 'https://github.com/Fifaboyz/OpsiMate/blob/main/CONTRIBUTING.md' },
-      { name: 'Issues', href: 'https://github.com/Fifaboyz/OpsiMate/issues' },
-      { name: 'License', href: 'https://github.com/Fifaboyz/OpsiMate/blob/main/LICENSE' },
+      { name: 'GitHub Repository', href: 'https://github.com/OpsiMate/OpsiMate' },
+      { name: 'Contribute', href: 'https://github.com/OpsiMate/OpsiMate/blob/main/CONTRIBUTING.md' },
+      { name: 'Issues', href: 'https://github.com/OpsiMate/OpsiMate/issues' },
+      { name: 'License', href: 'https://github.com/OpsiMate/OpsiMate/blob/main/LICENSE' },
     ],
   };
 
   const socialLinks = [
     { 
       name: 'GitHub', 
-      href: 'https://github.com/Fifaboyz/OpsiMate', // From documentation
+      href: 'https://github.com/OpsiMate/OpsiMate', // From documentation
       icon: Github 
     },
     { 
