@@ -37,7 +37,7 @@ const CookieConsentBanner: React.FC = () => {
 
   return (
     <div
-        className="fixed bottom-0 left-0 right-0 bg-[#1a1a1a] text-white p-4 md:p-6 shadow-[0_-4px_20px_rgba(0,0,0,0.3)] z-[1000] border-t border-[#333]"
+        className="fixed bottom-0 left-0 right-0 bg-[#1a1a1a] text-white p-4 md:p-6 shadow-[0_-4px_20px_rgba(0,0,0,0.3)] z-[1000] border-t border-[#333] animate-[slideUp_0.3s_ease-out]"
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-6 lg:gap-8 text-center lg:text-left">
         <div className="flex-grow">
