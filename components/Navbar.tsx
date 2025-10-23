@@ -24,6 +24,12 @@ const Navbar: React.FC = () => {
     href: 'https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA', 
     external: true 
   };
+  // New Contact link
+  const contactLink: NavigationItem = {
+    name: "Contact Us",
+    href: "mailto:idan.lut@gmail.com",
+    external: true,
+  };
 
   return (
     <nav className="bg-surface-50 dark:bg-surface-950 shadow-sm border-b border-surface-200 dark:border-surface-800 sticky top-0 z-50 transition-colors duration-200">
@@ -54,6 +60,13 @@ const Navbar: React.FC = () => {
             >
               {slackLink.name}
             </Link>
+             {/* Contact Us button */}
+             <a
+              href={contactLink.href}
+              className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200"
+            >
+              {contactLink.name}
+            </a>
             <ThemeToggle />
           </div>
 
@@ -83,6 +96,14 @@ const Navbar: React.FC = () => {
                   {item.name}
                 </Link>
               ))}
+              {/* Mobile Contact Us link */}
+              <a
+                href={contactLink.href}
+                className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {contactLink.name}
+              </a>
             </div>
           </div>
         )}

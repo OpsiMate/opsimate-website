@@ -111,23 +111,6 @@ const Footer: React.FC = () => {
                   <Link
                     href={link.href}
                     className="text-gray-300 hover:text-white transition-colors duration-200"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Open Source Links */}
-          <div>
-            <h3 className="font-semibold text-white mb-4">Open Source</h3>
-            <ul className="space-y-2">
-              {footerLinks.opensource.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -136,6 +119,30 @@ const Footer: React.FC = () => {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+        
+        {/* Contact Us Floating Card */}
+        <div className="mt-20 flex justify-center animate-fadeIn">
+          <div className="relative group">
+            {/* Outer Glow Border */}
+            <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-60 blur-md group-hover:opacity-90 group-hover:blur-lg transition-all duration-500"></div>
+
+            {/* Card */}
+            <div className="relative bg-surface-50 dark:bg-surface-900 rounded-3xl px-8 py-10 shadow-xl border border-surface-200 dark:border-surface-700 backdrop-blur-md transition-transform duration-500 group-hover:-translate-y-2">
+              <h3 className="text-2xl md:text-3xl font-semibold text-surface-900 dark:text-surface-100 mb-4">
+                Have questions or want to collaborate?
+              </h3>
+              <p className="text-surface-700 dark:text-surface-300 mb-6">
+                We’d love to hear from you — just drop us an email.
+              </p>
+              <a
+                href="mailto:idan.lut@gmail.com"
+                className="inline-block bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white px-6 py-3 rounded-full font-medium shadow-md transition-transform transform hover:scale-105 hover:shadow-lg duration-300"
+              >
+                💌 Contact Us
+              </a>
+            </div>
           </div>
         </div>
 
