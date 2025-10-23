@@ -28,6 +28,7 @@ export default function EditPostPage() {
   const logout = () => adminLogout();
 
   useEffect(() => {
+    let cancelled = false;
     const run = async () => {
       if (!id) return;
       setLoading(true);
@@ -36,6 +37,7 @@ export default function EditPostPage() {
         const res = await fetch(`/api/posts/${id}`);
         if (!res.ok) throw new Error(await res.text());
         const data = await res.json();
+        if (cancelled) return;
         setTitle(data.title || "");
         setExcerpt(data.excerpt || "");
         setCover(data.cover || "");
@@ -50,10 +52,13 @@ export default function EditPostPage() {
       } catch (e: any) {
         setError(e?.message || "Failed to load");
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     };
     run();
+    return () => {
+      cancelled = true;
+    };
   }, [id]);
 
   const submit = async (e: React.FormEvent) => {

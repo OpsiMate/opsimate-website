@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import path from "path";
-import { getPostById } from "@/lib/posts.server";
+import { getPostById, isPostPublished } from "@/lib/posts.server";
 import fm from "front-matter";
 import {
   requireAuth,
@@ -26,6 +26,9 @@ export default async function handler(
   if (req.method === "GET") {
     const post = await getPostById(id);
     if (!post) return res.status(404).json({ error: "not found" });
+    if (!isPostPublished(post)) {
+      if (!requireAuth(req, res)) return;
+    }
     try {
       const filePath = resolvePostPathOrNull(id);
       if (!filePath) return res.status(400).json({ error: "invalid id" });
@@ -102,8 +105,8 @@ export default async function handler(
   if (req.method === "DELETE") {
     if (!requireAuth(req, res)) return;
     try {
-      const filePath = path.join(postsDir, `${id}.md`);
-      if (!fs.existsSync(filePath))
+      const filePath = resolvePostPathOrNull(id);
+      if (!filePath || !fs.existsSync(filePath))
         return res.status(404).json({ error: "not found" });
       fs.unlinkSync(filePath);
       return res.status(200).json({ ok: true });

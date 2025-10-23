@@ -1,6 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { timingSafeEqual, randomBytes } from "crypto";
 
+interface LoginRequestBody {
+  token?: string;
+}
+
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
     res.setHeader("Allow", ["POST"]);
@@ -14,7 +18,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       .json({ error: "Server misconfigured: ADMIN_TOKEN not set" });
   }
 
-  const { token } = (req.body as any) || {};
+  const { token } = (req.body as LoginRequestBody) || {};
   if (typeof token !== "string" || !token) {
     return res.status(400).json({ error: "token is required" });
   }
@@ -26,7 +30,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
   const isProd = process.env.NODE_ENV === "production";
-  const maxAge = 60 * 60 * 24 * 30;
+  const maxAge = 60 * 60 * 24 * 7;
   const csrfToken = randomBytes(32).toString("hex");
 
   const adminTokenCookie = [
