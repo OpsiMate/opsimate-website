@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import type { GetServerSideProps } from "next";
+import { requireAdminPage } from "@/lib/auth";
 import Layout from "@/components/Layout";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -78,8 +79,15 @@ export default function EditPostPage() {
         authorAvatar,
         draft,
       };
-      if (publishAtLocal.trim())
-        body.publishAt = new Date(publishAtLocal).toISOString();
+      if (publishAtLocal.trim()) {
+        const dt = new Date(publishAtLocal);
+        if (!isNaN(dt.getTime())) {
+          body.publishAt = dt.toISOString();
+        } else {
+          throw new Error("Invalid publish date/time");
+        }
+      }
+
       if (content.trim()) body.content = content;
       const res = await fetch(`/api/admin/posts/${id}`, {
         method: "PUT",
@@ -202,6 +210,7 @@ export default function EditPostPage() {
                       <input
                         type="datetime-local"
                         className="rounded-lg border border-surface-200 dark:border-surface-700 bg-white dark:bg-surface-900 text-surface-900 dark:text-surface-100 p-2 outline-none focus:ring-2 focus:ring-blue-500"
+                        step="1"
                         value={publishAtLocal}
                         onChange={(e) => setPublishAtLocal(e.target.value)}
                       />
@@ -294,19 +303,5 @@ export default function EditPostPage() {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const token = process.env.ADMIN_TOKEN;
-  const cookieHeader = ctx.req.headers.cookie || "";
-  const cookieToken =
-    (ctx.req as any).cookies?.["admin_token"] ??
-    cookieHeader
-      .split(/;\s*/)
-      .map((p) => p.split("="))
-      .find(([k]) => k === "admin_token")?.[1];
-  if (!token || cookieToken !== token) {
-    return {
-      redirect: { destination: "/blog/admin/login", permanent: false },
-    } as any;
-  }
-  return { props: {} };
-};
+export const getServerSideProps: GetServerSideProps = async (ctx) =>
+  requireAdminPage(ctx);

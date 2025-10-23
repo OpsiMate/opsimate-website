@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import type { GetServerSideProps } from "next";
+import { requireAdminPage } from "@/lib/auth";
 import Layout from "@/components/Layout";
 import Link from "next/link";
 import { ArrowLeft, Save, Sparkles } from "lucide-react";
@@ -266,19 +267,5 @@ export default function NewPostPage() {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const token = process.env.ADMIN_TOKEN;
-  const cookieHeader = ctx.req.headers.cookie || "";
-  const cookieToken =
-    (ctx.req as any).cookies?.["admin_token"] ??
-    cookieHeader
-      .split(/;\s*/)
-      .map((p) => p.split("="))
-      .find(([k]) => k === "admin_token")?.[1];
-  if (!token || cookieToken !== token) {
-    return {
-      redirect: { destination: "/blog/admin/login", permanent: false },
-    } as any;
-  }
-  return { props: {} };
-};
+export const getServerSideProps: GetServerSideProps = async (ctx) =>
+  requireAdminPage(ctx);

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import type { GetServerSideProps } from "next";
+import { requireAdminPage } from "@/lib/auth";
 import Link from "next/link";
 import Layout from "@/components/Layout";
 import {
@@ -241,19 +242,5 @@ export default function AdminPostsPage() {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const token = process.env.ADMIN_TOKEN;
-  const cookieHeader = ctx.req.headers.cookie || "";
-  const cookieToken =
-    (ctx.req as any).cookies?.["admin_token"] ??
-    cookieHeader
-      .split(/;\s*/)
-      .map((p) => p.split("="))
-      .find(([k]) => k === "admin_token")?.[1];
-  if (!token || cookieToken !== token) {
-    return {
-      redirect: { destination: "/blog/admin/login", permanent: false },
-    } as any;
-  }
-  return { props: {} };
-};
+export const getServerSideProps: GetServerSideProps = async (ctx) =>
+  requireAdminPage(ctx);

@@ -3,19 +3,10 @@ import Layout from "@/components/Layout";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import type { GetServerSideProps } from "next";
+import { getAdminLoginProps } from "@/lib/auth";
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const token = process.env.ADMIN_TOKEN;
-  const cookieHeader = ctx.req.headers.cookie || "";
-  const cookieToken =
-    (ctx.req as any).cookies?.["admin_token"] ??
-    cookieHeader
-      .split(/;\s*/)
-      .map((p) => p.split("="))
-      .find(([k]) => k === "admin_token")?.[1];
-  const loggedIn = Boolean(token && cookieToken === token);
-  return { props: { loggedIn } } as any;
-};
+export const getServerSideProps: GetServerSideProps = async (ctx) =>
+  getAdminLoginProps(ctx);
 
 export default function AdminLoginPage({ loggedIn }: { loggedIn?: boolean }) {
   const router = useRouter();
@@ -99,6 +90,7 @@ export default function AdminLoginPage({ loggedIn }: { loggedIn?: boolean }) {
                 <span className="text-sm font-medium">Admin Token</span>
                 <input
                   type="password"
+                  autoComplete="current-password"
                   className="rounded-lg border border-surface-200 dark:border-surface-700 bg-white dark:bg-surface-900 text-surface-900 dark:text-surface-100 p-2 outline-none focus:ring-2 focus:ring-blue-500"
                   value={token}
                   onChange={(e) => setToken(e.target.value)}

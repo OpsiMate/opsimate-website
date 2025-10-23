@@ -11,6 +11,8 @@ export function requireAuth(
       .json({ error: "Server misconfigured: ADMIN_TOKEN not set" });
     return false;
   }
+  const method = (req.method || "GET").toUpperCase();
+  const isUnsafe = !["GET", "HEAD", "OPTIONS"].includes(method);
   const provided = req.headers["x-admin-token"];
   const headerToken = Array.isArray(provided)
     ? provided[0]
@@ -21,7 +23,17 @@ export function requireAuth(
     | string
     | undefined;
   if (headerToken === token) return true;
-  if (cookieToken === token) return true;
+  if (cookieToken === token) {
+    if (isUnsafe) {
+      const csrfHeader = req.headers["x-csrf-token"];
+      const csrfCookie = (req as any).cookies?.["admin_csrf"];
+      if (!csrfHeader || csrfHeader !== csrfCookie) {
+        res.status(403).json({ error: "CSRF validation failed" });
+        return false;
+      }
+    }
+    return true;
+  }
   res.status(401).json({ error: "Unauthorized" });
   return false;
 }
@@ -37,6 +49,7 @@ export function toFrontMatter(data: any): string {
   const esc = (s: any) =>
     String(s ?? "")
       .replace(/\\/g, "\\\\")
+      .replace(/\r?\n/g, "\\n")
       .replace(/"/g, '\\"');
   const tags: string[] = Array.isArray(data.tags) ? data.tags : [];
   const authorName = data.authorName ?? data.author?.name ?? "";
