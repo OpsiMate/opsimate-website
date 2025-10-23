@@ -13,19 +13,15 @@ import {
 } from "lucide-react";
 import { formatPostDate } from "@/lib/posts";
 import type { Post } from "@/lib/posts";
+import { adminLogout } from "@/lib/api-utils";
 
 export default function AdminPostsPage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [deleting, setDeleting] = useState<string | null>(null);
 
-  const logout = async () => {
-    try {
-      await fetch("/api/admin/logout", { method: "POST" });
-    } finally {
-      window.location.href = "/blog/admin/login";
-    }
-  };
+  const logout = () => adminLogout();
 
   const load = async () => {
     setLoading(true);
@@ -48,14 +44,19 @@ export default function AdminPostsPage() {
 
   const onDelete = async (id: string) => {
     if (!confirm("Delete this post?")) return;
+    if (deleting) return;
+    setDeleting(id);
+    setError(null);
     const res = await fetch(`/api/admin/posts/${id}`, {
       method: "DELETE",
     });
     if (res.ok) {
       setPosts((prev) => prev.filter((p) => p.id !== id));
     } else {
-      alert("Delete failed");
+      const errorText = await res.text().catch(() => "Unknown error");
+      setError(`Failed to delete post: ${errorText}`);
     }
+    setDeleting(null);
   };
 
   return (

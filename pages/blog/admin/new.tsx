@@ -4,6 +4,7 @@ import { requireAdminPage } from "@/lib/auth";
 import Layout from "@/components/Layout";
 import Link from "next/link";
 import { ArrowLeft, Save, Sparkles } from "lucide-react";
+import { adminLogout } from "@/lib/api-utils";
 
 export default function NewPostPage() {
   const [title, setTitle] = useState("");
@@ -18,13 +19,7 @@ export default function NewPostPage() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const logout = async () => {
-    try {
-      await fetch("/api/admin/logout", { method: "POST" });
-    } finally {
-      window.location.href = "/blog/admin/login";
-    }
-  };
+  const logout = () => adminLogout();
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,7 +38,13 @@ export default function NewPostPage() {
         authorAvatar,
         draft,
         publishAt: publishAtLocal.trim()
-          ? new Date(publishAtLocal).toISOString()
+          ? (() => {
+              const date = new Date(publishAtLocal);
+              if (isNaN(date.getTime())) {
+                throw new Error("Invalid publish date");
+              }
+              return date.toISOString();
+            })()
           : undefined,
         content,
       };

@@ -1,7 +1,4 @@
-import type {
-  GetServerSidePropsContext,
-  GetServerSidePropsResult,
-} from "next";
+import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 
 const ADMIN_COOKIE_NAME = "admin_token";
 
@@ -34,9 +31,7 @@ export async function requireAdminPage(
   ctx: GetServerSidePropsContext
 ): Promise<GetServerSidePropsResult<Record<string, never>>> {
   if (!isAdminAuthenticated(ctx)) {
-    return {
-      redirect: { destination: "/blog/admin/login", permanent: false },
-    } as any;
+    return { redirect: { destination: "/blog/admin/login", permanent: false } };
   }
   return { props: {} };
 }
@@ -45,6 +40,5 @@ export async function getAdminLoginProps(
   ctx: GetServerSidePropsContext
 ): Promise<GetServerSidePropsResult<{ loggedIn: boolean }>> {
   const loggedIn = isAdminAuthenticated(ctx);
-  return { props: { loggedIn } } as any;
+  return { props: { loggedIn } };
 }
-

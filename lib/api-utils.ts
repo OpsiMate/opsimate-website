@@ -82,3 +82,11 @@ export function normalizeFrontMatter(raw: string): string {
   const eol = raw.includes("\r\n") ? "\r\n" : "\n";
   return raw.replace(re, (full) => full + eol);
 }
+
+export async function adminLogout() {
+  try {
+    await fetch("/api/admin/logout", { method: "POST" });
+  } finally {
+    window.location.href = "/blog/admin/login";
+  }
+}
