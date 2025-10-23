@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
 const PrivacyPolicy: React.FC = () => {
+  const LAST_UPDATED = "2024-01-15";
+  
   return (
     <>
       <Head>
@@ -26,7 +28,7 @@ const PrivacyPolicy: React.FC = () => {
           <div className="bg-white rounded-lg shadow-sm p-8 mb-8">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">Privacy Policy</h1>
             <p className="text-gray-600 text-lg">
-              Last updated: {new Date().toLocaleDateString()}
+              Last updated: {LAST_UPDATED}
             </p>
           </div>
 
@@ -84,7 +86,9 @@ const PrivacyPolicy: React.FC = () => {
                 <p className="text-gray-700">
                   <strong>Email:</strong> privacy@opsimate.com<br />
                   <strong>Address:</strong> OpsiMate Privacy Team<br />
-                  [Company Address]
+                  789 Business Park Drive, Suite 200<br />
+                  San Francisco, CA 94107<br />
+                  United States
                 </p>
               </div>
             </div>
