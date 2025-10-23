@@ -90,3 +90,23 @@ export async function adminLogout() {
     window.location.href = "/blog/admin/login";
   }
 }
+
+// Client-side helper to include CSRF header for unsafe requests
+export function getAdminCsrfToken(): string | undefined {
+  if (typeof document === "undefined") return undefined;
+  const raw = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith("admin_token="));
+  if (!raw) return undefined;
+  const value = raw.slice("admin_token=".length);
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
+}
+
+export function adminCsrfHeader(): Record<string, string> {
+  const token = getAdminCsrfToken();
+  return token ? { "x-csrf-token": token } : {};
+}

@@ -66,9 +66,11 @@ export async function getPostById(id: string): Promise<Post | null> {
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     author: {
       name: data?.author?.name ? String(data.author.name) : "",
-      avatarSrc: data?.author?.avatarSrc
-        ? String(data.author.avatarSrc)
-        : undefined,
+      avatarSrc:
+        typeof data?.author?.avatarSrc === "string" &&
+        data.author.avatarSrc.trim().length > 0
+          ? String(data.author.avatarSrc)
+          : "",
     },
     contentHtml,
   };

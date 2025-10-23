@@ -5,6 +5,7 @@ import Layout from "@/components/Layout";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ArrowLeft, Save, Sparkles } from "lucide-react";
+import { adminCsrfHeader } from "@/lib/api-utils";
 import { toDateTimeLocal } from "@/lib/dateUtils";
 
 export default function EditPostPage() {
@@ -91,7 +92,7 @@ export default function EditPostPage() {
       if (content.trim()) body.content = content;
       const res = await fetch(`/api/admin/posts/${id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...adminCsrfHeader() },
         body: JSON.stringify(body),
       });
       if (!res.ok) throw new Error(await res.text());

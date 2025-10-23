@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { formatPostDate } from "@/lib/posts";
 import type { Post } from "@/lib/posts";
-import { adminLogout } from "@/lib/api-utils";
+import { adminLogout, adminCsrfHeader } from "@/lib/api-utils";
 
 export default function AdminPostsPage() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -49,6 +49,9 @@ export default function AdminPostsPage() {
     setError(null);
     const res = await fetch(`/api/admin/posts/${id}`, {
       method: "DELETE",
+      headers: {
+        ...adminCsrfHeader(),
+      },
     });
     if (res.ok) {
       setPosts((prev) => prev.filter((p) => p.id !== id));

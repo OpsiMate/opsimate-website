@@ -4,7 +4,7 @@ import { requireAdminPage } from "@/lib/auth";
 import Layout from "@/components/Layout";
 import Link from "next/link";
 import { ArrowLeft, Save, Sparkles } from "lucide-react";
-import { adminLogout } from "@/lib/api-utils";
+import { adminLogout, adminCsrfHeader } from "@/lib/api-utils";
 import { useRouter } from "next/router";
 
 export default function NewPostPage() {
@@ -65,24 +65,11 @@ export default function NewPostPage() {
         content,
       };
 
-      const csrfToken = (() => {
-        const raw = document.cookie
-          .split("; ")
-          .find((row) => row.startsWith("admin_token="));
-        if (!raw) return undefined;
-        const value = raw.slice("admin_token=".length);
-        try {
-          return decodeURIComponent(value);
-        } catch {
-          return value;
-        }
-      })();
-
       const res = await fetch("/api/admin/posts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          ...(csrfToken && { "x-csrf-token": csrfToken }),
+          ...adminCsrfHeader(),
         },
         body: JSON.stringify(body),
       });
