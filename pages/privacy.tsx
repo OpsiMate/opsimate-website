@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
 const PrivacyPolicy: React.FC = () => {
-  const LAST_UPDATED = "2024-01-15";
+  const LAST_UPDATED = "2025-10-22";
   
   return (
     <>
