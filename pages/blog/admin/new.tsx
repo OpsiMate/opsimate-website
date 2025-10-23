@@ -49,7 +49,7 @@ export default function NewPostPage() {
               .map((t) => t.trim())
               .filter(Boolean)
           )
-        ),
+        ).slice(0, 20),
         authorName,
         authorAvatar,
         draft,
@@ -65,10 +65,18 @@ export default function NewPostPage() {
         content,
       };
 
-      const csrfToken = document.cookie
-        .split("; ")
-        .find((row) => row.startsWith("admin_token="))
-        ?.split("=")[1];
+      const csrfToken = (() => {
+        const raw = document.cookie
+          .split("; ")
+          .find((row) => row.startsWith("admin_token="));
+        if (!raw) return undefined;
+        const value = raw.slice("admin_token=".length);
+        try {
+          return decodeURIComponent(value);
+        } catch {
+          return value;
+        }
+      })();
 
       const res = await fetch("/api/admin/posts", {
         method: "POST",
@@ -78,7 +86,14 @@ export default function NewPostPage() {
         },
         body: JSON.stringify(body),
       });
-      if (!res.ok) throw new Error(await res.text());
+      if (!res.ok) {
+        const msg = await res.text();
+        throw new Error(
+          msg.length < 200 && !msg.includes("\n")
+            ? msg
+            : "Failed to create post"
+        );
+      }
       try {
         const { id } = await res.json();
         await router.push(`/blog/admin/${id}`);
