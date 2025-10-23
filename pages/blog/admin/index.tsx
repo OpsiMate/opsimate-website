@@ -53,6 +53,10 @@ export default function AdminPostsPage() {
         ...adminCsrfHeader(),
       },
     });
+    if (res.status === 401 || res.status === 403) {
+      window.location.href = "/blog/admin/login";
+      return;
+    }
     if (res.ok) {
       setPosts((prev) => prev.filter((p) => p.id !== id));
     } else {
@@ -134,7 +138,7 @@ export default function AdminPostsPage() {
                   {p.cover ? (
                     <img
                       src={p.cover}
-                      alt="cover"
+                      alt={`${p.title} cover`}
                       className="w-14 h-14 rounded-md object-cover border border-surface-200 dark:border-surface-700"
                     />
                   ) : (
@@ -230,7 +234,9 @@ export default function AdminPostsPage() {
                   </Link>
                   <button
                     onClick={() => onDelete(p.id)}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-red-600 border-red-200 hover:bg-red-50 dark:text-red-400 dark:border-red-900/50 dark:hover:bg-red-950/30"
+                    disabled={deleting === p.id}
+                    aria-busy={deleting === p.id}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-red-600 border-red-200 hover:bg-red-50 disabled:opacity-50 dark:text-red-400 dark:border-red-900/50 dark:hover:bg-red-950/30"
                     aria-label={`Delete ${p.title}`}
                   >
                     <Trash2 className="w-4 h-4" />{" "}

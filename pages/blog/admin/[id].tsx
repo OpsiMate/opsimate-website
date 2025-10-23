@@ -5,7 +5,7 @@ import Layout from "@/components/Layout";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ArrowLeft, Save, Sparkles } from "lucide-react";
-import { adminCsrfHeader } from "@/lib/api-utils";
+import { adminCsrfHeader, adminLogout } from "@/lib/api-utils";
 import { toDateTimeLocal } from "@/lib/dateUtils";
 
 export default function EditPostPage() {
@@ -25,13 +25,7 @@ export default function EditPostPage() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const logout = async () => {
-    try {
-      await fetch("/api/admin/logout", { method: "POST" });
-    } finally {
-      window.location.href = "/blog/admin/login";
-    }
-  };
+  const logout = () => adminLogout();
 
   useEffect(() => {
     const run = async () => {

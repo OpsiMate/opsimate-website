@@ -2,7 +2,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import path from "path";
 import { getAllPosts } from "@/lib/posts.server";
-import { requireAuth, formatBlogDate, toFrontMatter } from "@/lib/api-utils";
+import { formatPostDate } from "@/lib/posts";
+import { requireAuth, toFrontMatter } from "@/lib/api-utils";
 
 const postsDir = path.join(process.cwd(), "content", "posts");
 
@@ -55,7 +56,7 @@ export default async function handler(
       if (fs.existsSync(filePath)) {
         return res.status(409).json({ error: "post with id already exists" });
       }
-      const nowDate = formatBlogDate(new Date());
+      const nowDate = formatPostDate(new Date().toISOString());
       const front = toFrontMatter({
         id: baseId,
         title,

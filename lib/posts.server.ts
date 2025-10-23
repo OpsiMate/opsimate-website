@@ -20,9 +20,10 @@ export function getPostSlugs(): string[] {
 }
 
 export async function getPostById(id: string): Promise<Post | null> {
+  if (id.includes("/") || id.includes(path.sep)) return null;
   const fullPath = path.resolve(postsDir, `${id}.md`);
   const postsRoot = path.resolve(postsDir) + path.sep;
-  if (!fullPath.startsWith(postsRoot)) return null; // reject traversal
+  if (!fullPath.startsWith(postsRoot)) return null;
   if (!fs.existsSync(fullPath)) return null;
   const raw0 = fs.readFileSync(fullPath, "utf8");
   const raw = normalizeFrontMatter(raw0);

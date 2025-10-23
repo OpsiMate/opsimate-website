@@ -5,7 +5,6 @@ import { getPostById } from "@/lib/posts.server";
 import fm from "front-matter";
 import {
   requireAuth,
-  formatBlogDate,
   toFrontMatter,
   normalizeFrontMatter,
 } from "@/lib/api-utils";

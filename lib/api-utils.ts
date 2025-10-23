@@ -26,7 +26,7 @@ export function requireAuth(
   if (cookieToken === token) {
     if (isUnsafe) {
       const csrfHeader = req.headers["x-csrf-token"];
-      const csrfCookie = (req as any).cookies?.["admin_token"];
+      const csrfCookie = (req as any).cookies?.["admin_csrf"];
       if (!csrfHeader || csrfHeader !== csrfCookie) {
         res.status(403).json({ error: "CSRF validation failed" });
         return false;
@@ -36,13 +36,6 @@ export function requireAuth(
   }
   res.status(401).json({ error: "Unauthorized" });
   return false;
-}
-
-export function formatBlogDate(d: Date): string {
-  const month = d.toLocaleString("en-US", { month: "short" });
-  const day = d.getDate();
-  const year = d.getFullYear();
-  return `${month} ${day}, ${year}`;
 }
 
 export function toFrontMatter(data: any): string {
@@ -77,7 +70,6 @@ export function normalizeFrontMatter(raw: string): string {
   const re = /^---\s*$[\s\S]*?^---\s*(\r?\n|$)/m;
   const match = raw.match(re);
   if (!match) return raw;
-  // If a newline already follows the closing marker, nothing to do.
   if (match[1] && match[1].length > 0) return raw;
   const eol = raw.includes("\r\n") ? "\r\n" : "\n";
   return raw.replace(re, (full) => full + eol);
@@ -91,14 +83,13 @@ export async function adminLogout() {
   }
 }
 
-// Client-side helper to include CSRF header for unsafe requests
 export function getAdminCsrfToken(): string | undefined {
   if (typeof document === "undefined") return undefined;
   const raw = document.cookie
     .split("; ")
-    .find((row) => row.startsWith("admin_token="));
+    .find((row) => row.startsWith("admin_csrf="));
   if (!raw) return undefined;
-  const value = raw.slice("admin_token=".length);
+  const value = raw.slice("admin_csrf=".length);
   try {
     return decodeURIComponent(value);
   } catch {

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { timingSafeEqual } from "crypto";
+import { timingSafeEqual, randomBytes } from "crypto";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
@@ -26,16 +26,30 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
   const isProd = process.env.NODE_ENV === "production";
-  const cookie = [
+  const maxAge = 60 * 60 * 24 * 30;
+  const csrfToken = randomBytes(32).toString("hex");
+
+  const adminTokenCookie = [
     `admin_token=${encodeURIComponent(token)}`,
     "Path=/",
     "SameSite=Lax",
-    `Max-Age=${60 * 60 * 24 * 30}`,
+    `Max-Age=${maxAge}`,
+    "HttpOnly",
     isProd ? "Secure" : undefined,
   ]
     .filter(Boolean)
     .join("; ");
 
-  res.setHeader("Set-Cookie", cookie);
+  const adminCsrfCookie = [
+    `admin_csrf=${encodeURIComponent(csrfToken)}`,
+    "Path=/",
+    "SameSite=Lax",
+    `Max-Age=${maxAge}`,
+    isProd ? "Secure" : undefined,
+  ]
+    .filter(Boolean)
+    .join("; ");
+
+  res.setHeader("Set-Cookie", [adminTokenCookie, adminCsrfCookie]);
   return res.status(200).json({ ok: true });
 }
