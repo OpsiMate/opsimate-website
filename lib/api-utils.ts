@@ -34,7 +34,10 @@ export function formatBlogDate(d: Date): string {
 }
 
 export function toFrontMatter(data: any): string {
-  const esc = (s: any) => String(s ?? "").replace(/"/g, '\\"');
+  const esc = (s: any) =>
+    String(s ?? "")
+      .replace(/\\/g, "\\\\")
+      .replace(/"/g, '\\"');
   const tags: string[] = Array.isArray(data.tags) ? data.tags : [];
   const authorName = data.authorName ?? data.author?.name ?? "";
   const authorAvatar = data.authorAvatar ?? data.author?.avatarSrc ?? undefined;

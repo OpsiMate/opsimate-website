@@ -11,18 +11,7 @@ import {
   ImageOff,
 } from "lucide-react";
 import { formatPostDate } from "@/lib/posts";
-
-type Post = {
-  id: string;
-  title: string;
-  excerpt?: string;
-  date: string;
-  cover?: string;
-  tags: string[];
-  author: { name: string };
-  draft?: boolean;
-  publishAt?: string;
-};
+import type { Post } from "@/lib/posts";
 
 export default function AdminPostsPage() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -255,7 +244,8 @@ export default function AdminPostsPage() {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const token = process.env.ADMIN_TOKEN;
   const cookieHeader = ctx.req.headers.cookie || "";
-  const cookieToken = (ctx.req as any).cookies?.["admin_token"] ??
+  const cookieToken =
+    (ctx.req as any).cookies?.["admin_token"] ??
     cookieHeader
       .split(/;\s*/)
       .map((p) => p.split("="))

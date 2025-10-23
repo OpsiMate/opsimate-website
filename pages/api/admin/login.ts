@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { timingSafeEqual } from "crypto";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
@@ -17,7 +18,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (typeof token !== "string" || !token) {
     return res.status(400).json({ error: "token is required" });
   }
-  if (token !== adminToken) {
+  const a = Buffer.from(token);
+  const b = Buffer.from(adminToken);
+  const isMatch = a.length === b.length && timingSafeEqual(a, b);
+  if (!isMatch) {
     return res.status(401).json({ error: "Invalid token" });
   }
 

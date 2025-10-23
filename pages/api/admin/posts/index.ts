@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { getSiteUrl } from "@/lib/rss";
 import { requireAuth } from "@/lib/api-utils";
 
 export default async function handler(
@@ -20,9 +21,7 @@ export default async function handler(
   }
 
   try {
-    const proto = (req.headers["x-forwarded-proto"] as string) || "http";
-    const host = req.headers.host;
-    const base = `${proto}://${host}`;
+    const base = getSiteUrl();
 
     const url = `${base}/api/posts`;
     const upstream = await fetch(url, {

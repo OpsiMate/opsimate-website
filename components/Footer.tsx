@@ -79,8 +79,10 @@ const Footer: React.FC = () => {
                   <Link
                     href={link.href}
                     className="text-gray-300 hover:text-white transition-colors duration-200"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    {...(link.href.startsWith('http') && {
+                       target: "_blank",
+                       rel: "noopener noreferrer"
+                    })}
                   >
                     {link.name}
                   </Link>

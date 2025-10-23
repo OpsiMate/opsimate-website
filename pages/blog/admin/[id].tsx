@@ -130,7 +130,11 @@ export default function EditPostPage() {
             </div>
           )}
           {error && (
-            <div className="mb-4 rounded-xl border border-red-200 bg-red-50 text-red-700 p-4 dark:bg-red-950/30 dark:border-red-900">
+            <div
+              role="alert"
+              aria-live="polite"
+              className="mb-4 rounded-xl border border-red-200 bg-red-50 text-red-700 p-4 dark:bg-red-950/30 dark:border-red-900"
+            >
               {error}
             </div>
           )}

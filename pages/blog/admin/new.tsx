@@ -91,7 +91,11 @@ export default function NewPostPage() {
           </div>
 
           {error && (
-            <div className="mb-4 rounded-xl border border-red-200 bg-red-50 text-red-700 p-4 dark:bg-red-950/30 dark:border-red-900">
+            <div
+              role="alert"
+              aria-live="polite"
+              className="mb-4 rounded-xl border border-red-200 bg-red-50 text-red-700 p-4 dark:bg-red-950/30 dark:border-red-900"
+            >
               {error}
             </div>
           )}
@@ -182,6 +186,13 @@ export default function NewPostPage() {
                       onChange={(e) => setCover(e.target.value)}
                       aria-describedby="cover-help"
                     />
+                    <div
+                      id="cover-help"
+                      className="text-[11px] text-surface-500 dark:text-surface-400"
+                    >
+                      {" "}
+                      Optional. Leave blank for a text‑only card.
+                    </div>
                   </label>
                   {cover && (
                     <img
@@ -258,7 +269,8 @@ export default function NewPostPage() {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const token = process.env.ADMIN_TOKEN;
   const cookieHeader = ctx.req.headers.cookie || "";
-  const cookieToken = (ctx.req as any).cookies?.["admin_token"] ??
+  const cookieToken =
+    (ctx.req as any).cookies?.["admin_token"] ??
     cookieHeader
       .split(/;\s*/)
       .map((p) => p.split("="))

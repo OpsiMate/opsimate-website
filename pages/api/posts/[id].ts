@@ -12,6 +12,12 @@ import {
 
 const postsDir = path.join(process.cwd(), "content", "posts");
 
+function resolvePostPathOrNull(id: string): string | null {
+  const fullPath = path.resolve(postsDir, `${id}.md`);
+  const postsRoot = path.resolve(postsDir) + path.sep;
+  return fullPath.startsWith(postsRoot) ? fullPath : null;
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -22,7 +28,8 @@ export default async function handler(
     const post = await getPostById(id);
     if (!post) return res.status(404).json({ error: "not found" });
     try {
-      const filePath = path.join(postsDir, `${id}.md`);
+      const filePath = resolvePostPathOrNull(id);
+      if (!filePath) return res.status(400).json({ error: "invalid id" });
       const raw = fs.readFileSync(filePath, "utf8");
       const normalized = normalizeFrontMatter(raw);
       const parsed = fm<any>(normalized);
@@ -75,16 +82,18 @@ export default async function handler(
         const parsed = fm<any>(normalized);
         body = parsed?.body ?? withMaybeFm;
       } else {
-        const fileRaw = fs.readFileSync(
-          path.join(postsDir, `${id}.md`),
-          "utf8"
-        );
+        const filePath2 = resolvePostPathOrNull(id);
+        if (!filePath2 || !fs.existsSync(filePath2)) {
+          return res.status(404).json({ error: "not found" });
+        }
+        const fileRaw = fs.readFileSync(filePath2, "utf8");
         const normalized = normalizeFrontMatter(fileRaw);
         const parsed = fm<any>(normalized);
         body = parsed?.body ?? "";
       }
-      const filePath = path.join(postsDir, `${id}.md`);
-      fs.writeFileSync(filePath, front + String(body), "utf8");
+      const filePath3 = resolvePostPathOrNull(id);
+      if (!filePath3) return res.status(400).json({ error: "invalid id" });
+      fs.writeFileSync(filePath3, front + String(body), "utf8");
       return res.status(200).json({ ok: true });
     } catch (e: any) {
       return res.status(500).json({ error: e?.message || "failed to update" });
