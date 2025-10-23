@@ -32,7 +32,7 @@ const IntegrationsSection: React.FC = () => {
         </svg>
       ),
       color: "text-orange-600",
-      link: " ocs/integrations/grafana",
+      link: "https://opsimate.vercel.app/docs/integrations/grafana",
     },
     {
       name: "Kibana",
