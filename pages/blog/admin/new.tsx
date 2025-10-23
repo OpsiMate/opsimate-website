@@ -5,6 +5,7 @@ import Layout from "@/components/Layout";
 import Link from "next/link";
 import { ArrowLeft, Save, Sparkles } from "lucide-react";
 import { adminLogout } from "@/lib/api-utils";
+import { useRouter } from "next/router";
 
 export default function NewPostPage() {
   const [title, setTitle] = useState("");
@@ -19,7 +20,17 @@ export default function NewPostPage() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const router = useRouter();
+
   const logout = () => adminLogout();
+
+  const nowLocal = useMemo(() => {
+    const d = new Date();
+    const pad = (n: number) => String(n).padStart(2, "0");
+    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(
+      d.getDate()
+    )}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  }, []);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,10 +41,14 @@ export default function NewPostPage() {
         title,
         excerpt,
         cover,
-        tags: tags
-          .split(",")
-          .map((t) => t.trim())
-          .filter(Boolean),
+        tags: Array.from(
+          new Set(
+            tags
+              .split(",")
+              .map((t) => t.trim())
+              .filter(Boolean)
+          )
+        ),
         authorName,
         authorAvatar,
         draft,
@@ -48,14 +63,27 @@ export default function NewPostPage() {
           : undefined,
         content,
       };
+
+      const csrfToken = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("admin_csrf="))
+        ?.split("=")[1];
+
       const res = await fetch("/api/admin/posts", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          ...(csrfToken && { "x-csrf-token": csrfToken }),
+        },
         body: JSON.stringify(body),
       });
       if (!res.ok) throw new Error(await res.text());
-      const json = await res.json();
-      window.location.href = `/blog/admin/${json.id}`;
+      try {
+        const { id } = await res.json();
+        await router.push(`/blog/admin/${id}`);
+      } catch {
+        window.location.assign("/blog/admin");
+      }
     } catch (e: any) {
       setError(e?.message || "Failed to save");
     } finally {
@@ -105,6 +133,7 @@ export default function NewPostPage() {
           <form
             onSubmit={submit}
             className="grid grid-cols-1 lg:grid-cols-3 gap-6"
+            aria-busy={saving}
           >
             <div className="lg:col-span-2 rounded-2xl border border-surface-200 dark:border-surface-700 bg-white dark:bg-surface-800 p-5 shadow-sm">
               <div className="grid gap-4">
@@ -170,6 +199,8 @@ export default function NewPostPage() {
                     </span>
                     <input
                       type="datetime-local"
+                      min={nowLocal}
+                      step="60"
                       className="rounded-lg border border-surface-200 dark:border-surface-700 bg-white dark:bg-surface-900 text-surface-900 dark:text-surface-100 p-2 outline-none focus:ring-2 focus:ring-blue-500"
                       value={publishAtLocal}
                       onChange={(e) => setPublishAtLocal(e.target.value)}
@@ -187,6 +218,9 @@ export default function NewPostPage() {
                       value={cover}
                       onChange={(e) => setCover(e.target.value)}
                       aria-describedby="cover-help"
+                      type="url"
+                      inputMode="url"
+                      autoComplete="off"
                     />
                     <div
                       id="cover-help"
@@ -199,7 +233,10 @@ export default function NewPostPage() {
                   {cover && (
                     <img
                       src={cover}
-                      alt="cover preview"
+                      alt={`Cover preview${title ? ` for “${title}”` : ""}`}
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                      onError={(e) => (e.currentTarget.style.display = "none")}
                       className="rounded-lg border border-surface-200 dark:border-surface-700 object-cover w-full max-h-40"
                     />
                   )}
@@ -235,6 +272,9 @@ export default function NewPostPage() {
                       className="rounded-lg border border-surface-200 dark:border-surface-700 bg-white dark:bg-surface-900 text-surface-900 dark:text-surface-100 p-2 outline-none focus:ring-2 focus:ring-blue-500"
                       value={authorAvatar}
                       onChange={(e) => setAuthorAvatar(e.target.value)}
+                      type="url"
+                      inputMode="url"
+                      autoComplete="off"
                     />
                   </label>
                 </div>
