@@ -34,6 +34,7 @@ export default function NewPostPage() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (saving) return;
     setSaving(true);
     setError(null);
     try {
@@ -66,7 +67,7 @@ export default function NewPostPage() {
 
       const csrfToken = document.cookie
         .split("; ")
-        .find((row) => row.startsWith("admin_csrf="))
+        .find((row) => row.startsWith("admin_token="))
         ?.split("=")[1];
 
       const res = await fetch("/api/admin/posts", {
@@ -84,8 +85,8 @@ export default function NewPostPage() {
       } catch {
         window.location.assign("/blog/admin");
       }
-    } catch (e: any) {
-      setError(e?.message || "Failed to save");
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : "Failed to save");
     } finally {
       setSaving(false);
     }
@@ -109,9 +110,10 @@ export default function NewPostPage() {
                 href="/blog/admin"
                 className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border bg-white text-surface-700 border-surface-200 hover:bg-surface-100 dark:bg-surface-800 dark:text-surface-300 dark:border-surface-700 dark:hover:bg-surface-700"
               >
-                <ArrowLeft className="w-4 h-4" /> Back
+                <ArrowLeft aria-hidden="true" className="w-4 h-4" /> Back
               </Link>
               <button
+                type="button"
                 onClick={logout}
                 className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border bg-white text-surface-700 border-surface-200 hover:bg-surface-100 dark:bg-surface-800 dark:text-surface-300 dark:border-surface-700 dark:hover:bg-surface-700"
               >
@@ -287,9 +289,12 @@ export default function NewPostPage() {
                   type="submit"
                 >
                   {saving ? (
-                    <Sparkles className="w-4 h-4 animate-pulse" />
+                    <Sparkles
+                      aria-hidden="true"
+                      className="w-4 h-4 animate-pulse"
+                    />
                   ) : (
-                    <Save className="w-4 h-4" />
+                    <Save aria-hidden="true" className="w-4 h-4" />
                   )}{" "}
                   {saving ? "Saving…" : "Create"}
                 </button>

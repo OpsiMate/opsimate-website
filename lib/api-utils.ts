@@ -26,7 +26,7 @@ export function requireAuth(
   if (cookieToken === token) {
     if (isUnsafe) {
       const csrfHeader = req.headers["x-csrf-token"];
-      const csrfCookie = (req as any).cookies?.["admin_csrf"];
+      const csrfCookie = (req as any).cookies?.["admin_token"];
       if (!csrfHeader || csrfHeader !== csrfCookie) {
         res.status(403).json({ error: "CSRF validation failed" });
         return false;

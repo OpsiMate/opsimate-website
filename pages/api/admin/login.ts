@@ -29,7 +29,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const cookie = [
     `admin_token=${encodeURIComponent(token)}`,
     "Path=/",
-    "HttpOnly",
     "SameSite=Lax",
     `Max-Age=${60 * 60 * 24 * 30}`,
     isProd ? "Secure" : undefined,
