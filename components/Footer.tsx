@@ -111,23 +111,6 @@ const Footer: React.FC = () => {
                   <Link
                     href={link.href}
                     className="text-gray-300 hover:text-white transition-colors duration-200"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Open Source Links */}
-          <div>
-            <h3 className="font-semibold text-white mb-4">Open Source</h3>
-            <ul className="space-y-2">
-              {footerLinks.opensource.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
