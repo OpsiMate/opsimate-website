@@ -6,7 +6,11 @@ import type {
 } from "next";
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import { getPostById, getAllPublishedPosts, isPostPublished } from "@/lib/posts.server";
+import {
+  getPostById,
+  getAllPublishedPosts,
+  isPostPublished,
+} from "@/lib/posts.server";
 import { type Post as PostItem } from "@/lib/posts";
 import Link from "next/link";
 
@@ -49,9 +53,7 @@ const BlogPostPage: React.FC<
     const month = d.toLocaleString("en-US", { month: "short" });
     const day = d.getDate();
     const year = d.getFullYear();
-    const hour = d.getHours();
-    const minute = String(d.getMinutes()).padStart(2, "0");
-    return `${month} ${day}, ${year} ${hour}:${minute}`;
+    return `${month} ${day}, ${year}`;
   }, [post]);
 
   return (

@@ -6,6 +6,9 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const id = req.query.id as string;
+  if (!id || Array.isArray(id)) {
+    return res.status(400).json({ error: "invalid id parameter" });
+  }
 
   if (req.method === "GET") {
     const post = await getPostById(id);
