@@ -5,6 +5,10 @@ import Logo from './Logo';
 import ThemeToggle from './ThemeToggle';
 import GitHubStarButton from './GitHubStarsButton';
 
+// constants/contact.ts
+export const CONTACT_EMAIL = 'idan.lut@gmail.com';
+export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
+
 interface NavigationItem {
   name: string;
   href: string;
@@ -27,7 +31,7 @@ const Navbar: React.FC = () => {
   // New Contact link
   const contactLink: NavigationItem = {
     name: "Contact Us",
-    href: "mailto:idan.lut@gmail.com",
+    href: CONTACT_MAILTO,
     external: true,
   };
 
@@ -99,7 +103,7 @@ const Navbar: React.FC = () => {
               {/* Mobile Contact Us link */}
               <a
                 href={contactLink.href}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1"
+                className="text-surface-700 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium transition-colors duration-200 px-2 py-1"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {contactLink.name}
