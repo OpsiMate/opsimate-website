@@ -36,7 +36,7 @@ const CTASection: React.FC = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <a 
-                href="https://github.com/Fifaboyz/OpsiMate" 
+                href="https://github.com/OpsiMate/OpsiMate"
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-surface-50 text-primary-600 hover:bg-surface-100 dark:bg-surface-100 dark:text-primary-700 dark:hover:bg-surface-200 font-semibold py-4 px-8 rounded-lg transition-colors duration-200 inline-flex items-center justify-center gap-2 text-lg"

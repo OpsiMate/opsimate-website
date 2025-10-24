@@ -100,8 +100,6 @@ const Footer: React.FC = () => {
                   <Link
                     href={link.href}
                     className="text-gray-300 hover:text-white transition-colors duration-200"
-                    target="_blank"
-                    rel="noopener noreferrer"
                   >
                     {link.name}
                   </Link>
@@ -136,10 +134,10 @@ const Footer: React.FC = () => {
             © {currentYear} OpsiMate. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="#privacy" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
+            <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
               Privacy Policy
             </Link>
-            <Link href="#terms" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
+            <Link href="/terms" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
               Terms of Service
             </Link>
           </div>
