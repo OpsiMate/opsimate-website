@@ -5,6 +5,10 @@ import Logo from './Logo';
 import ThemeToggle from './ThemeToggle';
 import GitHubStarButton from './GitHubStarsButton';
 
+// constants/contact.ts
+export const CONTACT_EMAIL = 'idan.lut@gmail.com';
+export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
+
 interface NavigationItem {
   name: string;
   href: string;
@@ -23,6 +27,12 @@ const Navbar: React.FC = () => {
     name: 'Slack', 
     href: 'https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA', 
     external: true 
+  };
+  // New Contact link
+  const contactLink: NavigationItem = {
+    name: "Contact Us",
+    href: CONTACT_MAILTO,
+    external: true,
   };
 
   return (
@@ -54,6 +64,13 @@ const Navbar: React.FC = () => {
             >
               {slackLink.name}
             </Link>
+             {/* Contact Us button */}
+             <a
+              href={contactLink.href}
+              className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200"
+            >
+              {contactLink.name}
+            </a>
             <ThemeToggle />
           </div>
 
@@ -83,6 +100,14 @@ const Navbar: React.FC = () => {
                   {item.name}
                 </Link>
               ))}
+              {/* Mobile Contact Us link */}
+              <a
+                href={contactLink.href}
+                className="text-surface-700 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium transition-colors duration-200 px-2 py-1"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {contactLink.name}
+              </a>
             </div>
           </div>
         )}
