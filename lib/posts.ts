@@ -38,7 +38,7 @@ export function mapPostsToBlogListItems(posts: Post[]): BlogListItem[] {
     date: formatPostDate(p.publishAt || p.date),
     cover: p.cover,
     tags: p.tags || [],
-    author: { name: p.author?.name || "" },
+    author: { name: p.author?.name || "", avatarSrc: p.author?.avatarSrc },
     publishAt: p.publishAt ?? null,
   }));
 }

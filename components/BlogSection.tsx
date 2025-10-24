@@ -9,7 +9,7 @@ export interface BlogListItem {
   date: string;
   cover?: string;
   tags: string[];
-  author: { name: string };
+  author: { name: string; avatarSrc?: string };
   publishAt?: string | null;
 }
 
