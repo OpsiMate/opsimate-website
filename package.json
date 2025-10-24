@@ -29,6 +29,7 @@
     "rehype-sanitize": "^6.0.0",
     "rehype-stringify": "^10.0.0",
     "remark-rehype": "^11.1.0",
+    "@tailwindcss/typography": "^0.5.15",
     "tailwindcss": "^3.3.0",
     "typescript": "^5.2.0"
   }
