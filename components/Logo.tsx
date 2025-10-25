@@ -17,7 +17,7 @@ const Logo: React.FC<LogoProps> = ({ className = '', width = 32, height = 32 }) 
         className="flex-shrink-0 object-contain"
         style={{ background: 'transparent' }}
       />
-      <span className="text-xl font-semibold text-white">OpsiMate</span>
+      <span className="text-xl font-semibold text-gray-900 dark:text-white">OpsiMate</span>
     </div>
   );
 };
