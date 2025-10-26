@@ -278,7 +278,7 @@ const IntegrationsSection: React.FC = () => {
         </div>
 
         {/* Integrations Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
           {items.map((integration, index) => (
             <div
               key={index}
@@ -310,15 +310,17 @@ const IntegrationsSection: React.FC = () => {
               </a>
             </div>
           ))}
-          {isMobile && integrations.length > 4 && (
-            <button
-              className="mt-2 text-blue-600 hover:text-blue-700 text-sm font-medium  "
-              onClick={() => setShowAll(!showAll)}
-            >
-              {!showAll ? "View more" : "View less"}
-            </button>
-          )}
         </div>
+        {isMobile && integrations.length > 4 && (
+          <button
+            className="mt-5 mb-11 w-full  text-blue-600 hover:text-blue-700 text-sm font-medium  "
+            onClick={() => setShowAll(!showAll)}
+            aria-expanded={showAll}
+            aria-controls="integrations-grid"
+          >
+            {!showAll ? "View more" : "View less"}
+          </button>
+        )}
       </div>
     </section>
   );
