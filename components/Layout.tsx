@@ -39,6 +39,7 @@ const Layout: React.FC<LayoutProps> = ({
         <meta name="keywords" content="infrastructure management, monitoring, DevOps, cloud management, server monitoring, Kubernetes, Docker, observability" />
         <meta name="author" content="OpsiMate" />
         <link rel="canonical" href="https://opsimate.com" /> {/* Update with actual domain */}
+        <link rel="alternate" type="application/rss+xml" title="OpsiMate Blog RSS" href="/feed.xml" />
       </Head>
       
       <div className="min-h-screen flex flex-col">
