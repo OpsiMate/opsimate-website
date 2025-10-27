@@ -13,6 +13,50 @@ type Contributor = {
   quote?: string;
 };
 
+type PersonCardProps = {
+  contributor: Contributor;
+  keyPrefix: string;
+};
+const PersonCard: React.FC<PersonCardProps> = ({ contributor: c, keyPrefix }) => (
+  <div className="rounded-2xl p-6 bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-800 flex flex-col w-full max-w-[360px]">
+    <div className="flex items-center gap-4">
+      <div className="h-14 w-14 rounded-full overflow-hidden border border-surface-200 dark:border-surface-700 bg-surface-100 dark:bg-surface-800 flex items-center justify-center">
+        {c.avatarUrl ? (
+          <img src={c.avatarUrl} alt={`${c.name} avatar`} className="h-full w-full object-cover" loading="lazy" />
+        ) : (
+          <span className="text-xl" aria-hidden="true">👤</span>
+        )}
+      </div>
+      <div>
+        <div className="flex items-center gap-2">
+          <h3 className="font-semibold text-surface-900 dark:text-white">{c.name}</h3>
+          {c.country && <span className="text-lg" aria-label="country">{c.country}</span>}
+        </div>
+        <p className="text-sm text-surface-600 dark:text-surface-400">{c.role}</p>
+      </div>
+    </div>
+
+    {c.quote && (
+      <blockquote className="mt-4 text-surface-700 dark:text-surface-300 italic">"{c.quote}"</blockquote>
+    )}
+
+    {(c.github || c.linkedin) && (
+      <div className="mt-4 flex items-center gap-4">
+        {c.github && (
+          <Link href={c.github} target="_blank" rel="noopener noreferrer" className="text-primary-600 dark:text-primary-400 hover:underline">
+            GitHub
+          </Link>
+        )}
+        {c.linkedin && (
+          <Link href={c.linkedin} target="_blank" rel="noopener noreferrer" className="text-primary-600 dark:text-primary-400 hover:underline">
+            LinkedIn
+          </Link>
+        )}
+      </div>
+    )}
+  </div>
+);
+
 const gridColsFor = (count: number) => {
   if (count >= 4) return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4";
   if (count === 3) return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
@@ -292,7 +336,7 @@ const AboutPage: React.FC = () => {
             <div className="mt-8 max-w-4xl mx-auto relative">
               <div
                 className="pointer-events-none absolute inset-0 -top-10 -z-10 flex justify-center"
-                aria-hidden
+                aria-hidden="true"
               >
                 <svg width="720" height="220" viewBox="0 0 720 220" fill="none" className="opacity-40 dark:opacity-25 blur-2xl">
                   <defs>
@@ -313,6 +357,7 @@ const AboutPage: React.FC = () => {
                 src="/images/opsimate-dashboard.png"
                 alt="OpsiMate dashboard placeholder"
                 className="w-full h-auto rounded-2xl border border-surface-200 dark:border-surface-800 shadow"
+                loading="lazy"
               />
             </div>
           </div>
@@ -367,48 +412,7 @@ const AboutPage: React.FC = () => {
             <h3 className="text-xl md:text-2xl font-semibold text-surface-900 dark:text-white mb-4 text-center">Founders 👋</h3>
             <div className={`grid gap-6 ${gridColsFor(founders.length)} justify-items-center`}>
               {founders.map((c, idx) => (
-                <div
-                  key={`founder-${c.name}-${idx}`}
-                  className="rounded-2xl p-6 bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-800 flex flex-col w-full max-w-[360px]"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="h-14 w-14 rounded-full overflow-hidden border border-surface-200 dark:border-surface-700 bg-surface-100 dark:bg-surface-800 flex items-center justify-center">
-                      {c.avatarUrl ? (
-                        <img src={c.avatarUrl} alt={`${c.name} avatar`} className="h-full w-full object-cover" />
-                      ) : (
-                        <span className="text-xl" aria-hidden>
-                          👤
-                        </span>
-                      )}
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <h3 className="font-semibold text-surface-900 dark:text-white">{c.name}</h3>
-                        {c.country && <span className="text-lg" aria-label="country">{c.country}</span>}
-                      </div>
-                      <p className="text-sm text-surface-600 dark:text-surface-400">{c.role}</p>
-                    </div>
-                  </div>
-
-                  {c.quote && (
-                    <blockquote className="mt-4 text-surface-700 dark:text-surface-300 italic">“{c.quote}”</blockquote>
-                  )}
-
-                  {(c.github || c.linkedin) && (
-                    <div className="mt-4 flex items-center gap-4">
-                      {c.github && (
-                        <Link href={c.github} target="_blank" rel="noopener noreferrer" className="text-primary-600 dark:text-primary-400 hover:underline">
-                          GitHub
-                        </Link>
-                      )}
-                      {c.linkedin && (
-                        <Link href={c.linkedin} target="_blank" rel="noopener noreferrer" className="text-primary-600 dark:text-primary-400 hover:underline">
-                          LinkedIn
-                        </Link>
-                      )}
-                    </div>
-                  )}
-                </div>
+                <PersonCard key={`founder-${c.name}-${idx}`} contributor={c} keyPrefix="founder" />
               ))}
             </div>
           </div>
@@ -418,48 +422,7 @@ const AboutPage: React.FC = () => {
             <h3 className="text-xl md:text-2xl font-semibold text-surface-900 dark:text-white mb-4 text-center">Community Leaders 🌟</h3>
             <div className={`grid gap-6 ${gridColsFor(communityLeaders.length)} justify-items-center`}>
               {communityLeaders.map((c, idx) => (
-                <div
-                  key={`leader-${c.name}-${idx}`}
-                  className="rounded-2xl p-6 bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-800 flex flex-col w-full max-w-[360px]"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="h-14 w-14 rounded-full overflow-hidden border border-surface-200 dark:border-surface-700 bg-surface-100 dark:bg-surface-800 flex items-center justify-center">
-                      {c.avatarUrl ? (
-                        <img src={c.avatarUrl} alt={`${c.name} avatar`} className="h-full w-full object-cover" />
-                      ) : (
-                        <span className="text-xl" aria-hidden>
-                          👤
-                        </span>
-                      )}
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <h3 className="font-semibold text-surface-900 dark:text-white">{c.name}</h3>
-                        {c.country && <span className="text-lg" aria-label="country">{c.country}</span>}
-                      </div>
-                      <p className="text-sm text-surface-600 dark:text-surface-400">{c.role}</p>
-                    </div>
-                  </div>
-
-                  {c.quote && (
-                    <blockquote className="mt-4 text-surface-700 dark:text-surface-300 italic">“{c.quote}”</blockquote>
-                  )}
-
-                  {(c.github || c.linkedin) && (
-                    <div className="mt-4 flex items-center gap-4">
-                      {c.github && (
-                        <Link href={c.github} target="_blank" rel="noopener noreferrer" className="text-primary-600 dark:text-primary-400 hover:underline">
-                          GitHub
-                        </Link>
-                      )}
-                      {c.linkedin && (
-                        <Link href={c.linkedin} target="_blank" rel="noopener noreferrer" className="text-primary-600 dark:text-primary-400 hover:underline">
-                          LinkedIn
-                        </Link>
-                      )}
-                    </div>
-                  )}
-                </div>
+                <PersonCard key={`communityLeaders-${c.name}-${idx}`} contributor={c} keyPrefix="founder" />
               ))}
             </div>
           </div>
@@ -469,48 +432,7 @@ const AboutPage: React.FC = () => {
             <h3 className="text-xl md:text-2xl font-semibold text-surface-900 dark:text-white mb-4 text-center">Contributors & Slack Members 💬</h3>
             <div className={`grid gap-6 ${gridColsFor(contributors.length)} justify-items-center`}>
               {contributors.map((c, idx) => (
-                <div
-                  key={`contrib-${c.name}-${idx}`}
-                  className="rounded-2xl p-6 bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-800 flex flex-col w-full max-w-[360px]"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="h-14 w-14 rounded-full overflow-hidden border border-surface-200 dark:border-surface-700 bg-surface-100 dark:bg-surface-800 flex items-center justify-center">
-                      {c.avatarUrl ? (
-                        <img src={c.avatarUrl} alt={`${c.name} avatar`} className="h-full w-full object-cover" />
-                      ) : (
-                        <span className="text-xl" aria-hidden>
-                          👤
-                        </span>
-                      )}
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <h3 className="font-semibold text-surface-900 dark:text-white">{c.name}</h3>
-                        {c.country && <span className="text-lg" aria-label="country">{c.country}</span>}
-                      </div>
-                      <p className="text-sm text-surface-600 dark:text-surface-400">{c.role}</p>
-                    </div>
-                  </div>
-
-                  {c.quote && (
-                    <blockquote className="mt-4 text-surface-700 dark:text-surface-300 italic">“{c.quote}”</blockquote>
-                  )}
-
-                  {(c.github || c.linkedin) && (
-                    <div className="mt-4 flex items-center gap-4">
-                      {c.github && (
-                        <Link href={c.github} target="_blank" rel="noopener noreferrer" className="text-primary-600 dark:text-primary-400 hover:underline">
-                          GitHub
-                        </Link>
-                      )}
-                      {c.linkedin && (
-                        <Link href={c.linkedin} target="_blank" rel="noopener noreferrer" className="text-primary-600 dark:text-primary-400 hover:underline">
-                          LinkedIn
-                        </Link>
-                      )}
-                    </div>
-                  )}
-                </div>
+                <PersonCard key={`contributors-${c.name}-${idx}`} contributor={c} keyPrefix="founder" />
               ))}
             </div>
 
