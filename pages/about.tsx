@@ -422,7 +422,7 @@ const AboutPage: React.FC = () => {
             <h3 className="text-xl md:text-2xl font-semibold text-surface-900 dark:text-white mb-4 text-center">Community Leaders 🌟</h3>
             <div className={`grid gap-6 ${gridColsFor(communityLeaders.length)} justify-items-center`}>
               {communityLeaders.map((c, idx) => (
-                <PersonCard key={`communityLeaders-${c.name}-${idx}`} contributor={c} keyPrefix="founder" />
+                <PersonCard key={`communityLeaders-${c.name}-${idx}`} contributor={c} keyPrefix="communityLeaders" />
               ))}
             </div>
           </div>
@@ -432,7 +432,7 @@ const AboutPage: React.FC = () => {
             <h3 className="text-xl md:text-2xl font-semibold text-surface-900 dark:text-white mb-4 text-center">Contributors & Slack Members 💬</h3>
             <div className={`grid gap-6 ${gridColsFor(contributors.length)} justify-items-center`}>
               {contributors.map((c, idx) => (
-                <PersonCard key={`contributors-${c.name}-${idx}`} contributor={c} keyPrefix="founder" />
+                <PersonCard key={`contributors-${c.name}-${idx}`} contributor={c} keyPrefix="contributors" />
               ))}
             </div>
 
@@ -448,7 +448,7 @@ const AboutPage: React.FC = () => {
           <div className="rounded-2xl p-8 md:p-12 bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-800 text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-surface-900 dark:text-white">Join the OpsiMate community 🚀</h2>
             <p className="mt-3 text-surface-700 dark:text-surface-300">
-              Whether you’re exploring, adopting, or contributing you’re welcome here.
+              Whether you're exploring, adopting, or contributing—you're welcome here.
             </p>
             <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
               <Link
