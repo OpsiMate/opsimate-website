@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-type Contributor = {
+export type Contributor = {
   name: string;
   role: string;
   country?: string;
