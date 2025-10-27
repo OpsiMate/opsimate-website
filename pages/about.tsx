@@ -15,9 +15,9 @@ type Contributor = {
 
 type PersonCardProps = {
   contributor: Contributor;
-  keyPrefix: string;
 };
-const PersonCard: React.FC<PersonCardProps> = ({ contributor: c, keyPrefix }) => (
+
+const PersonCard: React.FC<PersonCardProps> = ({ contributor: c }) => (
   <div className="rounded-2xl p-6 bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-800 flex flex-col w-full max-w-[360px]">
     <div className="flex items-center gap-4">
       <div className="h-14 w-14 rounded-full overflow-hidden border border-surface-200 dark:border-surface-700 bg-surface-100 dark:bg-surface-800 flex items-center justify-center">
@@ -375,7 +375,7 @@ const AboutPage: React.FC = () => {
               <p className="text-surface-700 dark:text-surface-300">From docs and design to code and community, OpsiMate grows through collaboration. We value clarity, curiosity, and kindness. 🤝</p>
             </div>
             <div className="rounded-2xl p-6 bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-800">
-              <h3 className="font-semibold text-surface-900 dark:text-white mb-2">Made in the Open</h3>
+              <h3 className="font-semibold text-surface-900 dark:text-white mb-2">Transparent Development</h3>
               <p className="text-surface-700 dark:text-surface-300">Everything happens in public: roadmaps, issues, and ideas. Transparency builds trust and invites meaningful contributions. 🔍</p>
             </div>
             <div className="rounded-2xl p-6 bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-800">
@@ -384,7 +384,7 @@ const AboutPage: React.FC = () => {
               <GitHubStarButton />
             </div>
             <div className="rounded-2xl p-6 bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-800">
-              <h3 className="font-semibold text-surface-900 dark:text-white mb-2">Built in the Open</h3>
+              <h3 className="font-semibold text-surface-900 dark:text-white mb-2">Open Source License</h3>
               <p className="text-surface-700 dark:text-surface-300 mb-3">MIT-licensed and open to contributions.</p>
               <Link
                 href="https://github.com/OpsiMate/OpsiMate"
@@ -412,7 +412,7 @@ const AboutPage: React.FC = () => {
             <h3 className="text-xl md:text-2xl font-semibold text-surface-900 dark:text-white mb-4 text-center">Founders 👋</h3>
             <div className={`grid gap-6 ${gridColsFor(founders.length)} justify-items-center`}>
               {founders.map((c, idx) => (
-                <PersonCard key={`founder-${c.name}-${idx}`} contributor={c} keyPrefix="founder" />
+                <PersonCard key={`founder-${c.name}-${idx}`} contributor={c} />
               ))}
             </div>
           </div>
@@ -422,7 +422,7 @@ const AboutPage: React.FC = () => {
             <h3 className="text-xl md:text-2xl font-semibold text-surface-900 dark:text-white mb-4 text-center">Community Leaders 🌟</h3>
             <div className={`grid gap-6 ${gridColsFor(communityLeaders.length)} justify-items-center`}>
               {communityLeaders.map((c, idx) => (
-                <PersonCard key={`communityLeaders-${c.name}-${idx}`} contributor={c} keyPrefix="communityLeaders" />
+                <PersonCard key={`communityLeaders-${c.name}-${idx}`} contributor={c}  />
               ))}
             </div>
           </div>
@@ -432,7 +432,7 @@ const AboutPage: React.FC = () => {
             <h3 className="text-xl md:text-2xl font-semibold text-surface-900 dark:text-white mb-4 text-center">Contributors & Slack Members 💬</h3>
             <div className={`grid gap-6 ${gridColsFor(contributors.length)} justify-items-center`}>
               {contributors.map((c, idx) => (
-                <PersonCard key={`contributors-${c.name}-${idx}`} contributor={c} keyPrefix="contributors" />
+                <PersonCard key={`contributors-${c.name}-${idx}`} contributor={c} />
               ))}
             </div>
 
