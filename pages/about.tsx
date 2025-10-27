@@ -2,17 +2,7 @@ import React from "react";
 import Layout from "../components/Layout";
 import GitHubStarButton from "@/components/GitHubStarsButton";
 import Link from "next/link";
-import PersonCard from "@/components/PersonCard";
-
-type Contributor = {
-  name: string;
-  role: string;
-  country?: string;
-  avatarUrl?: string;
-  github?: string;
-  linkedin?: string;
-  quote?: string;
-};
+import PersonCard, { Contributor } from "@/components/PersonCard";
 
 const gridColsFor = (count: number) => {
   if (count >= 4) return "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4";
