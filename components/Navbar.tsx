@@ -27,6 +27,7 @@ const Navbar: React.FC = () => {
       href: "https://opsimate.vercel.app/#integrations",
       external: true,
     },
+    { name: "About", href: "/about" },
   ];
   const slackLink: NavigationItem = {
     name: "Slack",
