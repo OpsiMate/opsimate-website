@@ -32,7 +32,7 @@ const IntegrationsSection: React.FC = () => {
         </svg>
       ),
       color: "text-orange-600",
-      link: "https://opsimate.vercel.app/integrations/grafana",
+      link: "https://opsimate.vercel.app/docs/integrations/grafana",
     },
     {
       name: "Kibana",
@@ -59,7 +59,7 @@ const IntegrationsSection: React.FC = () => {
         </svg>
       ),
       color: "text-purple-600",
-      link: "https://opsimate.vercel.app/integrations/kibana",
+      link: "https://opsimate.vercel.app/docs/integrations/kibana",
     },
     {
       name: "Datadog",
@@ -78,7 +78,7 @@ const IntegrationsSection: React.FC = () => {
         </svg>
       ),
       color: "text-purple-700",
-      link: "https://opsimate.vercel.app/integrations/datadog",
+      link: "https://opsimate.vercel.app/docs/integrations/datadog",
     },
     {
       name: "Docker",
@@ -177,7 +177,7 @@ const IntegrationsSection: React.FC = () => {
         </svg>
       ),
       color: "text-blue-500",
-      link: "https://opsimate.vercel.app/providers-services/services/container-services",
+      link: "https://opsimate.vercel.app/docs/providers-services/services/container-services",
     },
     {
       name: "Kubernetes",
@@ -200,7 +200,7 @@ const IntegrationsSection: React.FC = () => {
         </svg>
       ),
       color: "text-blue-600",
-      link: "https://opsimate.vercel.app/providers-services/services/kubernetes-pods",
+      link: "https://opsimate.vercel.app/docs/providers-services/services/kubernetes-pods",
     },
     {
       name: "Systemd",
@@ -234,7 +234,7 @@ const IntegrationsSection: React.FC = () => {
         </svg>
       ),
       color: "text-blue-600",
-      link: "https://opsimate.vercel.app/providers-services/services/systemd-services",
+      link: "https://opsimate.vercel.app/docs/providers-services/services/systemd-services",
     },
   ];
 
@@ -265,13 +265,13 @@ const IntegrationsSection: React.FC = () => {
                 {integration.icon }
               </div>
               
-              <div className="mb-2">
+              <div className="mb-2 ">
                 <h3 className="font-semibold text-surface-900 dark:text-surface-100">{integration.name}</h3>
               </div>
               
-              <p className="text-surface-600 dark:text-surface-400 text-sm mb-4 leading-relaxed">
+              <div className="text-surface-600 dark:text-surface-400 text-sm mb-4 leading-relaxed ">
                 {integration.description}
-              </p>
+              </div>
               
               <a 
                 href={integration.link}

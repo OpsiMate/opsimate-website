@@ -59,6 +59,8 @@ const Footer: React.FC = () => {
                     key={social.name}
                     href={social.href}
                     className="text-gray-400 hover:text-white transition-colors duration-200"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={social.name}
                   >
                     <Icon size={20} />
@@ -77,6 +79,10 @@ const Footer: React.FC = () => {
                   <Link
                     href={link.href}
                     className="text-gray-300 hover:text-white transition-colors duration-200"
+                    {...(link.href.startsWith('http') && {
+                       target: "_blank",
+                       rel: "noopener noreferrer"
+                    })}
                   >
                     {link.name}
                   </Link>
@@ -90,23 +96,6 @@ const Footer: React.FC = () => {
             <h3 className="font-semibold text-white mb-4">Resources</h3>
             <ul className="space-y-2">
               {footerLinks.resources.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Open Source Links */}
-          <div>
-            <h3 className="font-semibold text-white mb-4">Open Source</h3>
-            <ul className="space-y-2">
-              {footerLinks.opensource.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
@@ -145,10 +134,10 @@ const Footer: React.FC = () => {
             © {currentYear} OpsiMate. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="#privacy" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
+            <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
               Privacy Policy
             </Link>
-            <Link href="#terms" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
+            <Link href="/terms" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
               Terms of Service
             </Link>
           </div>
