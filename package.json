@@ -18,6 +18,8 @@
     "remark": "^15.0.1"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/hast": "^3.0.4",
     "@types/node": "^20.8.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
@@ -29,7 +31,6 @@
     "rehype-sanitize": "^6.0.0",
     "rehype-stringify": "^10.0.0",
     "remark-rehype": "^11.1.0",
-    "@tailwindcss/typography": "^0.5.15",
     "tailwindcss": "^3.3.0",
     "typescript": "^5.2.0"
   }
