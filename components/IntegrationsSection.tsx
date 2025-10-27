@@ -261,7 +261,7 @@ const IntegrationsSection: React.FC = () => {
               className="bg-surface-50 dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl p-6 hover:shadow-lg dark:hover:shadow-white/10 hover:border-blue-200 dark:hover:border-gray-300 transition-all duration-300 group"
             >
               {/* Integration Icon */}
-              <div className="w-12 h-12 bg-surface-200 dark:bg-surface-700 rounded-lg mb-4 flex items-center justify-center group-hover:bg-blue-50 dark:group-hover:bg-gray-600 transition-colors duration-300">
+              <div className="w-12 h-12 bg-surface-200 dark:bg-white/90 rounded-lg mb-4 flex items-center justify-center group-hover:bg-blue-50 dark:group-hover:bg-white shadow-sm dark:shadow-md transition-all duration-300">
                 {integration.icon }
               </div>
               
