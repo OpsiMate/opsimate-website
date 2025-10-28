@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { LucidePlus, Menu, X } from "lucide-react";
+import { Plus, Menu, X } from "lucide-react";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 import GitHubStarButton from "./GitHubStarsButton";
@@ -85,8 +85,8 @@ const Navbar: React.FC = () => {
                 }'>
               <div className="flex items-center gap-2 group-hover:gap-8 transition-all duration-300 relative">
               <Image src={'/images/logo.png'} width={28} height={28} alt="logo" className="rounded-full bg-white flex-shrink-0"></Image>
-              <div className="flex items-center gap-0 absolute left-[32px] transform -translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">     
-                <div className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] ml-1 mr-1"><LucidePlus width={20} height={20}></LucidePlus></div>
+              <div className="flex items-center gap-0 absolute left-[28px] transform -translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">     
+                <div className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] ml-1 mr-1"><Plus width={20} height={20}></Plus></div>
                 <div className="w-7 h-7 rounded-full dark:bg-white/10 bg-white/20 flex items-center justify-center text-[10px] ml-1 mr-1">You</div>
               </div>
               <span className="whitespace-nowrap relative block text-base font-bold ml-0 group-hover:ml-10 transition-all duration-300">Book a Call</span>
@@ -124,9 +124,9 @@ const Navbar: React.FC = () => {
                 </Link>
               ))}
               {/* Mobile Contact Us link */}
-              <div className="font-medium transition-colors duration-200 px-2 py-2 md:w-[20%] w-[35%] bg-primary-600 text-white rounded-lg hover:bg-primary-700" data-cal-namespace="30min" data-cal-link={process.env.NEXT_PUBLIC_CAL_DATA_LINK} data-cal-config='{"theme": "light",
+              <div className="font-medium transition-colors duration-200 px-2 py-2 md:w-[20%] w-[35%] bg-primary-600 text-white rounded-lg hover:bg-primary-700 cursor-pointer" data-cal-namespace="30min" data-cal-link={process.env.NEXT_PUBLIC_CAL_DATA_LINK} data-cal-config='{"theme": "light",
                   "hideEventTypeDetails": false,"layout":"month_view"}'>
-                Book An Call
+                Book A Call
               </div>
             </div>
           </div>
