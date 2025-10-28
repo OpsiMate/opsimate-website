@@ -16,6 +16,17 @@ interface NavigationItem {
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const calLink = process.env.NEXT_PUBLIC_CAL_DATA_LINK;
+  if(!calLink){
+    console.error("NEXT_PUBLIC_CAL_DATA_LINK environment variable is not set")
+  }
+  const CAL_CONFIG = {
+  theme: "light",
+  hideEventTypeDetails: false,
+  layout: "month_view"
+} as const;
+
+const CAL_CONFIG_STRING = JSON.stringify(CAL_CONFIG);
   const navigation: NavigationItem[] = [
     { name: "Features", href: "/#features" },
     { name: "Integrations", href: "/#integrations" },
@@ -33,8 +44,12 @@ const Navbar: React.FC = () => {
   };
   useEffect(() => {
     (async function () {
-      const cal = await getCalApi({ "namespace": "30min" });
-      cal("ui", { "hideEventTypeDetails": true, "layout": "month_view" });
+      try{
+        const cal = await getCalApi({ "namespace": "30min" });
+        cal("ui", { "hideEventTypeDetails": true, "layout": "month_view" });
+      }catch(error){
+        console.error("Failed to initialize Cal.com:", error);
+      }
     })();
   }, [])
 
@@ -78,11 +93,7 @@ const Navbar: React.FC = () => {
             duration-200 
             flex items-center gap-2 flex-shrink-0
             transition-all group"
-            data-cal-namespace="30min" data-cal-link={process.env.NEXT_PUBLIC_CAL_DATA_LINK} data-cal-config='{
-                  "theme": "light",
-                  "hideEventTypeDetails": false,
-                  "layout": "month_view"
-                }'>
+            data-cal-namespace="30min" data-cal-link={calLink} data-cal-config={CAL_CONFIG_STRING}>
               <div className="flex items-center gap-2 group-hover:gap-8 transition-all duration-300 relative">
               <Image src={'/images/logo.png'} width={28} height={28} alt="logo" className="rounded-full bg-white flex-shrink-0"></Image>
               <div className="flex items-center gap-0 absolute left-[28px] transform -translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">     
@@ -124,10 +135,9 @@ const Navbar: React.FC = () => {
                 </Link>
               ))}
               {/* Mobile Contact Us link */}
-              <div className="font-medium transition-colors duration-200 px-2 py-2 md:w-[20%] w-[35%] bg-primary-600 text-white rounded-lg hover:bg-primary-700 cursor-pointer" data-cal-namespace="30min" data-cal-link={process.env.NEXT_PUBLIC_CAL_DATA_LINK} data-cal-config='{"theme": "light",
-                  "hideEventTypeDetails": false,"layout":"month_view"}'>
+              <button className="font-medium transition-colors duration-200 px-2 py-2 md:w-[20%] w-[35%] bg-primary-600 text-white rounded-lg hover:bg-primary-700 cursor-pointer" data-cal-namespace="30min" data-cal-link={calLink} data-cal-config={CAL_CONFIG_STRING}>
                 Book A Call
-              </div>
+              </button>
             </div>
           </div>
         )}
