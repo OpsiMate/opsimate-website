@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
-import Logo from './Logo';
-import ThemeToggle from './ThemeToggle';
-import GitHubStarButton from './GitHubStarsButton';
+import React, { useState } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import Logo from "./Logo";
+import ThemeToggle from "./ThemeToggle";
+import GitHubStarButton from "./GitHubStarsButton";
+
+// constants/contact.ts
+export const CONTACT_EMAIL = 'idan.lut@gmail.com';
+export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
 
 interface NavigationItem {
   name: string;
@@ -15,14 +19,25 @@ const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation: NavigationItem[] = [
-    { name: 'Features', href: '#features' },
-    { name: 'Docs', href: 'https://opsimate.vercel.app/#integrations', external: true },
-    { name: 'Integrations', href: '#integrations' },
+    { name: "Features", href: "/#features" },
+    { name: "Integrations", href: "/#integrations" },
+    { name: "Blog", href: "/#blog" },
+    {
+      name: "Docs",
+      href: "https://opsimate.vercel.app/#integrations",
+      external: true,
+    },
   ];
-  const slackLink: NavigationItem = { 
-    name: 'Slack', 
-    href: 'https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA', 
-    external: true 
+  const slackLink: NavigationItem = {
+    name: "Slack",
+    href: "https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA",
+    external: true,
+  };
+  // New Contact link
+  const contactLink: NavigationItem = {
+    name: "Contact Us",
+    href: CONTACT_MAILTO,
+    external: true,
   };
 
   return (
@@ -41,7 +56,10 @@ const Navbar: React.FC = () => {
                 key={item.name}
                 href={item.href}
                 className="text-surface-700 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium transition-colors duration-200"
-                {...(item.external && { target: '_blank', rel: 'noopener noreferrer' })}
+                {...(item.external && {
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                })}
               >
                 {item.name}
               </Link>
@@ -50,10 +68,20 @@ const Navbar: React.FC = () => {
             <Link
               href={slackLink.href}
               className="text-surface-700 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium transition-colors duration-200"
-              {...(slackLink.external && { target: '_blank', rel: 'noopener noreferrer' })}
+              {...(slackLink.external && {
+                target: "_blank",
+                rel: "noopener noreferrer",
+              })}
             >
               {slackLink.name}
             </Link>
+             {/* Contact Us button */}
+             <a
+              href={contactLink.href}
+              className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200"
+            >
+              {contactLink.name}
+            </a>
             <ThemeToggle />
           </div>
 
@@ -78,11 +106,22 @@ const Navbar: React.FC = () => {
                   href={item.href}
                   className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1"
                   onClick={() => setIsMenuOpen(false)}
-                  {...(item.external && { target: '_blank', rel: 'noopener noreferrer' })}
+                  {...(item.external && {
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                  })}
                 >
                   {item.name}
                 </Link>
               ))}
+              {/* Mobile Contact Us link */}
+              <a
+                href={contactLink.href}
+                className="text-surface-700 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium transition-colors duration-200 px-2 py-1"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {contactLink.name}
+              </a>
             </div>
           </div>
         )}

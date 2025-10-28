@@ -59,6 +59,8 @@ const Footer: React.FC = () => {
                     key={social.name}
                     href={social.href}
                     className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors duration-200"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={social.name}
                   >
                     <Icon size={20} />
@@ -77,6 +79,10 @@ const Footer: React.FC = () => {
                   <Link
                     href={link.href}
                     className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition-colors duration-200"
+                    {...(link.href.startsWith('http') && {
+                       target: "_blank",
+                       rel: "noopener noreferrer"
+                    })}
                   >
                     {link.name}
                   </Link>
@@ -94,6 +100,8 @@ const Footer: React.FC = () => {
                   <Link
                     href={link.href}
                     className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition-colors duration-200"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     {link.name}
                   </Link>
