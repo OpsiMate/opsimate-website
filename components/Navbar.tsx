@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { LucidePlus, Menu, X } from "lucide-react";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 import GitHubStarButton from "./GitHubStarsButton";
+import { getCalApi } from "@calcom/embed-react";
+import Image from "next/image";
 
-// constants/contact.ts
-export const CONTACT_EMAIL = 'idan.lut@gmail.com';
-export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
 
 interface NavigationItem {
   name: string;
@@ -17,7 +16,6 @@ interface NavigationItem {
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const navigation: NavigationItem[] = [
     { name: "Features", href: "/#features" },
     { name: "Integrations", href: "/#integrations" },
@@ -33,12 +31,12 @@ const Navbar: React.FC = () => {
     href: "https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA",
     external: true,
   };
-  // New Contact link
-  const contactLink: NavigationItem = {
-    name: "Contact Us",
-    href: CONTACT_MAILTO,
-    external: true,
-  };
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({ "namespace": "30min" });
+      cal("ui", { "hideEventTypeDetails": true, "layout": "month_view" });
+    })();
+  }, [])
 
   return (
     <nav className="bg-surface-50 dark:bg-surface-950 shadow-sm border-b border-surface-200 dark:border-surface-800 sticky top-0 z-50 transition-colors duration-200">
@@ -75,16 +73,27 @@ const Navbar: React.FC = () => {
             >
               {slackLink.name}
             </Link>
-             {/* Contact Us button */}
-             <a
-              href={contactLink.href}
-              className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200"
-            >
-              {contactLink.name}
-            </a>
+            {/* Contact Us button */}
+            <button className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 
+            duration-200 
+            flex items-center gap-2 flex-shrink-0
+            transition-all group"
+            data-cal-namespace="30min" data-cal-link={process.env.NEXT_PUBLIC_CAL_DATA_LINK} data-cal-config='{
+                  "theme": "light",
+                  "hideEventTypeDetails": false,
+                  "layout": "month_view"
+                }'>
+              <div className="flex items-center gap-2 group-hover:gap-8 transition-all duration-300 relative">
+              <Image src={'/images/logo.png'} width={28} height={28} alt="logo" className="rounded-full bg-white flex-shrink-0"></Image>
+              <div className="flex items-center gap-0 absolute left-[32px] transform -translate-x-full opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">     
+                <div className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] ml-1 mr-1"><LucidePlus width={20} height={20}></LucidePlus></div>
+                <div className="w-7 h-7 rounded-full dark:bg-white/10 bg-white/20 flex items-center justify-center text-[10px] ml-1 mr-1">You</div>
+              </div>
+              <span className="whitespace-nowrap relative block text-base font-bold ml-0 group-hover:ml-10 transition-all duration-300">Book a Call</span>
+            </div>  
+            </button>
             <ThemeToggle />
           </div>
-
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button
@@ -115,13 +124,10 @@ const Navbar: React.FC = () => {
                 </Link>
               ))}
               {/* Mobile Contact Us link */}
-              <a
-                href={contactLink.href}
-                className="text-surface-700 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium transition-colors duration-200 px-2 py-1"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {contactLink.name}
-              </a>
+              <div className="font-medium transition-colors duration-200 px-2 py-2 md:w-[20%] w-[35%] bg-primary-600 text-white rounded-lg hover:bg-primary-700" data-cal-namespace="30min" data-cal-link={process.env.NEXT_PUBLIC_CAL_DATA_LINK} data-cal-config='{"theme": "light",
+                  "hideEventTypeDetails": false,"layout":"month_view"}'>
+                Book An Call
+              </div>
             </div>
           </div>
         )}
