@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Slack } from "lucide-react";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 import GitHubStarButton from "./GitHubStarsButton";
@@ -67,12 +67,14 @@ const Navbar: React.FC = () => {
             <GitHubStarButton />
             <Link
               href={slackLink.href}
-              className="text-surface-700 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium transition-colors duration-200"
+              className="text-surface-700 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium transition-colors duration-200 inline-flex items-center gap-2"
               {...(slackLink.external && {
                 target: "_blank",
                 rel: "noopener noreferrer",
               })}
+              aria-label="Join our Slack community"
             >
+              <Slack size={18} aria-hidden="true" />
               {slackLink.name}
             </Link>
              {/* Contact Us button */}

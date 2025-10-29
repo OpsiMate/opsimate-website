@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Play, Slack } from 'lucide-react';
 
 const HeroSection: React.FC = () => {
   return (
@@ -38,7 +38,9 @@ const HeroSection: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary text-lg px-8 py-4 inline-flex items-center gap-2"
+                aria-label="Join our Slack community"
               >
+                <Slack className="h-5 w-5" aria-hidden="true" />
                 Join Slack Community
               </a>
             </div>
