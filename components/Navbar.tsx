@@ -66,6 +66,7 @@ const Navbar: React.FC = () => {
   // Blur effect on scroll
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
