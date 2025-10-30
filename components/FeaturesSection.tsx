@@ -15,42 +15,50 @@ const FeaturesSection: React.FC = () => {
     {
       icon: Monitor,
       title: 'Unified Monitoring',
-      description: 'Monitor your entire infrastructure from a single dashboard with real-time metrics and health status.'
+      description: 'Monitor your entire infrastructure from a single dashboard with real-time metrics and health status.',
+      link: 'https://opsimate.vercel.app/docs/core-features',
     },
     {
       icon: Server,
       title: 'Infrastructure Management',
-      description: 'Manage VMs and Kubernetes clusters seamlessly via SSH without agent installation.'
+      description: 'Manage VMs and Kubernetes clusters seamlessly via SSH without agent installation.',
+      link: 'https://opsimate.vercel.app/docs/providers-services/overview',
     },
     {
       icon: Activity,
       title: 'Real-time Metrics',
-      description: 'Track system performance with instant visibility into CPU, memory, disk, and network usage.'
+      description: 'Track system performance with instant visibility into CPU, memory, disk, and network usage.',
+      link: 'https://opsimate.vercel.app/docs/dashboards/overview',
     },
     {
       icon: Bell,
       title: 'Smart Alerts',
-      description: 'Get intelligent notifications before issues impact users with custom thresholds.'
+      description: 'Get intelligent notifications before issues impact users with custom thresholds.',
+      link: 'https://opsimate.vercel.app/docs/alerts/adding-alerts',
     },
     {
       icon: Database,
       title: 'Log Aggregation',
-      description: 'Centralize logs from all services with powerful search and pattern analysis.'
+      description: 'Centralize logs from all services with powerful search and pattern analysis.',
+      link: 'https://opsimate.vercel.app/docs/integrations/overview',
     },
     {
       icon: GitBranch,
       title: 'Service Discovery',
-      description: 'Auto-discover systemd services and containers without manual configuration.'
+      description: 'Auto-discover systemd services and containers without manual configuration.',
+      link: 'https://opsimate.vercel.app/docs/providers-services/services/add-services',
     },
     {
       icon: Settings,
       title: 'Automated Actions',
-      description: 'Create automated responses with workflows that restart services and scale resources.'
+      description: 'Create automated responses with workflows that restart services and scale resources.',
+      link: 'https://opsimate.vercel.app/docs/dashboards/service-menu',
     },
     {
       icon: GitBranch,
       title: 'Open Source',
-      description: 'Fully open source with transparent development. Contribute and customize freely.'
+      description: 'Fully open source with transparent development. Contribute and customize freely.',
+      link: 'https://opsimate.vercel.app/docs/development',
     }
   ];
 
@@ -77,11 +85,10 @@ const FeaturesSection: React.FC = () => {
               icon={feature.icon}
               title={feature.title}
               description={feature.description}
+              link={feature.link}
             />
           ))}
         </div>
-
-
       </div>
     </section>
   );
