@@ -106,7 +106,7 @@ const CAL_CONFIG_STRING = JSON.stringify(CAL_CONFIG);
                 key={item.name}
                 href={item.href}
                 className={`nav-link text-surface-700 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium ${
-                  activeSection === item.href.split("#").pop()
+                 !item.external && activeSection === item.href.split("#").pop()
                     ? "nav-link-active"
                     : ""
                 }`}
@@ -154,7 +154,7 @@ const CAL_CONFIG_STRING = JSON.stringify(CAL_CONFIG);
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 hover:text-blue-600 transition-colors duration-200"
+              className="text-surface-700 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-200"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -163,14 +163,14 @@ const CAL_CONFIG_STRING = JSON.stringify(CAL_CONFIG);
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-100">
+          <div className="md:hidden py-4 border-t border-surface-200 dark:border-surface-800">
             <div className="flex flex-col space-y-4">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
                   className={`text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 ${
-                    activeSection === item.href.split("#").pop()
+                   !item.external && activeSection === item.href.split("#").pop()
                       ? "text-primary-600 dark:text-primary-400"
                       : ""
                   }`}
