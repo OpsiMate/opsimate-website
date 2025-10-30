@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, Slack } from "lucide-react";
 import Logo from "./Logo";
@@ -6,7 +8,7 @@ import ThemeToggle from "./ThemeToggle";
 import GitHubStarButton from "./GitHubStarsButton";
 
 // constants/contact.ts
-export const CONTACT_EMAIL = 'idan.lut@gmail.com';
+export const CONTACT_EMAIL = "idan.lut@gmail.com";
 export const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`;
 
 interface NavigationItem {
@@ -17,6 +19,8 @@ interface NavigationItem {
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
+  const [scrolled, setScrolled] = useState(false);
 
   const navigation: NavigationItem[] = [
     { name: "Features", href: "/#features" },
@@ -28,20 +32,52 @@ const Navbar: React.FC = () => {
       external: true,
     },
   ];
+
   const slackLink: NavigationItem = {
     name: "Slack",
     href: "https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA",
     external: true,
   };
-  // New Contact link
+
   const contactLink: NavigationItem = {
     name: "Contact Us",
     href: CONTACT_MAILTO,
     external: true,
   };
 
+  // Highlight active section on scroll
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-50% 0px -50% 0px" }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => sections.forEach((section) => observer.unobserve(section));
+  }, []);
+
+  // Blur effect on scroll
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="bg-surface-50 dark:bg-surface-950 shadow-sm border-b border-surface-200 dark:border-surface-800 sticky top-0 z-50 transition-colors duration-200">
+    <nav
+      className={`sticky top-0 z-50 border-b border-surface-200 dark:border-surface-800 transition-all duration-300 ${
+        scrolled
+          ? "navbar-blur shadow-md"
+          : "bg-surface-50 dark:bg-surface-950 shadow-sm"
+      }`}
+    >
       <div className="container-max">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
@@ -55,7 +91,11 @@ const Navbar: React.FC = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-surface-700 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium transition-colors duration-200"
+                className={`nav-link text-surface-700 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium ${
+                  activeSection === item.href.replace("/#", "")
+                    ? "nav-link-active"
+                    : ""
+                }`}
                 {...(item.external && {
                   target: "_blank",
                   rel: "noopener noreferrer",
@@ -64,7 +104,9 @@ const Navbar: React.FC = () => {
                 {item.name}
               </Link>
             ))}
+
             <GitHubStarButton />
+
             <Link
               href={slackLink.href}
               className="text-surface-700 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium transition-colors duration-200 inline-flex items-center gap-2"
@@ -77,13 +119,15 @@ const Navbar: React.FC = () => {
               <Slack size={18} aria-hidden="true" />
               {slackLink.name}
             </Link>
-             {/* Contact Us button */}
-             <a
+
+            {/* Contact Us button */}
+            <a
               href={contactLink.href}
               className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200"
             >
               {contactLink.name}
             </a>
+
             <ThemeToggle />
           </div>
 
@@ -106,7 +150,11 @@ const Navbar: React.FC = () => {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1"
+                  className={`text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 ${
+                    activeSection === item.href.replace("/#", "")
+                      ? "text-primary-600 dark:text-primary-400"
+                      : ""
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                   {...(item.external && {
                     target: "_blank",
@@ -116,6 +164,7 @@ const Navbar: React.FC = () => {
                   {item.name}
                 </Link>
               ))}
+
               {/* Mobile Contact Us link */}
               <a
                 href={contactLink.href}
