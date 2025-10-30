@@ -106,7 +106,7 @@ const CAL_CONFIG_STRING = JSON.stringify(CAL_CONFIG);
                 key={item.name}
                 href={item.href}
                 className={`nav-link text-surface-700 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400 font-medium ${
-                  activeSection === item.href.replace("/#", "")
+                  activeSection === item.href.split("#").pop()
                     ? "nav-link-active"
                     : ""
                 }`}
@@ -170,7 +170,7 @@ const CAL_CONFIG_STRING = JSON.stringify(CAL_CONFIG);
                   key={item.name}
                   href={item.href}
                   className={`text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 px-2 py-1 ${
-                    activeSection === item.href.replace("/#", "")
+                    activeSection === item.href.split("#").pop()
                       ? "text-primary-600 dark:text-primary-400"
                       : ""
                   }`}
