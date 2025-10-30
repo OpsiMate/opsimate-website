@@ -79,6 +79,7 @@ const CAL_CONFIG_STRING = JSON.stringify(CAL_CONFIG);
   // Blur effect on scroll
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
