@@ -10,6 +10,8 @@ interface FeatureCardProps {
   link?: string;
 }
 
+const DEFAULT_DOCS_URL = 'https://opsimate.vercel.app/docs/';
+
 const FeatureCard: React.FC<FeatureCardProps> = ({
   icon: Icon,
   title,
@@ -17,6 +19,8 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   className = '',
   link,
 }) => {
+  const resolvedLink = link ?? DEFAULT_DOCS_URL;
+
   return (
     <div className={`feature-card group hover:scale-105 transition-all duration-300 ${className}`}>
       <div className="flex items-center mb-3">
@@ -27,19 +31,17 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
       <h3 className="text-lg font-semibold text-surface-900 dark:text-surface-100 mb-2">{title}</h3>
       <p className="text-sm text-surface-600 dark:text-surface-400 leading-relaxed">{description}</p>
 
-      {(
-        link ?? 'https://opsimate.vercel.app/docs/'
-      ) && (
+      {resolvedLink && (
         <Link
-          href={link ?? 'https://opsimate.vercel.app/docs/'}
+          href={resolvedLink}
           className="mt-3 inline-flex items-center gap-1 text-blue-600 hover:text-blue-700 text-sm font-medium transition-colors duration-200"
-          {...(link?.startsWith('https') && {
+          {...(resolvedLink.startsWith('https') && {
             target: "_blank",
             rel: "noopener noreferrer"
           })}
         >
           Learn more
-          <ExternalLink className="h-3 w-3" />
+          {resolvedLink.startsWith('https') && <ExternalLink className="h-3 w-3" />}
         </Link>
       )}
     </div>
