@@ -28,6 +28,11 @@ const Footer: React.FC = () => {
       href: 'https://github.com/OpsiMate/OpsiMate', // From documentation
       icon: Github 
     },
+    {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/opsimate/', // Official LinkedIn URL
+    icon: Linkedin 
+    },
     { 
       name: 'Slack Community', 
       href: 'https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA', // From documentation
@@ -60,6 +65,8 @@ const Footer: React.FC = () => {
                     href={social.href}
                     className="text-gray-400 hover:text-white transition-colors duration-200"
                     aria-label={social.name}
+                    target="_blank"             
+                    rel="noopener noreferrer" 
                   >
                     <Icon size={20} />
                   </Link>
