@@ -29,9 +29,9 @@ const Footer: React.FC = () => {
       icon: Github 
     },
     {
-    name: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/opsimate/', // Official LinkedIn URL
-    icon: Linkedin 
+      name: 'LinkedIn',
+      href: 'https://www.linkedin.com/company/opsimate/', // Official LinkedIn URL
+      icon: Linkedin 
     },
     { 
       name: 'Slack Community', 
@@ -65,8 +65,8 @@ const Footer: React.FC = () => {
                     href={social.href}
                     className="text-gray-400 hover:text-white transition-colors duration-200"
                     aria-label={social.name}
-                    target="_blank"             
-                    rel="noopener noreferrer" 
+                    target="_blank"           // 🌟 FIX: Added target="_blank"
+                    rel="noopener noreferrer" // 🌟 FIX: Added rel="noopener noreferrer"
                   >
                     <Icon size={20} />
                   </Link>
@@ -101,6 +101,8 @@ const Footer: React.FC = () => {
                   <Link
                     href={link.href}
                     className="text-gray-300 hover:text-white transition-colors duration-200"
+                    target="_blank"           // 🌟 FIX: Added target="_blank" for external link
+                    rel="noopener noreferrer" // 🌟 FIX: Added rel="noopener noreferrer"
                   >
                     {link.name}
                   </Link>
@@ -118,6 +120,8 @@ const Footer: React.FC = () => {
                   <Link
                     href={link.href}
                     className="text-gray-300 hover:text-white transition-colors duration-200"
+                    target="_blank"           // 🌟 FIX: Added target="_blank" for external links
+                    rel="noopener noreferrer" // 🌟 FIX: Added rel="noopener noreferrer"
                   >
                     {link.name}
                   </Link>
@@ -125,25 +129,9 @@ const Footer: React.FC = () => {
               ))}
             </ul>
           </div>
+          
+          {/* 🗑️ FIX: The duplicate "Open Source" section that was previously here has been removed. */}
 
-          {/* Open Source Links */}
-          <div>
-            <h3 className="font-semibold text-white mb-4">Open Source</h3>
-            <ul className="space-y-2">
-              {footerLinks.opensource.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
 
         {/* Bottom Section */}
