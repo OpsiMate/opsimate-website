@@ -15,256 +15,100 @@ const founders: Contributor[] = [
   {
     name: "Yuval Michaeli",
     role: "Founder",
-    country: "🏳️",
     avatarUrl: "https://avatars.githubusercontent.com/u/30408029?v=4",
     github: "https://github.com/yuvalmich",
-    quote: "Shaping the vision for OpsiMate.",
+    linkedin: "https://www.linkedin.com/in/yuval-michaeli/",
+    quote: "Backend developer with extensive experience in building scalable systems.",
   },
   {
     name: "Idan Lodzki",
     role: "Founder",
-    country: "🏳️",
     avatarUrl: "https://avatars.githubusercontent.com/u/37178156?v=4",
     github: "https://github.com/idanlodzki",
-    quote: "Shaping the vision for OpsiMate.",
+    linkedin: "https://www.linkedin.com/in/idan-lodzki-755939157",
+    quote: "DevOps expert focused on infrastructure automation and reliability.",
   },
   {
     name: "Tamir Goldberg",
     role: "Founder",
-    country: "🏳️",
     avatarUrl: "https://avatars.githubusercontent.com/u/6613551?v=4",
     github: "https://github.com/tamirg",
-    quote: "Shaping the vision for OpsiMate.",
+    linkedin: "https://www.linkedin.com/in/tamir-goldberg-625106119/",
+    quote: "Frontend engineer passionate about distributed systems and monitoring.",
   },
   {
     name: "Sahar Levy",
     role: "Founder",
-    country: "🏳️",
     avatarUrl: "https://avatars.githubusercontent.com/u/43012075?v=4",
     github: "https://github.com/Sahar541998",
-    quote: "Shaping the vision for OpsiMate.",
+    linkedin: "https://www.linkedin.com/in/saharlevy/",
+    quote: "Backend developer specializing in high-performance systems.",
   },
 ];
 
 const communityLeaders: Contributor[] = [
   {
-    name: "Anthony Finney",
-    role: "Community Lead",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/67946673?v=4",
-    github: "https://github.com/AnthonyFinney",
-    quote: "Helping the community grow and thrive.",
-  },
-];
-
-const contributors: Contributor[] = [
-  {
-    name: "Yash Rathod",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/178126084?v=4",
-    github: "https://github.com/yjrathod",
-    quote: "Automation frees minds for creative work.",
-  },
-  {
     name: "Karan Negi",
-    role: "Contributor",
-    country: "🏳️",
+    role: "Community Leader",
     avatarUrl: "https://avatars.githubusercontent.com/u/142792314?v=4",
     github: "https://github.com/KaranNegi20Feb",
-    quote: "Automation frees minds for creative work.",
+    linkedin: "https://www.linkedin.com/in/karan-negi-20feb/",
+    quote: "DevOps specialist who built all workflows and deployment infrastructure.",
   },
   {
-    name: "AsHim Shrestha",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/130267320?v=4",
-    github: "https://github.com/shresthashim",
-    quote: "Automation frees minds for creative work.",
+    name: "Yash Rathod",
+    role: "Community Leader",
+    avatarUrl: "https://avatars.githubusercontent.com/u/178126084?v=4",
+    github: "https://github.com/yjrathod",
+    quote: "Developer and public relations champion for the community.",
+  },
+  {
+    name: "Anthony Finney",
+    role: "Community Leader",
+    avatarUrl: "https://avatars.githubusercontent.com/u/67946673?v=4",
+    github: "https://github.com/AnthonyFinney",
+    linkedin: "https://www.linkedin.com/in/soshie-finney-557361233/",
+    quote: "Developer focused on testing and quality assurance.",
   },
   {
     name: "Manishhh",
-    role: "Contributor",
-    country: "🏳️",
+    role: "Community Leader",
     avatarUrl: "https://avatars.githubusercontent.com/u/80617841?v=4",
     github: "https://github.com/Manishhhsys",
-    quote: "Automation frees minds for creative work.",
-  },
-  {
-    name: "HarK",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/171217644?v=4",
-    github: "https://github.com/HarK-github",
-    quote: "Automation frees minds for creative work.",
+    linkedin: "https://www.linkedin.com/in/manishhhsys/",
+    quote: "Developer helping build and maintain the brand website.",
   },
   {
     name: "Oleksii",
-    role: "Contributor",
-    country: "🏳️",
+    role: "Community Leader",
     avatarUrl: "https://avatars.githubusercontent.com/u/184424508?v=4",
     github: "https://github.com/Oleksii101",
-    quote: "Automation frees minds for creative work.",
-  },
-  {
-    name: "Shreeharsh Shinde",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/132091100?v=4",
-    github: "https://github.com/shreeharshshinde",
-    quote: "Automation frees minds for creative work.",
-  },
-  {
-    name: "Vansh nagar",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/189650812?v=4",
-    github: "https://github.com/vansh-nagar",
-    quote: "Automation frees minds for creative work.",
-  },
-  {
-    name: "Varun Mantri",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/39723815?v=4",
-    github: "https://github.com/varunrmantri23",
-    quote: "Automation frees minds for creative work.",
+    linkedin: "https://www.linkedin.com/in/oleksii-haiduk-101119395/",
+    quote: "Backend developer strengthening the core infrastructure.",
   },
   {
     name: "Raphael Teixeira",
-    role: "Contributor",
-    country: "🏳️",
+    role: "Community Leader",
     avatarUrl: "https://avatars.githubusercontent.com/u/34927505?v=4",
     github: "https://github.com/raphaeltx",
-    quote: "Automation frees minds for creative work.",
+    linkedin: "https://www.linkedin.com/in/raphael-teixeira-2a1012188/",
+    quote: "Senior developer bringing deep technical expertise.",
   },
   {
-    name: "Bhavya Patel",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/100468926?v=4",
-    github: "https://github.com/BhavyaMPatel",
-    quote: "Automation frees minds for creative work.",
+    name: "Varun Mantri",
+    role: "Community Leader",
+    avatarUrl: "https://avatars.githubusercontent.com/u/39723815?v=4",
+    github: "https://github.com/varunrmantri23",
+    linkedin: "https://www.linkedin.com/in/varun-mantri/",
+    quote: "Frontend developer crafting exceptional user experiences.",
   },
   {
-    name: "Rex divakar",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/15235122?v=4",
-    github: "https://github.com/rexdivakar",
-    quote: "Automation frees minds for creative work.",
-  },
-  {
-    name: "SK Akram",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/179671552?v=4",
-    github: "https://github.com/akramcodez",
-    quote: "Automation frees minds for creative work.",
-  },
-  {
-    name: "Nizan Naor",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/90415256?v=4",
-    github: "https://github.com/NizCom",
-    quote: "Automation frees minds for creative work.",
-  },
-  {
-    name: "Mariam Saeed",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/69825646?v=4",
-    github: "https://github.com/Mariam-Saeed",
-    quote: "Automation frees minds for creative work.",
-  },
-  {
-    name: "hparihar-07",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/73985710?v=4",
-    github: "https://github.com/hparihar-07",
-    quote: "Automation frees minds for creative work.",
-  },
-  {
-    name: "sccalabr",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/4111230?v=4",
-    github: "https://github.com/sccalabr",
-    quote: "Automation frees minds for creative work.",
-  },
-  {
-    name: "KANISHKA",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/214576158?v=4",
-    github: "https://github.com/kanishka1804",
-    quote: "Automation frees minds for creative work.",
-  },
-  {
-    name: "JettX",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/150858423?v=4",
-    github: "https://github.com/JetGera",
-    quote: "Automation frees minds for creative work.",
-  },
-  {
-    name: "Harsh Santwani",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/96873014?v=4",
-    github: "https://github.com/HydrallHarsh",
-    quote: "Automation frees minds for creative work.",
-  },
-  {
-    name: "Gilad Iosef",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/101499028?v=4",
-    github: "https://github.com/Gidiy",
-    quote: "Automation frees minds for creative work.",
-  },
-  {
-    name: "Elshad Humbatli",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/216122679?v=4",
-    github: "https://github.com/ElshadHu",
-    quote: "Automation frees minds for creative work.",
-  },
-  {
-    name: "Denis Oliveira",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/8192274?v=4",
-    github: "https://github.com/denisolvr",
-    quote: "Automation frees minds for creative work.",
-  },
-  {
-    name: "Arghya Das",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/95538110?v=4",
-    github: "https://github.com/alfaarghya",
-    quote: "Automation frees minds for creative work.",
-  },
-  {
-    name: "Aman Gupta",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/100619913?v=4",
-    github: "https://github.com/Nexvyn",
-    quote: "Automation frees minds for creative work.",
-  },
-  {
-    name: "Aman Agrawal",
-    role: "Contributor",
-    country: "🏳️",
-    avatarUrl: "https://avatars.githubusercontent.com/u/119893462?v=4",
-    github: "https://github.com/Aman-agraw-35",
-    quote: "Automation frees minds for creative work.",
+    name: "Michael Uzukwu",
+    role: "Community Leader",
+    avatarUrl: "https://avatars.githubusercontent.com/u/172800711?v=4",
+    github: "https://github.com/Mike-4-prog",
+    linkedin: "https://www.linkedin.com/in/michael-uzukwu/",
+    quote: "Technical writer crafting clear documentation for the community.",
   },
 ];
 
@@ -278,7 +122,7 @@ const AboutPage: React.FC = () => {
               About OpsiMate
             </h1>
             <p className="text-lg text-surface-700 dark:text-surface-300">
-              OpsiMate is a growing community of engineers and builders creating a unified, human-friendly way to monitor, manage, and optimize infrastructure. We believe great tooling feels welcoming, transparent, and collaborative built in the open, by real people from around the world.
+              Born from a vision to revolutionize infrastructure monitoring, OpsiMate was founded by a core team of four visionaries who saw a world drowning in fragmented tools. Instead of adding yet another monitoring solution to the chaos, we built one unified platform to control and monitor everything. Our mission is simple but bold: replace the complexity of multiple tools with a single, powerful, intelligent system that brings clarity to the modern infrastructure landscape.
             </p>
             <div className="mt-8 max-w-4xl mx-auto relative">
               <div
@@ -300,47 +144,6 @@ const AboutPage: React.FC = () => {
                   <circle cx="500" cy="110" r="140" fill="url(#rg2)" />
                 </svg>
               </div>
-              <img
-                src="/images/opsimate-dashboard.png"
-                alt="OpsiMate dashboard placeholder"
-                className="w-full h-auto rounded-2xl border border-surface-200 dark:border-surface-800 shadow"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-      <section>
-        <div className="container-max section-padding">
-          <div className="grid gap-6 md:grid-cols-3">
-            <div className="rounded-2xl p-6 bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-800">
-              <h3 className="font-semibold text-surface-900 dark:text-white mb-2">Open & Welcoming</h3>
-              <p className="text-surface-700 dark:text-surface-300">New to the project? You’re in the right place. Friendly discussions, thoughtful reviews, and beginner-friendly issues help everyone contribute at their own pace. ✨</p>
-            </div>
-            <div className="rounded-2xl p-6 bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-800">
-              <h3 className="font-semibold text-surface-900 dark:text-white mb-2">Built Together</h3>
-              <p className="text-surface-700 dark:text-surface-300">From docs and design to code and community, OpsiMate grows through collaboration. We value clarity, curiosity, and kindness. 🤝</p>
-            </div>
-            <div className="rounded-2xl p-6 bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-800">
-              <h3 className="font-semibold text-surface-900 dark:text-white mb-2">Transparent Development</h3>
-              <p className="text-surface-700 dark:text-surface-300">Everything happens in public: roadmaps, issues, and ideas. Transparency builds trust and invites meaningful contributions. 🔍</p>
-            </div>
-            <div className="rounded-2xl p-6 bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-800">
-              <h3 className="font-semibold text-surface-900 dark:text-white mb-2">GitHub</h3>
-              <p className="text-surface-700 dark:text-surface-300 mb-3">Star the repo and follow progress.</p>
-              <GitHubStarButton />
-            </div>
-            <div className="rounded-2xl p-6 bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-800">
-              <h3 className="font-semibold text-surface-900 dark:text-white mb-2">Open Source License</h3>
-              <p className="text-surface-700 dark:text-surface-300 mb-3">MIT-licensed and open to contributions.</p>
-              <Link
-                href="https://github.com/OpsiMate/OpsiMate"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary-600 dark:text-primary-400 hover:underline"
-              >
-                Explore the repository
-              </Link>
             </div>
           </div>
         </div>
@@ -365,27 +168,16 @@ const AboutPage: React.FC = () => {
           </div>
 
           {/* Community Leaders */}
-          <div className="mb-10">
+          <div>
             <h3 className="text-xl md:text-2xl font-semibold text-surface-900 dark:text-white mb-4 text-center">Community Leaders 🌟</h3>
+            <p className="text-surface-700 dark:text-surface-300 text-center mb-6 max-w-2xl mx-auto">
+              Our community leaders are the driving force behind OpsiMate's success. They dedicate their time, expertise, and passion to help build, improve, and grow the platform, making OpsiMate better for everyone.
+            </p>
             <div className={`grid gap-6 ${gridColsFor(communityLeaders.length)} justify-items-center`}>
               {communityLeaders.map((c, idx) => (
                 <PersonCard key={`communityLeaders-${c.name}-${idx}`} contributor={c}  />
               ))}
             </div>
-          </div>
-
-          {/* Contributors / Slack Members */}
-          <div>
-            <h3 className="text-xl md:text-2xl font-semibold text-surface-900 dark:text-white mb-4 text-center">Contributors & Slack Members 💬</h3>
-            <div className={`grid gap-6 ${gridColsFor(contributors.length)} justify-items-center`}>
-              {contributors.map((c, idx) => (
-                <PersonCard key={`contributors-${c.name}-${idx}`} contributor={c} />
-              ))}
-            </div>
-
-            <p className="mt-6 text-sm text-surface-600 dark:text-surface-400 text-center">
-              Want to be featured here? Open a PR to add yourself, or join Slack and say hi.
-            </p>
           </div>
         </div>
       </section>
