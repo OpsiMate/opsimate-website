@@ -32,7 +32,7 @@ const IntegrationsSection: React.FC = () => {
         </svg>
       ),
       color: "text-orange-600",
-      link: "https://opsimate.vercel.app/integrations/grafana",
+      link: "https://opsimate.vercel.app/docs/integrations/grafana",
     },
     {
       name: "Kibana",
@@ -59,7 +59,7 @@ const IntegrationsSection: React.FC = () => {
         </svg>
       ),
       color: "text-purple-600",
-      link: "https://opsimate.vercel.app/integrations/kibana",
+      link: "https://opsimate.vercel.app/docs/integrations/kibana",
     },
     {
       name: "Datadog",
@@ -78,7 +78,7 @@ const IntegrationsSection: React.FC = () => {
         </svg>
       ),
       color: "text-purple-700",
-      link: "https://opsimate.vercel.app/integrations/datadog",
+      link: "https://opsimate.vercel.app/docs/integrations/datadog",
     },
     {
       name: "Docker",
@@ -177,7 +177,7 @@ const IntegrationsSection: React.FC = () => {
         </svg>
       ),
       color: "text-blue-500",
-      link: "https://opsimate.vercel.app/providers-services/services/container-services",
+      link: "https://opsimate.vercel.app/docs/providers-services/services/container-services",
     },
     {
       name: "Kubernetes",
@@ -200,7 +200,7 @@ const IntegrationsSection: React.FC = () => {
         </svg>
       ),
       color: "text-blue-600",
-      link: "https://opsimate.vercel.app/providers-services/services/kubernetes-pods",
+      link: "https://opsimate.vercel.app/docs/providers-services/services/kubernetes-pods",
     },
     {
       name: "Systemd",
@@ -234,7 +234,7 @@ const IntegrationsSection: React.FC = () => {
         </svg>
       ),
       color: "text-blue-600",
-      link: "https://opsimate.vercel.app/providers-services/services/systemd-services",
+      link: "https://opsimate.vercel.app/docs/providers-services/services/systemd-services",
     },
   ];
 
@@ -261,17 +261,17 @@ const IntegrationsSection: React.FC = () => {
               className="bg-surface-50 dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl p-6 hover:shadow-lg dark:hover:shadow-white/10 hover:border-blue-200 dark:hover:border-gray-300 transition-all duration-300 group"
             >
               {/* Integration Icon */}
-              <div className="w-12 h-12 bg-surface-200 dark:bg-surface-700 rounded-lg mb-4 flex items-center justify-center group-hover:bg-blue-50 dark:group-hover:bg-gray-600 transition-colors duration-300">
+              <div className="w-12 h-12 bg-surface-200 dark:bg-white/90 rounded-lg mb-4 flex items-center justify-center group-hover:bg-blue-50 dark:group-hover:bg-white shadow-sm dark:shadow-md transition-all duration-300">
                 {integration.icon }
               </div>
               
-              <div className="mb-2">
+              <div className="mb-2 ">
                 <h3 className="font-semibold text-surface-900 dark:text-surface-100">{integration.name}</h3>
               </div>
               
-              <p className="text-surface-600 dark:text-surface-400 text-sm mb-4 leading-relaxed">
+              <div className="text-surface-600 dark:text-surface-400 text-sm mb-4 leading-relaxed ">
                 {integration.description}
-              </p>
+              </div>
               
               <a 
                 href={integration.link}
