@@ -85,6 +85,32 @@ const CAL_CONFIG_STRING = JSON.stringify(CAL_CONFIG);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Highlight active section on scroll
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-50% 0px -50% 0px" }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => sections.forEach((section) => observer.unobserve(section));
+  }, []);
+
+  // Blur effect on scroll
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <nav
       className={`sticky top-0 z-50 border-b border-surface-200 dark:border-surface-800 transition-all duration-300 ${
