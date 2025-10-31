@@ -29,6 +29,11 @@ const Footer: React.FC = () => {
       icon: Github 
     },
     { 
+      name: 'LinkedIn', 
+      href: 'https://www.linkedin.com/company/opsimate/',
+      icon: Linkedin 
+    },
+    { 
       name: 'Slack Community', 
       href: 'https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA', // From documentation
       icon: Slack 
