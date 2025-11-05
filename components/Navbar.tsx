@@ -20,13 +20,15 @@ const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
   const [scrolled, setScrolled] = useState(false);
-  const calLink = process.env.NEXT_PUBLIC_CAL_DATA_LINK;
-  if(!calLink){
+  const rawCalLink = process.env.NEXT_PUBLIC_CAL_DATA_LINK ?? "";
+  const calLink = rawCalLink.trim();
+  const isCalReady = calLink.length > 0;
+  if(!isCalReady){
     console.error("NEXT_PUBLIC_CAL_DATA_LINK environment variable is not set")
   }
   const CAL_CONFIG = {
   theme: "light",
-  hideEventTypeDetails: false,
+  hideEventTypeDetails: true,
   layout: "month_view"
 } as const;
 
@@ -49,6 +51,9 @@ const CAL_CONFIG_STRING = JSON.stringify(CAL_CONFIG);
     external: true,
   };
   useEffect(() => {
+    if(!isCalReady){
+      return;
+    }
     (async function () {
       try{
         const cal = await getCalApi({ "namespace": "30min" });
@@ -57,7 +62,7 @@ const CAL_CONFIG_STRING = JSON.stringify(CAL_CONFIG);
         console.error("Failed to initialize Cal.com:", error);
       }
     })();
-  }, [])
+  }, [isCalReady])
 
   // Highlight active section on scroll
   useEffect(() => {
@@ -179,12 +184,15 @@ const CAL_CONFIG_STRING = JSON.stringify(CAL_CONFIG);
           </div>
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button
+            {isCalReady &&(
+              <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-surface-700 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-200"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
+            )
+            }
           </div>
         </div>
 
@@ -212,9 +220,13 @@ const CAL_CONFIG_STRING = JSON.stringify(CAL_CONFIG);
               ))}
 
               {/* Mobile Contact Us link */}
-              <button className="font-medium transition-colors duration-200 px-2 py-2 md:w-[20%] w-[35%] bg-primary-600 text-white rounded-lg hover:bg-primary-700 cursor-pointer" data-cal-namespace="30min" data-cal-link={calLink} data-cal-config={CAL_CONFIG_STRING}>
+              {
+                isCalReady && (
+                  <button className="font-medium transition-colors duration-200 px-2 py-2 md:w-[20%] w-[35%] bg-primary-600 text-white rounded-lg hover:bg-primary-700 cursor-pointer" data-cal-namespace="30min" data-cal-link={calLink} data-cal-config={CAL_CONFIG_STRING}>
                 Book A Call
-              </button>
+                 </button>
+                )
+              }
             </div>
           </div>
         )}
