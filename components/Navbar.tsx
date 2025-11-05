@@ -166,7 +166,9 @@ const CAL_CONFIG_STRING = JSON.stringify(CAL_CONFIG);
               {slackLink.name}
             </Link>
             {/* Contact Us button */}
-            <button className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 
+              {
+                isCalReady &&(
+                  <button className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 
             duration-200 
             flex items-center gap-2 flex-shrink-0
             transition-all group"
@@ -180,22 +182,20 @@ const CAL_CONFIG_STRING = JSON.stringify(CAL_CONFIG);
               <span className="whitespace-nowrap relative block text-base font-bold ml-0 group-hover:ml-10 transition-all duration-300">Book a Call</span>
             </div>  
             </button>
+                )
+              }
             <ThemeToggle />
           </div>
           {/* Mobile menu button */}
           <div className="md:hidden">
-            {isCalReady &&(
               <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-surface-700 dark:text-surface-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-200"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
-            )
-            }
           </div>
         </div>
-
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-surface-200 dark:border-surface-800">
