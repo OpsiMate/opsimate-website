@@ -26,7 +26,7 @@ const PersonCard: React.FC<PersonCardProps> = ({ contributor: c }) => (
       </div>
       <div className="flex-1">
         <h3 className="font-semibold text-surface-900 dark:text-white">{c.name}</h3>
-        <p className="text-sm text-surface-600 dark:text-surface-400">{c.role}</p>
+        <div className="text-sm text-surface-600 dark:text-surface-400">{c.role}</div>
       </div>
     </div>
 
