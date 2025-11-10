@@ -11,6 +11,8 @@ module.exports = {
       fontFamily: {
         'inter': ['Inter', 'sans-serif'],
         'sans': ['Inter', 'sans-serif'],
+        'playfair': ['"Playfair Display"', 'serif'],
+        'source-sans': ['"Source Sans 3"', 'sans-serif'],
       },
       colors: {
         primary: {
