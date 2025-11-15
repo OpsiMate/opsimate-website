@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import React, { ReactNode, SetStateAction, useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 import FeatureCard from './FeatureCard';
 
@@ -145,11 +145,23 @@ const FeaturesSection: React.FC = () => {
     };
   }, [isPlaying, slide, slideCount, slideDurationMs]);
 
-  const jumpTo = (i: number) => {
+  const runSlideTransition = (action: SetStateAction<number>) => {
     setIsSlideChanging(true);
-    setSlide(i);
+    setSlide(action);
     setProgress(0);
     setTimeout(() => setIsSlideChanging(false), 250);
+  };
+
+  const jumpTo = (i: number) => {
+    runSlideTransition(() => i);
+  };
+
+  const goToPrevious = () => {
+    runSlideTransition((s) => (s + slideCount - 1) % slideCount);
+  };
+
+  const goToNext = () => {
+    runSlideTransition((s) => (s + 1) % slideCount);
   };
 
   useEffect(() => {
@@ -212,7 +224,7 @@ const FeaturesSection: React.FC = () => {
           )}
         >
         <div className="absolute left-6 right-6 bottom-3 flex flex-wrap items-center gap-4 lg:gap-6 bg-white/80 dark:bg-surface-900/80 border-2 border-surface-900 dark:border-white/20 px-4 py-3 shadow-[8px_8px_0_rgba(15,15,15,0.08)] backdrop-blur">
-            <button aria-label="Previous" className="h-12 w-12 grid place-items-center border-2 border-surface-900 dark:border-white/20 bg-transparent text-surface-900 dark:text-white transition-colors hover:bg-surface-900 hover:text-white dark:hover:bg-white dark:hover:text-surface-900" onClick={() => { setIsSlideChanging(true); setSlide((s) => (s + slideCount - 1) % slideCount); setProgress(0); setTimeout(() => setIsSlideChanging(false), 250); }}>
+            <button aria-label="Previous" className="h-12 w-12 grid place-items-center border-2 border-surface-900 dark:border-white/20 bg-transparent text-surface-900 dark:text-white transition-colors hover:bg-surface-900 hover:text-white dark:hover:bg-white dark:hover:text-surface-900" onClick={goToPrevious}>
               <span className="sr-only">Previous</span>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 15 5 9l6-6" stroke="currentColor" strokeWidth="2"/></svg>
             </button>
@@ -234,13 +246,18 @@ const FeaturesSection: React.FC = () => {
                   >
                     <span
                       className={`absolute inset-y-0 left-0 bg-[#0a5ad4] transition-[width,opacity] duration-200 ${slide === i ? 'opacity-100' : 'opacity-30'}`}
-                      style={{ width: slide === i ? `${Math.round(progress * 100)}%` : '100%' }}
+                       style={{
+                        width:
+                          slide === i
+                            ? (isPlaying ? `${Math.round(progress * 100)}%` : '100%')
+                            : '100%',
+                      }}
                     />
                   </button>
                 ))}
               </div>
             </div>
-            <button aria-label="Next" className="h-12 w-12 ml-auto grid place-items-center border-2 border-surface-900 dark:border-white/20 bg-transparent text-surface-900 dark:text-white transition-colors hover:bg-surface-900 hover:text-white dark:hover:bg-white dark:hover:text-surface-900" onClick={() => { setIsSlideChanging(true); setSlide((s) => (s + 1) % slideCount); setProgress(0); setTimeout(() => setIsSlideChanging(false), 250); }}>
+            <button aria-label="Next" className="h-12 w-12 ml-auto grid place-items-center border-2 border-surface-900 dark:border-white/20 bg-transparent text-surface-900 dark:text-white transition-colors hover:bg-surface-900 hover:text-white dark:hover:bg-white dark:hover:text-surface-900" onClick={goToNext}>
               <span className="sr-only">Next</span>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="m7 3 6 6-6 6" stroke="currentColor" strokeWidth="2"/></svg>
             </button>
