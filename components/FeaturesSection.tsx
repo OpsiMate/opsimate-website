@@ -90,9 +90,9 @@ const SLIDES: SlideSpec[] = [
 const FeaturesSection: React.FC = () => {
   const [slide, setSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
-  const progressRef = useRef<NodeJS.Timeout | null>(null);
-  const transitionRef = useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const transitionRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [progress, setProgress] = useState(0);
   const [isSlideChanging, setIsSlideChanging] = useState(false);
   const heroRef = useRef<HTMLDivElement | null>(null);
@@ -114,8 +114,18 @@ const FeaturesSection: React.FC = () => {
       return () => mediaQuery.removeEventListener('change', syncPlayback);
     }
 
-    mediaQuery.addListener(syncPlayback);
-    return () => mediaQuery.removeListener(syncPlayback);
+    const previousOnChange = mediaQuery.onchange;
+    const handleChange = (event: MediaQueryListEvent) => {
+      previousOnChange?.call(mediaQuery, event);
+      syncPlayback(event);
+    };
+
+    mediaQuery.onchange = handleChange;
+    return () => {
+      if (mediaQuery.onchange === handleChange) {
+        mediaQuery.onchange = previousOnChange ?? null;
+      }
+    };
   }, []);
 
   const copy = SLIDES[slide];
@@ -187,12 +197,14 @@ const FeaturesSection: React.FC = () => {
       setLeftScaledHeight(Math.round(neededH * s));
     };
     const onResize = () => {
-      const id = requestAnimationFrame(recompute);
-      return () => cancelAnimationFrame(id);
+      requestAnimationFrame(recompute);
     };
+
+    requestAnimationFrame(recompute);
+
     window.addEventListener('resize', onResize);
     return () => {
-      window.removeEventListener('resize', onResize);
+    window.removeEventListener('resize', onResize);
     };
   }, []);
 
