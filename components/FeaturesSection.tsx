@@ -92,6 +92,7 @@ const FeaturesSection: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const progressRef = useRef<NodeJS.Timeout | null>(null);
+  const transitionRef = useRef<NodeJS.Timeout | null>(null);
   const [progress, setProgress] = useState(0);
   const [isSlideChanging, setIsSlideChanging] = useState(false);
   const heroRef = useRef<HTMLDivElement | null>(null);
@@ -135,7 +136,8 @@ const FeaturesSection: React.FC = () => {
       setProgress(0);
       setIsSlideChanging(true);
       setSlide((s) => (s + 1) % slideCount);
-      setTimeout(() => setIsSlideChanging(false), 250);
+      if (transitionRef.current) clearTimeout(transitionRef.current);
+      transitionRef.current = setTimeout(() => setIsSlideChanging(false), 250);
     }, slideDurationMs);
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
@@ -147,7 +149,8 @@ const FeaturesSection: React.FC = () => {
     setIsSlideChanging(true);
     setSlide(action);
     setProgress(0);
-    setTimeout(() => setIsSlideChanging(false), 250);
+    if (transitionRef.current) clearTimeout(transitionRef.current);
+    transitionRef.current = setTimeout(() => setIsSlideChanging(false), 250);
   };
 
   const jumpTo = (i: number) => {
@@ -161,6 +164,12 @@ const FeaturesSection: React.FC = () => {
   const goToNext = () => {
     runSlideTransition((s) => (s + 1) % slideCount);
   };
+
+  useEffect(() => {
+    return () => {
+      if (transitionRef.current) clearTimeout(transitionRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     const recompute = () => {
@@ -177,14 +186,15 @@ const FeaturesSection: React.FC = () => {
       setLeftScale(s);
       setLeftScaledHeight(Math.round(neededH * s));
     };
-    const id = requestAnimationFrame(recompute);
-    const onResize = () => recompute();
+    const onResize = () => {
+      const id = requestAnimationFrame(recompute);
+      return () => cancelAnimationFrame(id);
+    };
     window.addEventListener('resize', onResize);
     return () => {
-      cancelAnimationFrame(id);
       window.removeEventListener('resize', onResize);
     };
-  }, [slide]);
+  }, []);
 
   return (
     <section id="features" className="py-24 bg-[#f4f1ea] dark:bg-surface-950">
