@@ -14,7 +14,7 @@ interface SlideSpec {
 
 const FeaturesSection: React.FC = () => {
   const [slide, setSlide] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const progressRef = useRef<NodeJS.Timeout | null>(null);
   const [progress, setProgress] = useState(0);
@@ -32,7 +32,7 @@ const FeaturesSection: React.FC = () => {
         ctaHref: 'https://opsimate.vercel.app/docs/core-features',
         ctaText: 'Learn more',
         imageSrc: '/images/unifiedMonitoring.jpg',
-        imageAlt: 'Opsimate feature preview placeholder',
+        imageAlt: 'Unified monitoring dashboard showing cross-platform telemetry',
         mediaDurationMs: 5000,
       },
       {
@@ -41,7 +41,7 @@ const FeaturesSection: React.FC = () => {
         ctaHref: 'https://opsimate.vercel.app/docs/providers-services/overview',
         ctaText: 'Learn more',
         imageSrc: '/images/infrastructureManagement.jpg',
-        imageAlt: 'Opsimate feature preview placeholder',
+        imageAlt: 'Infrastructure management inventory view listing providers and services',
         mediaDurationMs: 5000,
       },
       {
@@ -50,7 +50,7 @@ const FeaturesSection: React.FC = () => {
         ctaHref: 'https://opsimate.vercel.app/docs/dashboards/overview',
         ctaText: 'Learn more',
         imageSrc: '/images/real-timeMetrics.jpg',
-        imageAlt: 'Opsimate feature preview placeholder',
+        imageAlt: 'Real-time performance metrics charts with live service data',
         mediaDurationMs: 5000,
       },
       {
@@ -59,7 +59,7 @@ const FeaturesSection: React.FC = () => {
         ctaHref: 'https://opsimate.vercel.app/docs/alerts/adding-alerts',
         ctaText: 'Learn more',
         imageSrc: '/images/smartAlerts.jpg',
-        imageAlt: 'Opsimate feature preview placeholder',
+        imageAlt: 'Smart alerts panel with status badges and acknowledgment timeline',
         mediaDurationMs: 5000,
       },
       {
@@ -68,7 +68,7 @@ const FeaturesSection: React.FC = () => {
         ctaHref: 'https://opsimate.vercel.app/docs/integrations/overview',
         ctaText: 'Learn more',
         imageSrc: '/images/logAggregation.jpg',
-        imageAlt: 'Opsimate feature preview placeholder',
+        imageAlt: 'Log aggregation feed combining events from multiple observability tools',
         mediaDurationMs: 5000,
       },
       {
@@ -77,7 +77,7 @@ const FeaturesSection: React.FC = () => {
         ctaHref: 'https://opsimate.vercel.app/docs/providers-services/services/add-services',
         ctaText: 'Learn more',
         imageSrc: '/images/serviceDiscovery.jpg',
-        imageAlt: 'Opsimate feature preview placeholder',
+        imageAlt: 'Service discovery workflow for selecting containers and pods',
         mediaDurationMs: 5000,
       },
       {
@@ -86,7 +86,7 @@ const FeaturesSection: React.FC = () => {
         ctaHref: 'https://opsimate.vercel.app/docs/dashboards/service-menu',
         ctaText: 'Learn more',
         imageSrc: '/images/automatedActions.jpg',
-        imageAlt: 'Opsimate feature preview placeholder',
+        imageAlt: 'Automated actions drawer with start stop restart service controls',
         mediaDurationMs: 5000,
       },
       {
@@ -95,10 +95,28 @@ const FeaturesSection: React.FC = () => {
         ctaHref: 'https://opsimate.vercel.app/docs/development',
         ctaText: 'Learn more',
         imageSrc: '/images/openSource.jpg',
-        imageAlt: 'Opsimate feature preview placeholder',
+        imageAlt: 'Open source contributor guide highlighting repo setup steps',
         mediaDurationMs: 5000,
       },
     ];
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mediaQuery = window.matchMedia('(min-width: 1024px)');
+    const syncPlayback = (event: MediaQueryListEvent) => {
+      setIsPlaying(event.matches);
+    };
+
+    setIsPlaying(mediaQuery.matches);
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', syncPlayback);
+      return () => mediaQuery.removeEventListener('change', syncPlayback);
+    }
+
+    mediaQuery.addListener(syncPlayback);
+    return () => mediaQuery.removeListener(syncPlayback);
   }, []);
 
   const copy = slides[slide];
