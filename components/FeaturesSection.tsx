@@ -1,4 +1,4 @@
-import React, { ReactNode, SetStateAction, useEffect, useMemo, useRef, useState } from 'react';
+import React, { ReactNode, SetStateAction, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import FeatureCard from './FeatureCard';
 
@@ -12,6 +12,81 @@ interface SlideSpec {
   mediaDurationMs?: number;
 }
 
+const SLIDES: SlideSpec[] = [
+  {
+    heading: 'Unified Monitoring',
+    description: 'Bring bare metal, Kubernetes, Lambda, and every third-party integration into one observability command center. Correlate metrics, logs, alerts, and automations from every tool to see the full impact of changes in real time.',
+    ctaHref: 'https://opsimate.vercel.app/docs/core-features',
+    ctaText: 'Learn more',
+    imageSrc: '/images/unifiedMonitoring.jpg',
+    imageAlt: 'Unified monitoring dashboard showing cross-platform telemetry',
+    mediaDurationMs: 5000,
+  },
+  {
+    heading: 'Infrastructure Management',
+    description: 'Treat each provider as a living inventory of servers, clusters, and containers, and manage them from one menu. Drill into any provider to supervise the services it hosts, regardless of whether it is systemd, Docker, or Kubernetes based.',
+    ctaHref: 'https://opsimate.vercel.app/docs/providers-services/overview',
+    ctaText: 'Learn more',
+    imageSrc: '/images/infrastructureManagement.jpg',
+    imageAlt: 'Infrastructure management inventory view listing providers and services',
+    mediaDurationMs: 5000,
+  },
+  {
+    heading: 'Real-time Metrics',
+    description: 'Use the main dashboard to watch health snapshots, search services, and launch controls without leaving the page. Real-time performance cards, logs, and filters keep every workload observable and actionable at a glance.',
+    ctaHref: 'https://opsimate.vercel.app/docs/dashboards/overview',
+    ctaText: 'Learn more',
+    imageSrc: '/images/real-timeMetrics.jpg',
+    imageAlt: 'Real-time performance metrics charts with live service data',
+    mediaDurationMs: 5000,
+  },
+  {
+    heading: 'Smart Alerts',
+    description: 'Sync alert rules from Grafana and other providers, map them to service tags, and surface active states right inside the service menu. Alerts follow the same lifecycle as your external tools, so operators never miss a warning or acknowledgment.',
+    ctaHref: 'https://opsimate.vercel.app/docs/alerts/adding-alerts',
+    ctaText: 'Learn more',
+    imageSrc: '/images/smartAlerts.jpg',
+    imageAlt: 'Smart alerts panel with status badges and acknowledgment timeline',
+    mediaDurationMs: 5000,
+  },
+  {
+    heading: 'Log Aggregation',
+    description: 'Wire up Grafana, Kibana, Datadog, or any preferred observability stack to stream monitoring data, logs, and actions into OpsiMate. Use integrations to pivot between dashboards, deep links, and remediation steps without context switching.',
+    ctaHref: 'https://opsimate.vercel.app/docs/integrations/overview',
+    ctaText: 'Learn more',
+    imageSrc: '/images/logAggregation.jpg',
+    imageAlt: 'Log aggregation feed combining events from multiple observability tools',
+    mediaDurationMs: 5000,
+  },
+  {
+    heading: 'Service Discovery',
+    description: 'Start from any provider, pop open the contextual menu, and add the services you want under management. Automatic discovery plus guided selection keeps every container, systemd unit, or pod tied to the right owner and monitoring policy.',
+    ctaHref: 'https://opsimate.vercel.app/docs/providers-services/services/add-services',
+    ctaText: 'Learn more',
+    imageSrc: '/images/serviceDiscovery.jpg',
+    imageAlt: 'Service discovery workflow for selecting containers and pods',
+    mediaDurationMs: 5000,
+  },
+  {
+    heading: 'Automated Actions',
+    description: 'The service menu brings start, stop, restart, force stop, log access, health checks, and scripted actions to a single drawer. Tailor controls per service type—systemd, Docker, or Kubernetes—to resolve incidents without hopping between shells.',
+    ctaHref: 'https://opsimate.vercel.app/docs/dashboards/service-menu',
+    ctaText: 'Learn more',
+    imageSrc: '/images/automatedActions.jpg',
+    imageAlt: 'Automated actions drawer with start stop restart service controls',
+    mediaDurationMs: 5000,
+  },
+  {
+    heading: 'Open Source',
+    description: 'Clone the repo, install dependencies with pnpm, and run both client and server locally to extend the platform. Tests, linting, and a transparent workflow make it straightforward to contribute features or adapt OpsiMate to your stack.',
+    ctaHref: 'https://opsimate.vercel.app/docs/development',
+    ctaText: 'Learn more',
+    imageSrc: '/images/openSource.jpg',
+    imageAlt: 'Open source contributor guide highlighting repo setup steps',
+    mediaDurationMs: 5000,
+  },
+];
+
 const FeaturesSection: React.FC = () => {
   const [slide, setSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -23,83 +98,6 @@ const FeaturesSection: React.FC = () => {
   const leftContentRef = useRef<HTMLDivElement | null>(null);
   const [leftScale, setLeftScale] = useState(1);
   const [leftScaledHeight, setLeftScaledHeight] = useState<number | null>(null);
-
-  const slides = useMemo<SlideSpec[]>(() => {
-    return [
-      {
-        heading: 'Unified Monitoring',
-        description: 'Bring bare metal, Kubernetes, Lambda, and every third-party integration into one observability command center. Correlate metrics, logs, alerts, and automations from every tool to see the full impact of changes in real time.',
-        ctaHref: 'https://opsimate.vercel.app/docs/core-features',
-        ctaText: 'Learn more',
-        imageSrc: '/images/unifiedMonitoring.jpg',
-        imageAlt: 'Unified monitoring dashboard showing cross-platform telemetry',
-        mediaDurationMs: 5000,
-      },
-      {
-        heading: 'Infrastructure Management',
-        description: 'Treat each provider as a living inventory of servers, clusters, and containers, and manage them from one menu. Drill into any provider to supervise the services it hosts, regardless of whether it is systemd, Docker, or Kubernetes based.',
-        ctaHref: 'https://opsimate.vercel.app/docs/providers-services/overview',
-        ctaText: 'Learn more',
-        imageSrc: '/images/infrastructureManagement.jpg',
-        imageAlt: 'Infrastructure management inventory view listing providers and services',
-        mediaDurationMs: 5000,
-      },
-      {
-        heading: 'Real-time Metrics',
-        description: 'Use the main dashboard to watch health snapshots, search services, and launch controls without leaving the page. Real-time performance cards, logs, and filters keep every workload observable and actionable at a glance.',
-        ctaHref: 'https://opsimate.vercel.app/docs/dashboards/overview',
-        ctaText: 'Learn more',
-        imageSrc: '/images/real-timeMetrics.jpg',
-        imageAlt: 'Real-time performance metrics charts with live service data',
-        mediaDurationMs: 5000,
-      },
-      {
-        heading: 'Smart Alerts',
-        description: 'Sync alert rules from Grafana and other providers, map them to service tags, and surface active states right inside the service menu. Alerts follow the same lifecycle as your external tools, so operators never miss a warning or acknowledgment.',
-        ctaHref: 'https://opsimate.vercel.app/docs/alerts/adding-alerts',
-        ctaText: 'Learn more',
-        imageSrc: '/images/smartAlerts.jpg',
-        imageAlt: 'Smart alerts panel with status badges and acknowledgment timeline',
-        mediaDurationMs: 5000,
-      },
-      {
-        heading: 'Log Aggregation',
-        description: 'Wire up Grafana, Kibana, Datadog, or any preferred observability stack to stream monitoring data, logs, and actions into OpsiMate. Use integrations to pivot between dashboards, deep links, and remediation steps without context switching.',
-        ctaHref: 'https://opsimate.vercel.app/docs/integrations/overview',
-        ctaText: 'Learn more',
-        imageSrc: '/images/logAggregation.jpg',
-        imageAlt: 'Log aggregation feed combining events from multiple observability tools',
-        mediaDurationMs: 5000,
-      },
-      {
-        heading: 'Service Discovery',
-        description: 'Start from any provider, pop open the contextual menu, and add the services you want under management. Automatic discovery plus guided selection keeps every container, systemd unit, or pod tied to the right owner and monitoring policy.',
-        ctaHref: 'https://opsimate.vercel.app/docs/providers-services/services/add-services',
-        ctaText: 'Learn more',
-        imageSrc: '/images/serviceDiscovery.jpg',
-        imageAlt: 'Service discovery workflow for selecting containers and pods',
-        mediaDurationMs: 5000,
-      },
-      {
-        heading: 'Automated Actions',
-        description: 'The service menu brings start, stop, restart, force stop, log access, health checks, and scripted actions to a single drawer. Tailor controls per service type—systemd, Docker, or Kubernetes—to resolve incidents without hopping between shells.',
-        ctaHref: 'https://opsimate.vercel.app/docs/dashboards/service-menu',
-        ctaText: 'Learn more',
-        imageSrc: '/images/automatedActions.jpg',
-        imageAlt: 'Automated actions drawer with start stop restart service controls',
-        mediaDurationMs: 5000,
-      },
-      {
-        heading: 'Open Source',
-        description: 'Clone the repo, install dependencies with pnpm, and run both client and server locally to extend the platform. Tests, linting, and a transparent workflow make it straightforward to contribute features or adapt OpsiMate to your stack.',
-        ctaHref: 'https://opsimate.vercel.app/docs/development',
-        ctaText: 'Learn more',
-        imageSrc: '/images/openSource.jpg',
-        imageAlt: 'Open source contributor guide highlighting repo setup steps',
-        mediaDurationMs: 5000,
-      },
-    ];
-  }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -119,8 +117,8 @@ const FeaturesSection: React.FC = () => {
     return () => mediaQuery.removeListener(syncPlayback);
   }, []);
 
-  const copy = slides[slide];
-  const slideCount = slides.length;
+  const copy = SLIDES[slide];
+  const slideCount = SLIDES.length;
   const slideDurationMs = copy.mediaDurationMs ?? 5000;
 
   useEffect(() => {
@@ -225,7 +223,6 @@ const FeaturesSection: React.FC = () => {
         >
         <div className="absolute left-6 right-6 bottom-3 flex flex-wrap items-center gap-4 lg:gap-6 bg-white/80 dark:bg-surface-900/80 border-2 border-surface-900 dark:border-white/20 px-4 py-3 shadow-[8px_8px_0_rgba(15,15,15,0.08)] backdrop-blur">
             <button aria-label="Previous" className="h-12 w-12 grid place-items-center border-2 border-surface-900 dark:border-white/20 bg-transparent text-surface-900 dark:text-white transition-colors hover:bg-surface-900 hover:text-white dark:hover:bg-white dark:hover:text-surface-900" onClick={goToPrevious}>
-              <span className="sr-only">Previous</span>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 15 5 9l6-6" stroke="currentColor" strokeWidth="2"/></svg>
             </button>
             <div className="lg:flex items-center gap-3 text-[11px] uppercase tracking-[0.3em] hidden">
@@ -237,10 +234,10 @@ const FeaturesSection: React.FC = () => {
                 )}
               </button>
               <div className="flex items-center gap-2">
-                {Array.from({ length: slideCount }).map((_, i) => (
+                {SLIDES.map((feature, i) => (
                   <button
                     key={i}
-                    aria-label={`Slide ${i + 1}`}
+                    aria-label={`Go to feature: ${feature.heading}`}
                     onClick={() => jumpTo(i)}
                     className={`relative h-2 w-12 border border-surface-900/20 dark:border-white/30 overflow-hidden`}
                   >
@@ -258,7 +255,6 @@ const FeaturesSection: React.FC = () => {
               </div>
             </div>
             <button aria-label="Next" className="h-12 w-12 ml-auto grid place-items-center border-2 border-surface-900 dark:border-white/20 bg-transparent text-surface-900 dark:text-white transition-colors hover:bg-surface-900 hover:text-white dark:hover:bg-white dark:hover:text-surface-900" onClick={goToNext}>
-              <span className="sr-only">Next</span>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="m7 3 6 6-6 6" stroke="currentColor" strokeWidth="2"/></svg>
             </button>
           </div>
