@@ -9,16 +9,15 @@ const HeroSection: React.FC = () => {
           {/* Left Column - Content */}
           <div className="text-center lg:text-left">
             <div className="inline-flex items-center bg-surface-200 dark:bg-surface-800 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-full text-sm font-medium mb-4">
-              <span className="mr-2">🚀</span>
-              Open Source Infrastructure Management
+              <span className="mr-2">🔔</span>
+              Unified Alert Management Platform
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-surface-900 dark:text-surface-100 mb-6 leading-tight">
-              Streamline Your{' '}
-              <span className="gradient-text">Infrastructure Operations</span>
+              All Your Alerts in{' '}
+              <span className="gradient-text">One Single Pane of Glass</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl">
-              OpsiMate is an <strong>open source</strong> platform that provides comprehensive infrastructure monitoring,
-              automation, and management tools. Transform complexity into clarity with our unified, intelligent platform.
+              OpsiMate is an <strong>open source</strong> alert management platform that consolidates alerts from every monitoring tool, cloud provider, and service into one unified dashboard. Stop switching between tools—see everything, respond faster, and eliminate alert fatigue.
             </p>
 
             {/* CTA Buttons */}
@@ -82,14 +81,14 @@ const HeroSection: React.FC = () => {
               <div className="absolute -top-4 -right-4 bg-surface-50 dark:bg-surface-800 rounded-lg shadow-lg p-3 border border-surface-200 dark:border-surface-700">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                  <span className="text-sm font-medium text-surface-700 dark:text-surface-300">All in One Place</span>
+                  <span className="text-sm font-medium text-surface-700 dark:text-surface-300">All Alerts Unified</span>
                 </div>
               </div>
               
               <div className="absolute -bottom-4 -left-4 bg-surface-50 dark:bg-surface-800 rounded-lg shadow-lg p-3 border border-surface-200 dark:border-surface-700">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
-                  <span className="text-sm font-medium text-surface-700 dark:text-surface-300">Real-time Monitoring</span>
+                  <span className="text-sm font-medium text-surface-700 dark:text-surface-300">Real-time Alerts</span>
                 </div>
               </div>
             </div>

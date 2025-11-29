@@ -13,46 +13,46 @@ import FeatureCard from './FeatureCard';
 const FeaturesSection: React.FC = () => {
   const features = [
     {
-      icon: Monitor,
-      title: 'Unified Monitoring',
-      description: 'Monitor your entire infrastructure from a single dashboard with real-time metrics and health status.',
-      link: 'https://opsimate.vercel.app/docs/core-features',
+      icon: Bell,
+      title: 'Unified Alert Dashboard',
+      description: 'Consolidate alerts from all your monitoring tools, cloud providers, and services into one single pane of glass.',
+      link: 'https://opsimate.vercel.app/docs/alerts/adding-alerts',
     },
     {
-      icon: Server,
-      title: 'Infrastructure Management',
-      description: 'Manage VMs and Kubernetes clusters seamlessly via SSH without agent installation.',
-      link: 'https://opsimate.vercel.app/docs/providers-services/overview',
+      icon: Monitor,
+      title: 'Multi-Source Integration',
+      description: 'Connect Prometheus, Grafana, Datadog, AWS CloudWatch, and dozens of other alert sources seamlessly.',
+      link: 'https://opsimate.vercel.app/docs/integrations/overview',
     },
     {
       icon: Activity,
-      title: 'Real-time Metrics',
-      description: 'Track system performance with instant visibility into CPU, memory, disk, and network usage.',
+      title: 'Real-time Alert Aggregation',
+      description: 'See all alerts in real-time with intelligent deduplication and correlation to reduce noise.',
       link: 'https://opsimate.vercel.app/docs/dashboards/overview',
     },
     {
-      icon: Bell,
-      title: 'Smart Alerts',
-      description: 'Get intelligent notifications before issues impact users with custom thresholds.',
+      icon: Settings,
+      title: 'Smart Alert Routing',
+      description: 'Route alerts to the right teams with intelligent filtering, prioritization, and escalation rules.',
       link: 'https://opsimate.vercel.app/docs/alerts/adding-alerts',
     },
     {
       icon: Database,
-      title: 'Log Aggregation',
-      description: 'Centralize logs from all services with powerful search and pattern analysis.',
-      link: 'https://opsimate.vercel.app/docs/integrations/overview',
+      title: 'Alert History & Analytics',
+      description: 'Track alert patterns, response times, and trends to optimize your incident response.',
+      link: 'https://opsimate.vercel.app/docs/dashboards/overview',
     },
     {
       icon: GitBranch,
-      title: 'Service Discovery',
-      description: 'Auto-discover systemd services and containers without manual configuration.',
-      link: 'https://opsimate.vercel.app/docs/providers-services/services/add-services',
+      title: 'Automated Response',
+      description: 'Trigger automated workflows and remediation actions directly from alerts to resolve issues faster.',
+      link: 'https://opsimate.vercel.app/docs/dashboards/service-menu',
     },
     {
-      icon: Settings,
-      title: 'Automated Actions',
-      description: 'Create automated responses with workflows that restart services and scale resources.',
-      link: 'https://opsimate.vercel.app/docs/dashboards/service-menu',
+      icon: Server,
+      title: 'Infrastructure Visibility',
+      description: 'Get complete context for every alert with infrastructure topology and service dependencies.',
+      link: 'https://opsimate.vercel.app/docs/providers-services/overview',
     },
     {
       icon: GitBranch,
@@ -69,11 +69,11 @@ const FeaturesSection: React.FC = () => {
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-surface-100 mb-3">
             Everything You Need to{' '}
-            <span className="gradient-text">Manage Infrastructure</span>
+            <span className="gradient-text">Manage All Your Alerts</span>
           </h2>
           <p className="text-lg text-surface-600 dark:text-surface-400 max-w-2xl mx-auto">
-            OpsiMate provides comprehensive tools to monitor, manage, and optimize 
-            your infrastructure from a single platform.
+            OpsiMate consolidates alerts from every source into one unified platform, 
+            giving you complete visibility and control over your entire infrastructure's health.
           </p>
         </div>
 

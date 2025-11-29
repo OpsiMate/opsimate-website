@@ -122,7 +122,7 @@ const AboutPage: React.FC = () => {
               About OpsiMate
             </h1>
             <p className="text-lg text-surface-700 dark:text-surface-300">
-              Born from a vision to revolutionize infrastructure monitoring, OpsiMate was founded by a core team of four visionaries who saw a world drowning in fragmented tools. Instead of adding yet another monitoring solution to the chaos, we built one unified platform to control and monitor everything. Our mission is simple but bold: replace the complexity of multiple tools with a single, powerful, intelligent system that brings clarity to the modern infrastructure landscape.
+              Born from the frustration of alert fatigue and tool sprawl, OpsiMate was founded by a core team of four visionaries who experienced firsthand the chaos of managing alerts across dozens of platforms. Instead of adding another monitoring tool to the noise, we built a unified alert management platform—your single pane of glass for every alert, from every source. Our mission is simple but bold: consolidate all your alerts into one intelligent platform, giving you complete visibility and control over your entire infrastructure's health in one place.
             </p>
             <div className="mt-8 max-w-4xl mx-auto relative">
               <div
