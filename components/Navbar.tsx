@@ -42,6 +42,11 @@ const CAL_CONFIG_STRING = JSON.stringify(CAL_CONFIG);
       href: "https://opsimate.vercel.app/#integrations",
       external: true,
     },
+    {
+      name: "Demo",
+      href: "https://demo.opsimate.com/?playground=true",
+      external: true,
+    },
     { name: "About", href: "/about" },
   ];
 
