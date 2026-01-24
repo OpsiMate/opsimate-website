@@ -20,29 +20,51 @@ const HeroSection: React.FC = () => {
               OpsiMate is an <strong>open source</strong> alert management platform that consolidates alerts from every monitoring tool, cloud provider, and service into one unified dashboard. Stop switching between tools—see everything, respond faster, and eliminate alert fatigue.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-              <a
-                href="https://github.com/OpsiMate/OpsiMate"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary text-lg px-8 py-4 inline-flex items-center gap-2"
-              >
-                Get Started
-                <ArrowRight className="h-5 w-5" />
-              </a>
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
+            {/* Get Started – Primary */}
+            <a
+              href="https://github.com/OpsiMate/OpsiMate"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary text-lg px-8 py-4 inline-flex items-center gap-2"
+            >
+              Get Started
+              <ArrowRight className="h-5 w-5" />
+            </a>
+          
+            {/* Demo – Highly visible secondary */}
+            <a
+              href="/demo"
+              className="relative inline-flex items-center gap-2 text-lg px-8 py-4 rounded-xl
+                         border-2 border-blue-600 text-blue-600
+                         hover:bg-blue-50 dark:hover:bg-blue-950
+                         transition-all duration-300
+                         ring-2 ring-blue-500/30 hover:ring-blue-500/60"
+            >
+              <Play className="h-5 w-5" />
+              Live Demo
+          
+              {/* subtle attention pulse */}
+              <span className="absolute -top-2 -right-2 flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+              </span>
+            </a>
+          
+            {/* Slack – Tertiary */}
+            <a
+              href="https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary text-lg px-8 py-4 inline-flex items-center gap-2"
+              aria-label="Join our Slack community"
+            >
+              <Slack className="h-5 w-5" aria-hidden="true" />
+              Join Slack
+            </a>
+          </div>
 
-              <a
-                href="https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary text-lg px-8 py-4 inline-flex items-center gap-2"
-                aria-label="Join our Slack community"
-              >
-                <Slack className="h-5 w-5" aria-hidden="true" />
-                Join Slack Community
-              </a>
-            </div>
           </div>
 
           {/* Right Column - Hero Image/Video Placeholder */}
