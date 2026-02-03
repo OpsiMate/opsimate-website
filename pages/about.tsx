@@ -157,9 +157,8 @@ const AboutPage: React.FC = () => {
             <p className="text-surface-700 dark:text-surface-300 mt-2">Faces, names, and voices from our community.</p>
           </div>
 
-          {/* Founders */}
           <div className="mb-10">
-            <h3 className="text-xl md:text-2xl font-semibold text-surface-900 dark:text-white mb-4 text-center">Founders 👋</h3>
+            <h3 className="text-xl md:text-2xl font-semibold text-surface-900 dark:text-white mb-4 text-center">Top Contributors 👋</h3>
             <div className={`grid gap-6 ${gridColsFor(founders.length)} justify-items-center`}>
               {founders.map((c, idx) => (
                 <PersonCard key={`founder-${c.name}-${idx}`} contributor={c} />
