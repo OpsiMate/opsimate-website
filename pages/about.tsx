@@ -14,7 +14,7 @@ const gridColsFor = (count: number) => {
 const founders: Contributor[] = [
   {
     name: "Yuval Michaeli",
-    role: "Founder",
+    role: "Contributer",
     avatarUrl: "https://avatars.githubusercontent.com/u/30408029?v=4",
     github: "https://github.com/yuvalmich",
     linkedin: "https://www.linkedin.com/in/yuval-michaeli/",
@@ -22,7 +22,7 @@ const founders: Contributor[] = [
   },
   {
     name: "Idan Lodzki",
-    role: "Founder",
+    role: "Contributer",
     avatarUrl: "https://avatars.githubusercontent.com/u/37178156?v=4",
     github: "https://github.com/idanlodzki",
     linkedin: "https://www.linkedin.com/in/idan-lodzki-755939157",
@@ -30,7 +30,7 @@ const founders: Contributor[] = [
   },
   {
     name: "Tamir Goldberg",
-    role: "Founder",
+    role: "Contributer",
     avatarUrl: "https://avatars.githubusercontent.com/u/6613551?v=4",
     github: "https://github.com/tamirg",
     linkedin: "https://www.linkedin.com/in/tamir-goldberg-625106119/",
@@ -38,7 +38,7 @@ const founders: Contributor[] = [
   },
   {
     name: "Sahar Levy",
-    role: "Founder",
+    role: "Contributer",
     avatarUrl: "https://avatars.githubusercontent.com/u/43012075?v=4",
     github: "https://github.com/Sahar541998",
     linkedin: "https://www.linkedin.com/in/saharlevy/",
@@ -49,7 +49,7 @@ const founders: Contributor[] = [
 const communityLeaders: Contributor[] = [
   {
     name: "Karan Negi",
-    role: "Community Leader",
+    role: "Contributer",
     avatarUrl: "https://avatars.githubusercontent.com/u/142792314?v=4",
     github: "https://github.com/KaranNegi20Feb",
     linkedin: "https://www.linkedin.com/in/karan-negi-20feb/",
@@ -57,14 +57,14 @@ const communityLeaders: Contributor[] = [
   },
   {
     name: "Yash Rathod",
-    role: "Community Leader",
+    role: "Contributer",
     avatarUrl: "https://avatars.githubusercontent.com/u/178126084?v=4",
     github: "https://github.com/yjrathod",
     quote: "Developer and public relations champion for the community.",
   },
   {
     name: "Anthony Finney",
-    role: "Community Leader",
+    role: "Contributer",
     avatarUrl: "https://avatars.githubusercontent.com/u/67946673?v=4",
     github: "https://github.com/AnthonyFinney",
     linkedin: "https://www.linkedin.com/in/soshie-finney-557361233/",
@@ -72,7 +72,7 @@ const communityLeaders: Contributor[] = [
   },
   {
     name: "Manishhh",
-    role: "Community Leader",
+    role: "Contributer",
     avatarUrl: "https://avatars.githubusercontent.com/u/80617841?v=4",
     github: "https://github.com/Manishhhsys",
     linkedin: "https://www.linkedin.com/in/manishhhsys/",
@@ -80,7 +80,7 @@ const communityLeaders: Contributor[] = [
   },
   {
     name: "Oleksii",
-    role: "Community Leader",
+    role: "Contributer",
     avatarUrl: "https://avatars.githubusercontent.com/u/184424508?v=4",
     github: "https://github.com/Oleksii101",
     linkedin: "https://www.linkedin.com/in/oleksii-haiduk-101119395/",
@@ -88,7 +88,7 @@ const communityLeaders: Contributor[] = [
   },
   {
     name: "Raphael Teixeira",
-    role: "Community Leader",
+    role: "Contributer",
     avatarUrl: "https://avatars.githubusercontent.com/u/34927505?v=4",
     github: "https://github.com/raphaeltx",
     linkedin: "https://www.linkedin.com/in/raphael-teixeira-2a1012188/",
@@ -96,7 +96,7 @@ const communityLeaders: Contributor[] = [
   },
   {
     name: "Varun Mantri",
-    role: "Community Leader",
+    role: "Contributer",
     avatarUrl: "https://avatars.githubusercontent.com/u/39723815?v=4",
     github: "https://github.com/varunrmantri23",
     linkedin: "https://www.linkedin.com/in/varun-mantri/",
@@ -104,7 +104,7 @@ const communityLeaders: Contributor[] = [
   },
   {
     name: "Michael Uzukwu",
-    role: "Community Leader",
+    role: "Contributer",
     avatarUrl: "https://avatars.githubusercontent.com/u/172800711?v=4",
     github: "https://github.com/Mike-4-prog",
     linkedin: "https://www.linkedin.com/in/michael-uzukwu/",
