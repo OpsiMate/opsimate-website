@@ -28,6 +28,11 @@ const Footer: React.FC = () => {
       href: 'https://github.com/OpsiMate/OpsiMate', // From documentation
       icon: Github 
     },
+    {
+      name: 'LinkedIn',
+      href: 'https://www.linkedin.com/company/opsimate/', // Official LinkedIn URL
+      icon: Linkedin 
+    },
     { 
       name: 'Slack Community', 
       href: 'https://join.slack.com/t/opsimate/shared_invite/zt-39bq3x6et-NrVCZzH7xuBGIXmOjJM7gA', // From documentation
@@ -59,9 +64,9 @@ const Footer: React.FC = () => {
                     key={social.name}
                     href={social.href}
                     className="text-gray-400 hover:text-white transition-colors duration-200"
+                    aria-label={social.name}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={social.name}
                   >
                     <Icon size={20} />
                   </Link>
@@ -80,8 +85,8 @@ const Footer: React.FC = () => {
                     href={link.href}
                     className="text-gray-300 hover:text-white transition-colors duration-200"
                     {...(link.href.startsWith('http') && {
-                       target: "_blank",
-                       rel: "noopener noreferrer"
+                        target: "_blank",
+                        rel: "noopener noreferrer"
                     })}
                   >
                     {link.name}
@@ -100,6 +105,8 @@ const Footer: React.FC = () => {
                   <Link
                     href={link.href}
                     className="text-gray-300 hover:text-white transition-colors duration-200"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     {link.name}
                   </Link>
@@ -126,6 +133,7 @@ const Footer: React.FC = () => {
               ))}
             </ul>
           </div>
+          
         </div>
 
         {/* Bottom Section */}
