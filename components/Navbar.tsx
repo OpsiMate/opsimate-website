@@ -44,7 +44,7 @@ const CAL_CONFIG_STRING = JSON.stringify(CAL_CONFIG);
     },
     {
       name: "Demo",
-      href: "https://demo.opsimate.com/?playground=true",
+      href: "https://opsimate.goprosite.net",
       external: true,
     },
     { name: "About", href: "/about" },
