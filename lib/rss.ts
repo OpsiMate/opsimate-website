@@ -70,7 +70,7 @@ export function buildRssXml(params: {
 
 export function getSiteUrl(): string {
   const env = process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL;
-  const base = env && env.trim().length > 0 ? env : "http://localhost:3000";
+  const base = env && env.trim().length > 0 ? env : "https://www.opsimate.dev";
   return base.replace(/\/$/, "");
 }
 
