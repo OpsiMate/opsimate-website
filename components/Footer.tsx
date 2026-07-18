@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
       { name: 'Integrations', href: '#integrations' },
     ],
     resources: [
-      { name: 'Documentation', href: 'https://opsimate.vercel.app/#integrations' }, // Placeholder - will link to actual docs
+      { name: 'Documentation', href: 'https://docs.opsimate.dev/#integrations' }, // Placeholder - will link to actual docs
     ],
     opensource: [
       { name: 'GitHub Repository', href: 'https://github.com/OpsiMate/OpsiMate' },

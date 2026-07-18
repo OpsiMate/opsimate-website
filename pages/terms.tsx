@@ -114,7 +114,7 @@ const TermsOfService: React.FC = () => {
               </p>
               <div className="bg-gray-50 p-4 rounded-lg">
                 <p className="text-gray-700">
-                  <strong>Email:</strong> legal@opsimate.com<br />
+                  <strong>Email:</strong> legal@opsimate.dev<br />
                   <strong>Address:</strong> OpsiMate Legal Team<br />
                   789 Business Park Drive, Suite 200<br />
                   San Francisco, CA 94107<br />

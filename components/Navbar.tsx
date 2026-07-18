@@ -39,12 +39,12 @@ const CAL_CONFIG_STRING = JSON.stringify(CAL_CONFIG);
     { name: "Blog", href: "/#blog" },
     {
       name: "Docs",
-      href: "https://opsimate.vercel.app/#integrations",
+      href: "https://docs.opsimate.dev/#integrations",
       external: true,
     },
     {
       name: "Demo",
-      href: "https://opsimate.goprosite.net",
+      href: "https://demo.opsimate.dev",
       external: true,
     },
     { name: "About", href: "/about" },

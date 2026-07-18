@@ -10,7 +10,7 @@ interface FeatureCardProps {
   link?: string;
 }
 
-const DEFAULT_DOCS_URL = 'https://opsimate.vercel.app/docs/';
+const DEFAULT_DOCS_URL = 'https://docs.opsimate.dev/docs/';
 
 const FeatureCard: React.FC<FeatureCardProps> = ({
   icon: Icon,

@@ -35,7 +35,7 @@ const HeroSection: React.FC = () => {
           
             {/* Demo – Highly visible secondary */}
             <a
-              href="https://opsimate.goprosite.net"
+              href="https://demo.opsimate.dev"
               className="relative inline-flex items-center gap-2 text-lg px-8 py-4 rounded-xl
                          border-2 border-blue-600 text-blue-600
                          hover:bg-blue-50 dark:hover:bg-blue-950
