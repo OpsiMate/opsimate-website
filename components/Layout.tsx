@@ -22,6 +22,41 @@ const Layout: React.FC<LayoutProps> = ({
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+
+        {/* Structured data so search engines and AI assistants understand what OpsiMate is. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                {
+                  '@type': 'Organization',
+                  name: 'OpsiMate',
+                  url: 'https://www.opsimate.dev/',
+                  logo: 'https://www.opsimate.dev/images/og-image.png',
+                  sameAs: [
+                    'https://github.com/OpsiMate/OpsiMate',
+                    'https://docs.opsimate.dev/',
+                    'https://demo.opsimate.dev/',
+                  ],
+                },
+                {
+                  '@type': 'SoftwareApplication',
+                  name: 'OpsiMate',
+                  applicationCategory: 'DeveloperApplication',
+                  operatingSystem: 'Linux, Docker, Kubernetes',
+                  description:
+                    'Open-source platform that centralizes alerts and incidents from Grafana, Prometheus Alertmanager, Datadog, Zabbix, Uptime Kuma and more — with dashboards, on-call schedules, and service management in one place.',
+                  url: 'https://www.opsimate.dev/',
+                  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+                  softwareHelp: 'https://docs.opsimate.dev/',
+                  installUrl: 'https://docs.opsimate.dev/docs/getting-started/deploy',
+                },
+              ],
+            }),
+          }}
+        />
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
