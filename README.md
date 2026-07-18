@@ -1,5 +1,5 @@
 <h1 align="center">OpsiMate - website repo!</h1>
-<p align="center"><b>The official website of OpsiMate - https://www.opsimate.com/</b></p>
+<p align="center"><b>The official website of OpsiMate - https://www.opsimate.dev/</b></p>
 <p align="center"><b>One console for servers, Docker, and Kubernetes—discover, monitor, and act.</b></p>
 <p align="center">
   Built for DevOps/NOC/IT teams that need a single place to see service health,
@@ -25,9 +25,9 @@
 </p>
 
 <p align="center">
-  <a href="https://opsimate.vercel.app/getting-started/deploy">Get Started</a> ·
-  <a href="https://opsimate.vercel.app/">Docs</a> ·
-  <a href="https://www.opsimate.com/">Website</a> ·
+  <a href="https://docs.opsimate.dev/getting-started/deploy">Get Started</a> ·
+  <a href="https://docs.opsimate.dev/">Docs</a> ·
+  <a href="https://www.opsimate.dev/">Website</a> ·
   <a href="https://github.com/OpsiMate/OpsiMate/issues/new?labels=bug&template=bug_report.md">Report Bug</a>
 </p>
 

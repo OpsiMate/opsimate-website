@@ -32,7 +32,7 @@ const IntegrationsSection: React.FC = () => {
         </svg>
       ),
       color: "text-orange-600",
-      link: "https://opsimate.vercel.app/docs/integrations/grafana",
+      link: "https://docs.opsimate.dev/docs/integrations/grafana",
     },
     {
       name: "Kibana",
@@ -59,7 +59,7 @@ const IntegrationsSection: React.FC = () => {
         </svg>
       ),
       color: "text-purple-600",
-      link: "https://opsimate.vercel.app/docs/integrations/kibana",
+      link: "https://docs.opsimate.dev/docs/integrations/kibana",
     },
     {
       name: "Datadog",
@@ -78,7 +78,7 @@ const IntegrationsSection: React.FC = () => {
         </svg>
       ),
       color: "text-purple-700",
-      link: "https://opsimate.vercel.app/docs/integrations/datadog",
+      link: "https://docs.opsimate.dev/docs/integrations/datadog",
     },
     {
       name: "Docker",
@@ -177,7 +177,7 @@ const IntegrationsSection: React.FC = () => {
         </svg>
       ),
       color: "text-blue-500",
-      link: "https://opsimate.vercel.app/docs/providers-services/services/container-services",
+      link: "https://docs.opsimate.dev/docs/providers-services/services/container-services",
     },
     {
       name: "Kubernetes",
@@ -200,7 +200,7 @@ const IntegrationsSection: React.FC = () => {
         </svg>
       ),
       color: "text-blue-600",
-      link: "https://opsimate.vercel.app/docs/providers-services/services/kubernetes-pods",
+      link: "https://docs.opsimate.dev/docs/providers-services/services/kubernetes-pods",
     },
     {
       name: "Systemd",
@@ -234,7 +234,7 @@ const IntegrationsSection: React.FC = () => {
         </svg>
       ),
       color: "text-blue-600",
-      link: "https://opsimate.vercel.app/docs/providers-services/services/systemd-services",
+      link: "https://docs.opsimate.dev/docs/providers-services/services/systemd-services",
     },
   ];
 
