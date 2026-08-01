@@ -37,3 +37,11 @@ updates:
       interval: "weekly"
     commit-message:
       prefix: "ci(docker)"
+    ignore:
+      # Node majors alternate LTS/non-LTS and Dependabot only tracks the
+      # newest tag, so it will happily move us onto an odd-numbered release
+      # that is already past end-of-life. Stay on the LTS line and let a
+      # human do the major bump deliberately; patch/minor still flow through.
+      - dependency-name: "node"
+        update-types:
+          - "version-update:semver-major"
