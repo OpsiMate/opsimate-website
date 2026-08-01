@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight, Play, Slack } from 'lucide-react';
+import { ArrowRight, Play } from 'lucide-react';
+import { Slack } from './BrandIcons';
 
 const HeroSection: React.FC = () => {
   return (

@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight, CheckCircle, Slack } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
+import { Slack } from './BrandIcons';
 
 const CTASection: React.FC = () => {
   const benefits = [
