@@ -15,14 +15,14 @@
     "lucide-react": "^1.27.0",
     "next": "^14.2.30",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react-dom": "^19.2.8",
     "remark": "^15.0.1"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.20",
     "@types/node": "^26.1.2",
     "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
+    "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.5.4",
     "eslint": "^8.0.0",
     "eslint-config-next": "14.0.0",
