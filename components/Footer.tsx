@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { Github, Twitter, Linkedin, Mail, Slack } from 'lucide-react';
+import { Mail } from 'lucide-react';
+import { Github, Slack } from './BrandIcons';
 import Logo from './Logo';
 
 const Footer: React.FC = () => {

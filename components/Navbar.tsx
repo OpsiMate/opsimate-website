@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Slack, Plus } from "lucide-react";
+import { Menu, X, Plus } from "lucide-react";
+import { Slack } from "./BrandIcons";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 import GitHubStarButton from "./GitHubStarsButton";
