@@ -83,7 +83,7 @@ const TermsOfService: React.FC = () => {
 
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">8. Disclaimer</h2>
               <p className="text-gray-700 mb-6">
-                The information on this service is provided on an "as is" basis. To the fullest extent 
+                The information on this service is provided on an &quot;as is&quot; basis. To the fullest extent 
                 permitted by law, this Company excludes all representations, warranties, conditions and 
                 terms relating to our service and the use of this service.
               </p>

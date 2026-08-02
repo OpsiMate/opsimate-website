@@ -249,7 +249,7 @@ const IntegrationsSection: React.FC = () => {
           </h2>
           <p className="text-xl text-surface-600 dark:text-surface-400 max-w-3xl mx-auto leading-relaxed">
             OpsiMate seamlessly connects with your current monitoring and infrastructure tools. 
-            No need to replace what's working - enhance it.
+            No need to replace what&apos;s working - enhance it.
           </p>
         </div>
 

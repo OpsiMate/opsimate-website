@@ -29,9 +29,8 @@ jobs:
       - name: Typecheck
         run: npx tsc --noEmit
 
+      - name: Lint
+        run: npm run lint
+
       - name: Build
         run: npm run build
-
-      # Lint is not a gate yet: `next lint` was silently broken (Next 16
-      # removed it) and the working ESLint setup surfaces pre-existing
-      # errors. Once those are cleaned up, add `npm run lint` here.
