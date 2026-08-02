@@ -29,6 +29,15 @@ updates:
         update-types:
           - "minor"
           - "patch"
+    ignore:
+      # ESLint 10 removed the deprecated rule-context API that
+      # eslint-plugin-react still calls, and that plugin ships inside
+      # eslint-config-next -- so `eslint .` crashes outright rather than
+      # reporting anything. Stay on 9.x until eslint-config-next ships a
+      # compatible eslint-plugin-react, then lift this deliberately.
+      - dependency-name: "eslint"
+        update-types:
+          - "version-update:semver-major"
 
   # Website Docker image
   - package-ecosystem: "docker"
