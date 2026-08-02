@@ -31,7 +31,7 @@ const PersonCard: React.FC<PersonCardProps> = ({ contributor: c }) => (
     </div>
 
     {c.quote && (
-      <blockquote className="mt-4 text-surface-700 dark:text-surface-300 italic">"{c.quote}"</blockquote>
+      <blockquote className="mt-4 text-surface-700 dark:text-surface-300 italic">&quot;{c.quote}&quot;</blockquote>
     )}
 
     {(c.github || c.linkedin) && (

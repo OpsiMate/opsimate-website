@@ -20,7 +20,7 @@ const CTASection: React.FC = () => {
               Ready to Try Open Source Infrastructure Management?
             </h2>
             <p className="text-xl text-primary-100 dark:text-surface-100/90 mb-8 leading-relaxed">
-              Join the growing community of teams using OpsiMate's open source platform. 
+              Join the growing community of teams using OpsiMate&apos;s open source platform. 
               Deploy, customize, and contribute to the future of infrastructure management.
             </p>
             

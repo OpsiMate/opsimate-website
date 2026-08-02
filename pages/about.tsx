@@ -122,7 +122,7 @@ const AboutPage: React.FC = () => {
               About OpsiMate
             </h1>
             <p className="text-lg text-surface-700 dark:text-surface-300">
-              Born from the frustration of alert fatigue and tool sprawl, OpsiMate was founded by a core team of four visionaries who experienced firsthand the chaos of managing alerts across dozens of platforms. Instead of adding another monitoring tool to the noise, we built a unified alert management platform—your single pane of glass for every alert, from every source. Our mission is simple but bold: consolidate all your alerts into one intelligent platform, giving you complete visibility and control over your entire infrastructure's health in one place.
+              Born from the frustration of alert fatigue and tool sprawl, OpsiMate was founded by a core team of four visionaries who experienced firsthand the chaos of managing alerts across dozens of platforms. Instead of adding another monitoring tool to the noise, we built a unified alert management platform—your single pane of glass for every alert, from every source. Our mission is simple but bold: consolidate all your alerts into one intelligent platform, giving you complete visibility and control over your entire infrastructure&apos;s health in one place.
             </p>
             <div className="mt-8 max-w-4xl mx-auto relative">
               <div
@@ -170,7 +170,7 @@ const AboutPage: React.FC = () => {
           <div>
             <h3 className="text-xl md:text-2xl font-semibold text-surface-900 dark:text-white mb-4 text-center">Community Leaders 🌟</h3>
             <p className="text-surface-700 dark:text-surface-300 text-center mb-6 max-w-2xl mx-auto">
-              Our community leaders are the driving force behind OpsiMate's success. They dedicate their time, expertise, and passion to help build, improve, and grow the platform, making OpsiMate better for everyone.
+              Our community leaders are the driving force behind OpsiMate&apos;s success. They dedicate their time, expertise, and passion to help build, improve, and grow the platform, making OpsiMate better for everyone.
             </p>
             <div className={`grid gap-6 ${gridColsFor(communityLeaders.length)} justify-items-center`}>
               {communityLeaders.map((c, idx) => (
@@ -186,7 +186,7 @@ const AboutPage: React.FC = () => {
           <div className="rounded-2xl p-8 md:p-12 bg-white dark:bg-surface-900 border border-surface-200 dark:border-surface-800 text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-surface-900 dark:text-white">Join the OpsiMate community 🚀</h2>
             <p className="mt-3 text-surface-700 dark:text-surface-300">
-              Whether you're exploring, adopting, or contributing—you're welcome here.
+              Whether you&apos;re exploring, adopting, or contributing—you&apos;re welcome here.
             </p>
             <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
               <Link

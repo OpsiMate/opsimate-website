@@ -73,7 +73,7 @@ const FeaturesSection: React.FC = () => {
           </h2>
           <p className="text-lg text-surface-600 dark:text-surface-400 max-w-2xl mx-auto">
             OpsiMate consolidates alerts from every source into one unified platform, 
-            giving you complete visibility and control over your entire infrastructure's health.
+            giving you complete visibility and control over your entire infrastructure&apos;s health.
           </p>
         </div>
 

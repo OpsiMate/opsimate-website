@@ -49,7 +49,7 @@ const CookieConsentBanner: React.FC = () => {
             (including cross-contextual and behavioral targeting advertising efforts) and
             provide an optimal experience as permitted by applicable law. Some cookies
             are required for the site to function and cannot be turned off. Update your
-            preferences any time by selecting the "Privacy Choices" link. By accepting,
+            preferences any time by selecting the &quot;Privacy Choices&quot; link. By accepting,
             you agree to the OpsiMate{" "}
             <Link href="https://docs.opsimate.dev/docs/legal/privacy" legacyBehavior>
               <a target="_blank" rel="noopener noreferrer" className="text-[#bbdefb] underline hover:text-[#90caf9] transition-colors duration-200 ease-in-out">
