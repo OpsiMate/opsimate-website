@@ -4,7 +4,11 @@ WORKDIR /app
 
 COPY ./package*.json  ./
 
-RUN npm install
+# npm ci, not npm install: install from the lockfile so the image gets the
+# same versions CI tested. `npm install` re-resolves the semver ranges in
+# package.json, so the image can silently drift from the lockfile as new
+# releases ship.
+RUN npm ci
 
 COPY . .
 
