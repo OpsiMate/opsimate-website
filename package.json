@@ -13,7 +13,7 @@
     "@vercel/analytics": "^2.0.1",
     "front-matter": "^4.0.2",
     "lucide-react": "^1.27.0",
-    "next": "^16.2.12",
+    "next": "^16.3.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "remark": "^15.0.1"
@@ -25,7 +25,7 @@
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.5.4",
     "eslint": "~9.39.5",
-    "eslint-config-next": "16.2.12",
+    "eslint-config-next": "16.3.0",
     "postcss": "^8.5.24",
     "rehype-raw": "^7.0.0",
     "rehype-sanitize": "^6.0.0",
