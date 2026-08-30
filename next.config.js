@@ -14,7 +14,22 @@ const nextConfig = {
     }
     return config
   },
-  output:"standalone"
+  output:"standalone",
+  async redirects() {
+    return [
+      // opsimate.dev and www.opsimate.dev both answered 200 for every path,
+      // so each page existed at two URLs and Google split them. Consolidate
+      // on the www host the sitemap, robots.txt and JSON-LD already declare.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'opsimate\\.dev' }],
+        destination: 'https://www.opsimate.dev/:path*',
+        permanent: true,
+      },
+      // /index served a second copy of the homepage.
+      { source: '/index', destination: '/', permanent: true },
+    ]
+  }
 }
 
 module.exports = nextConfig

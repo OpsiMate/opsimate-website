@@ -1,8 +1,13 @@
 import React from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import CookieConsentBanner from './CookieComponentBanner';
+
+const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://www.opsimate.dev'
+).replace(/\/$/, '');
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -15,6 +20,14 @@ const Layout: React.FC<LayoutProps> = ({
   title = 'OpsiMate - Simplify Your Infrastructure Management',
   description = 'One platform to monitor, manage, and optimize your entire infrastructure. Transform complexity into clarity with OpsiMate\'s unified, intelligent platform.'
 }) => {
+  // Every page used to hardcode the homepage as its canonical, which told
+  // Google that /about, /blog and every post were duplicates of /. Build it
+  // from the current route instead. Keep this host in sync with getSiteUrl()
+  // in lib/rss.ts -- the sitemap and feeds are generated from that one.
+  const router = useRouter();
+  const path = router.asPath.split('?')[0].split('#')[0];
+  const canonical = `${SITE_URL}${path === '/' ? '' : path}`;
+
   return (
     <>
       <Head>
@@ -73,7 +86,7 @@ const Layout: React.FC<LayoutProps> = ({
         {/* Additional SEO tags */}
         <meta name="keywords" content="infrastructure management, monitoring, DevOps, cloud management, server monitoring, Kubernetes, Docker, observability" />
         <meta name="author" content="OpsiMate" />
-        <link rel="canonical" href="https://opsimate.dev" /> {/* Update with actual domain */}
+        <link rel="canonical" href={canonical} />
         <link rel="alternate" type="application/rss+xml" title="OpsiMate Blog RSS" href="/feed.xml" />
       </Head>
       
