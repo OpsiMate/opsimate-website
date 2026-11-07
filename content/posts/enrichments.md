@@ -12,9 +12,8 @@ author:
   name: Michael Uzukwu
   avatarSrc: /images/logo.png
 draft: false
-cover: /images/enrichments-cover.png
+cover: /images/enrichments-cover.jpg
 ---
-
 
 It is late, and an alert fires. It says one thing: **"Disk full."**
 
@@ -36,46 +35,7 @@ You decide what gets attached. It can be:
 
 The rule runs automatically. Nobody has to click anything or fill anything in. The next time an alert is fetched, it simply arrives with more context than it had before.
 
-```mermaid
-flowchart TB
-    subgraph Control[" "]
-        style Control fill:none,stroke:none;
-        
-        kgw["<b>Enrichment Engine</b><br/>(runs at fetch time)"]
-    end
-
-    subgraph Actions[" "]
-        style Actions fill:#f8fafc,stroke:#e2e8f0,stroke-width:2px,stroke-dasharray: 5 5;
-        C["<b>Add label</b><br/>owning_team=platform"]
-        D["<b>Add link</b><br/>Runbook"]
-        E["<b>Rewrite summary</b><br/>with team note"]
-    end
-
-    subgraph Result[" "]
-        style Result fill:none,stroke:none;
-        F["<b>Enriched alert</b><br/>ready to act on"]
-    end
-
-    A["Alert arrives<br/>(Disk full)"]
-    B{"Matches rule?"}
-
-    A --> B
-    B -->|Yes| kgw
-    kgw --> C
-    kgw --> D
-    kgw --> E
-    C & D & E --> F
-    B -->|No| G["Alert stays as-is"]
-
-    %% OpsiMate Blue Styling
-    classDef blueBox fill:#3b82f6,stroke:#2563eb,color:#ffffff,stroke-width:2px;
-    classDef darkBox fill:#1e293b,stroke:#0f172a,color:#ffffff,stroke-width:2px;
-    classDef whiteBox fill:#ffffff,stroke:#3b82f6,color:#1e293b,stroke-width:2px;
-
-    class kgw,C,D,E blueBox;
-    class F darkBox;
-    class A,B,G whiteBox;
-```
+![Flowchart: an alert arrives, is checked against the enrichment rules, and when it matches the engine adds a label, a link and a rewritten summary, producing an enriched alert](/images/enrichments-flow.svg)
 
 *Figure 1: How an enrichment rule turns a raw alert into an enriched one.*
 
@@ -106,41 +66,14 @@ The next time that alert is fetched, it looks like this:
 
 The alert is the same alert. Same source, same severity, same urgency. But the person who opens it now knows exactly what to do and who to talk to.
 
-```mermaid
-flowchart LR
-    subgraph Before["BEFORE"]
-        style Before fill:#ffffff,stroke:#3b82f6,stroke-width:2px,color:#1e293b,rx:8px,ry:8px;
-        B1["Disk full on web-01"]
-    end
-
-    subgraph After["AFTER"]
-        style After fill:#eff6ff,stroke:#3b82f6,stroke-width:2px,color:#1e293b,rx:8px,ry:8px;
-        A1["Disk full on web-01"]
-        A2["owner: platform"]
-        A3["links: Runbook"]
-        A4["summary: Disk usage at 98 percent<br/>follow the runbook and page the platform team"]
-        
-        A1 ~~~ A2 ~~~ A3 ~~~ A4
-    end
-
-    Before -->|"enrichment rule applies"| After
-
-    %% OpsiMate Blue Styling
-    classDef whiteBox fill:#ffffff,stroke:#3b82f6,color:#1e293b,stroke-width:2px;
-    classDef blueBox fill:#3b82f6,stroke:#2563eb,color:#ffffff,stroke-width:2px;
-
-    class B1 whiteBox;
-    class A1,A2,A3,A4 blueBox;
-```
+![Before and after: the bare "Disk full on web-01" alert on the left, and on the right the same alert with owner, runbook link and a rewritten summary](/images/enrichments-before-after.svg)
 
 *Figure 2: The same alert, before and after the enrichment rule applies*.
 
 Here is what that looks like in the OpsiMate interface:
 
-
 **After enrichment:**
 ![Alert after enrichment](/images/alert-after.png)
-
 
 ### Known Issues, Without Silencing the Alert
 

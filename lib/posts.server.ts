@@ -6,7 +6,6 @@ import remarkRehype from "remark-rehype";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
-import rehypeMermaid from "rehype-mermaid";
 import { normalizeFrontMatter } from "@/lib/api-utils";
 import type { Post } from "@/lib/posts";
 
@@ -29,19 +28,12 @@ export async function getPostById(id: string): Promise<Post | null> {
   const raw0 = fs.readFileSync(fullPath, "utf8");
   const raw = normalizeFrontMatter(raw0);
   const parsed = fm<any>(raw);
-
   const processed = await remark()
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
-    // 1. Sanitize the normal HTML from the markdown first
     .use(rehypeSanitize, defaultSchema)
-    // 2. THEN render the Mermaid SVGs using the default theme
-    .use(rehypeMermaid, { 
-      strategy: "inline-svg"
-    })
     .use(rehypeStringify)
     .process(parsed.body);
-    
   const contentHtml = processed.toString();
 
   const data = parsed.attributes || {};

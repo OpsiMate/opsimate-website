@@ -1,0 +1,28 @@
+%%{init: {"flowchart": {"htmlLabels": false}, "htmlLabels": false}}%%
+flowchart LR
+    subgraph Before["`BEFORE`"]
+        direction TB
+        style Before fill:#ffffff,stroke:#3b82f6,stroke-width:2px,color:#1e293b,rx:8px,ry:8px;
+        B1["`Disk full on web-01`"]
+    end
+
+    subgraph After["`AFTER`"]
+        direction TB
+        style After fill:#eff6ff,stroke:#3b82f6,stroke-width:2px,color:#1e293b,rx:8px,ry:8px;
+        A1["`Disk full on web-01`"]
+        A2["`owner: platform`"]
+        A3["`links: Runbook`"]
+        A4["`summary: Disk usage at 98 percent
+follow the runbook and page the platform team`"]
+        
+        A1 ~~~ A2 ~~~ A3 ~~~ A4
+    end
+
+    Before -->|"enrichment rule applies"| After
+
+    %% OpsiMate Blue Styling
+    classDef whiteBox fill:#ffffff,stroke:#3b82f6,color:#1e293b,stroke-width:2px;
+    classDef blueBox fill:#3b82f6,stroke:#2563eb,color:#ffffff,stroke-width:2px;
+
+    class B1 whiteBox;
+    class A1,A2,A3,A4 blueBox;
