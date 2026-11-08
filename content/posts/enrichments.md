@@ -25,7 +25,7 @@ OpsiMate has a feature that closes that gap. It is called **Enrichments**, and i
 
 ## What Enrichments Do
 
-An enrichment is a rule that runs when an alert arrives. When the alert matches a pattern you define, the rule attaches extra information to it, so that by the time anyone opens the alert, the context is already there.
+An enrichment is a rule that runs every time alerts are fetched. When an alert matches a pattern you define, the rule attaches extra information to it, so that by the time anyone opens the alert, the context is already there.
 
 You decide what gets attached. It can be:
 
@@ -47,9 +47,11 @@ Let us walk through what this looks like in practice.
 
 An alert comes in from a monitoring source. It says:
 
-> **Disk full on web-01**
+> **Disk full on web-01**  
+> Summary: Disk usage at 98 percent on web-01  
+> Labels: `team: platform`
 
-That is it. Nothing else.
+That is it. A name, a one-line summary and the team tag the source happened to send. No runbook, no owner, nothing that says what to do.
 
 Now let us say you have created an enrichment rule that matches any alert whose name contains "disk full." The rule does three things:
 
