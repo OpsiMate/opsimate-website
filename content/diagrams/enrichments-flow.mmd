@@ -1,0 +1,45 @@
+%%{init: {"flowchart": {"htmlLabels": false}, "htmlLabels": false}}%%
+flowchart TB
+    subgraph Control["` `"]
+        style Control fill:none,stroke:none;
+        
+        kgw["`**Enrichment Engine**
+(runs at fetch time)`"]
+    end
+
+    subgraph Actions["` `"]
+        style Actions fill:#f8fafc,stroke:#e2e8f0,stroke-width:2px,stroke-dasharray: 5 5;
+        C["`**Add label**
+owning_team=platform`"]
+        D["`**Add link**
+Runbook`"]
+        E["`**Rewrite summary**
+with team note`"]
+    end
+
+    subgraph Result["` `"]
+        style Result fill:none,stroke:none;
+        F["`**Enriched alert**
+ready to act on`"]
+    end
+
+    A["`Alert arrives
+(Disk full)`"]
+    B{"`Matches rule?`"}
+
+    A --> B
+    B -->|Yes| kgw
+    kgw --> C
+    kgw --> D
+    kgw --> E
+    C & D & E --> F
+    B -->|No| G["`Alert stays as-is`"]
+
+    %% OpsiMate Blue Styling
+    classDef blueBox fill:#3b82f6,stroke:#2563eb,color:#ffffff,stroke-width:2px;
+    classDef darkBox fill:#1e293b,stroke:#0f172a,color:#ffffff,stroke-width:2px;
+    classDef whiteBox fill:#ffffff,stroke:#3b82f6,color:#1e293b,stroke-width:2px;
+
+    class kgw,C,D,E blueBox;
+    class F darkBox;
+    class A,B,G whiteBox;
